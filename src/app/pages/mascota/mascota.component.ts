@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
-import { MascotaService } from 'src/app/services/mascota.service';
+import { Component, OnInit } from '@angular/core';
+import { MascotaService } from '../../services/mascota.service';
 
 @Component({
   selector: 'app-mascota',
   standalone: false,
   templateUrl: './mascota.component.html',
-  styleUrl: './mascota.component.scss'
+  styleUrls: ['./mascota.component.scss']
 })
 export class MascotaComponent implements OnInit {
 
-  mascotas: any[] = [];  // 🔍 Esta propiedad sí existe
-
   constructor(private mascotaService: MascotaService) {}
 
+  mascotas: any[] = [];
+
   ngOnInit(): void {
-    this.mascotaService.getMascotas().subscribe((data) => {
-      this.mascotas = data;
-    });
+    this.mascotaService.getMascotas().subscribe(
+      (data) => {
+        this.mascotas = data;
+        console.log('Mascotas cargadas:', data);
+      },
+      (error) => {
+        console.error('Error al obtener mascotas:', error);
+      }
+    );
   }
+
+
 
 }

@@ -1,8 +1,6 @@
 <h2>Listado de Mascotas</h2>
-
-<div *ngFor="let mascota of mascotas" class="mascota-card">
-  <h3>{{ mascota.nombre }}</h3>
-  <p>{{ mascota.descripcion }}</p>
-  <p><strong>Raza:</strong> {{ mascota.raza }}</p>
-  <button>Adoptar</button>
-</div>
+<ul>
+  <li *ngFor="let mascota of mascotas">
+    {{ mascota.nombre }} - {{ mascota.raza }}
+  </li>
+</ul>
