@@ -8,12 +8,4 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  username = '';
-  password = '';
-
-  login() {
-    console.log('Iniciar sesión con:', this.username, this.password);
-    // Aquí puedes poner la lógica real para autenticar
-  }
-
 }

@@ -1,0 +1,27 @@
+<div class="menu-usuario-container">
+  <aside class="filtros">
+    <!-- Aquí van los filtros -->
+    <h3>Filtros</h3>
+    <label>
+      Tipo:
+      <select [(ngModel)]="filtro.tipo">
+        <option value="">Todos</option>
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+      </select>
+    </label>
+    <label>
+      Edad:
+      <input type="number" [(ngModel)]="filtro.edad" placeholder="Edad máxima" />
+    </label>
+
+  </aside>
+
+    <div class="grid-mascotas">
+      <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
+        <h4>{{ mascota.nombre }}</h4>
+        <p>Tipo: {{ mascota.tipo }}</p>
+        <p>Edad: {{ mascota.edad }}</p>
+      </div>
+    </div>
+</div>

@@ -6,24 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MascotaComponent } from './pages/mascota/mascota.component';
-import { AdministradorComponent } from './pages/administrador/administrador.component';
-import { ClienteComponent } from './pages/cliente/cliente.component';
-import { ReservaComponent } from './pages/reserva/reserva.component';
-import { RazaComponent } from './pages/raza/raza.component';
 import { LoginComponent } from './components/login/login.component';
+import { MenuUsuarioComponent } from './pages/menu_usuario/menu_usuario.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MascotaComponent,
-    AdministradorComponent,
-    ClienteComponent,
-    ReservaComponent,
-    RazaComponent,
-    LoginComponent
+    LoginComponent,
+    MenuUsuarioComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

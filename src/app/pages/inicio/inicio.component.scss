@@ -1,0 +1,23 @@
+.inicio-container {
+  text-align: center;
+  margin: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #007bff;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
