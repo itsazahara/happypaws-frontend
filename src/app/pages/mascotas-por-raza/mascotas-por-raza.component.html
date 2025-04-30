@@ -1,0 +1,11 @@
+<div class="mascotas-container">
+  <h2>Mascotas de esta raza</h2>
+  <div *ngIf="mascotas.length === 0">No hay mascotas disponibles.</div>
+  <div class="mascotas-grid">
+    <div *ngFor="let mascota of mascotas" class="mascota-card">
+      <h4>{{ mascota.nombre }}</h4>
+      <p>Edad: {{ mascota.edad }}</p>
+      <p>Tipo: {{ mascota.tipo }}</p>
+    </div>
+  </div>
+</div>

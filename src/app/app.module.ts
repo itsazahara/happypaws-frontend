@@ -10,6 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuUsuarioComponent } from './pages/menu_usuario/menu_usuario.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { ActualizarUsuarioComponent } from './pages/actualizar_usuario/actualizar_usuario.component';
+import { RazaComponent } from './pages/raza/raza.component';
+import { CommonModule } from '@angular/common';
+import { MascotasPorRazaComponent } from './pages/mascotas-por-raza/mascotas-por-raza.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { ActualizarUsuarioComponent } from './pages/actualizar_usuario/actualiza
     LoginComponent,
     MenuUsuarioComponent,
     InicioComponent,
-    ActualizarUsuarioComponent
+    ActualizarUsuarioComponent,
+    RazaComponent,
+    MascotasPorRazaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
     FormsModule
   ],
   providers: [],
