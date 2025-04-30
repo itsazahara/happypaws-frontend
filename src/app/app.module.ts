@@ -13,6 +13,8 @@ import { ActualizarUsuarioComponent } from './pages/actualizar_usuario/actualiza
 import { RazaComponent } from './pages/raza/raza.component';
 import { CommonModule } from '@angular/common';
 import { MascotasPorRazaComponent } from './pages/mascotas-por-raza/mascotas-por-raza.component';
+import { MenuAdministradorComponent } from './pages/menu_administrador/menu_administrador.component';
+import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MascotasPorRazaComponent } from './pages/mascotas-por-raza/mascotas-por
     InicioComponent,
     ActualizarUsuarioComponent,
     RazaComponent,
-    MascotasPorRazaComponent
+    MascotasPorRazaComponent,
+    MenuAdministradorComponent,
+    AddMascotaComponent
   ],
   imports: [
     BrowserModule,

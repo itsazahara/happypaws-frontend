@@ -1,0 +1,54 @@
+/* Fondo gradiente */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);  /* Fondo gradiente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor para los botones */
+.button-container {
+  display: flex;
+  gap: 40px;  /* Espacio entre los botones */
+}
+
+/* Estilos para los botones */
+.animal-button {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;  /* Hace que los botones sean redondos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.animal-button:hover {
+  transform: scale(1.1);
+  background-color: #f1f1f1;
+}
+
+/* Botón perro */
+.animal-button.perro {
+  background-color: #ff7a5a;
+}
+
+/* Botón gato */
+.animal-button.gato {
+  background-color: #4db8ff;
+}
+
+/* Iconos de los botones */
+.animal-button i {
+  color: white;
+}

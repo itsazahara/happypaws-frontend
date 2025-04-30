@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MenuUsuarioService } from '../../services/menu-usuario.service';  // Importa el servicio
+import { MenuUsuarioService } from '../../services/menu-usuario.service';
 
 @Component({
   selector: 'app-menu_usuario',
@@ -35,4 +35,6 @@ export class MenuUsuarioComponent implements OnInit {
       }
     );
   }
+
+  //ESTO ESTA MAL PORQUE NO TIENE IMPLEMENTADO NINGUN MODEL
 }
