@@ -29,7 +29,6 @@ export class RazaComponent implements OnInit {
     });
   }
 
-
   cargarRazas(): void {
     this.razaService.findAll().subscribe(data => {
       this.razas = data;
