@@ -1,11 +1,18 @@
-<div class="selector-container">
-  <h2>Selecciona tu rol</h2>
-  <div class="roles">
-    <div class="rol-card" (click)="irLoginCliente()">
-      <h3>Cliente</h3>
+<body>
+  <div class="selector-container">
+    <div class="welcome">
+      <h1> Bienvenido a Happypaws </h1>
+      <br>
+      <img src="logoHappypaws.png" alt="Logo">
     </div>
-    <div class="rol-card" (click)="irLoginAdmin()">
-      <h3>Administrador</h3>
+    <h2>Selecciona tu rol</h2>
+    <div class="roles">
+      <div class="rol-card" (click)="irLoginCliente()">
+        <h3> Soy cliente </h3>
+      </div>
+      <div class="rol-card" (click)="irLoginAdmin()">
+        <h3> Soy administrador </h3>
+      </div>
     </div>
   </div>
-</div>
+</body>

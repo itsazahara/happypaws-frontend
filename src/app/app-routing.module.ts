@@ -12,8 +12,6 @@ import { SelectorRolComponent } from './pages/selector-rol/selector-rol.componen
 import { LoginClienteComponent } from './pages/login-cliente/login-cliente.component';
 import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
 
-
-
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
   { path: 'actualizar_usuario', component: ActualizarUsuarioComponent},

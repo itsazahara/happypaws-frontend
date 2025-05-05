@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(45deg, #ff0095, #FFA500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome img {
+  width: 150px;
+  height: auto;
+}
+
 .selector-container {
   text-align: center;
   padding: 2rem;
@@ -8,6 +30,7 @@
   justify-content: center;
   gap: 2rem;
   margin-top: 2rem;
+  font-size: 13px;
 }
 
 .rol-card {
@@ -16,10 +39,11 @@
   border-radius: 10px;
   width: 150px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease-in-out;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .rol-card:hover {
   background-color: #dbeeff;
+  transform: scale(1.1);
 }
