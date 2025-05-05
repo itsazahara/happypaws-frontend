@@ -1,27 +1,28 @@
 <div class="form-container">
-  <h2>Actualizar Datos Personales</h2>
+  <h2>Actualizar Datos del Usuario</h2>
 
-  <form (ngSubmit)="actualizarUsuario()">
+  <form (ngSubmit)="actualizarCliente()">
     <div class="form-group">
-      <label for="nombre">Nombre</label>
-      <input id="nombre" type="text" [(ngModel)]="usuario.nombre" name="nombre" required />
+      <label for="nombre">Nombre:</label>
+      <input type="text" [(ngModel)]="cliente.nombre" name="nombre" id="nombre" required />
     </div>
 
     <div class="form-group">
-      <label for="apellido">Apellido</label>
-      <input id="apellido" type="text" [(ngModel)]="usuario.apellido" name="apellido" required />
+      <label for="email">Email:</label>
+      <input type="email" [(ngModel)]="cliente.email" name="email" id="email" required />
     </div>
 
-    <div class="form-group">
-      <label for="email">Correo electrónico</label>
-      <input id="email" type="email" [(ngModel)]="usuario.email" name="email" required />
-    </div>
+    <!-- Más campos para los datos del cliente -->
 
-    <div class="form-group">
-      <label for="telefono">Teléfono</label>
-      <input id="telefono" type="tel" [(ngModel)]="usuario.telefono" name="telefono" />
-    </div>
-
-    <button type="submit" class="btn-actualizar">Actualizar</button>
+    <button class="btn-actualizar" type="submit">Actualizar Datos</button>
   </form>
+
+  <div class="mascotas">
+    <h3>Mis Reservas</h3>
+    <ul>
+      <li *ngFor="let mascota of mascotasDelCliente">
+        <p>{{ mascota.nombre }} - {{ mascota.especie }}</p>
+      </li>
+    </ul>
+  </div>
 </div>
