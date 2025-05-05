@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
 import { ClienteDTO } from '../models/cliente-dto';
+import { Mascota } from '../models/mascota';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuUsuarioService {
 
-  private apiUrl = 'http://localhost:8080/clientes';  // URL base del controlador Spring
+  private apiUrl = 'http://localhost:8080/happypaws/api/clientes';  // URL base del controlador Spring
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todos los clientes
   obtenerClientes(): Observable<ClienteDTO[]> {
@@ -52,5 +53,10 @@ export class MenuUsuarioService {
       `${this.apiUrl}/${id}/experiencia-mascotas?experienciaMascotas=${valor}`,
       {}
     );
+  }
+
+  // Obtener todas las mascotas
+  obtenerMascotas(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>('http://localhost:8080/happypaws/api/mascotas'); // Ajusta la URL a tu backend real
   }
 }
