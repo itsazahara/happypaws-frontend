@@ -5,8 +5,6 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
   height: 100vh;
   background: linear-gradient(45deg, #ff0095, #FFA500);
   display: flex;
@@ -15,14 +13,8 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.welcome img {
-  width: 150px;
-  height: auto;
-}
-
 .selector-container {
   text-align: center;
-  padding: 2rem;
 }
 
 .roles {

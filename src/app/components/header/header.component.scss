@@ -1,3 +1,33 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFD54F;
+  font-family: 'Poppins', sans-serif;
+  border-bottom: 2px solid rgb(117, 115, 115);
+}
+
+.header-left img {
+  width: 130px;
+  height: auto;
+  margin-right: 300px;
+}
+
+.header-center h1 {
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 nav {
   display: flex;
   gap: 1rem;
