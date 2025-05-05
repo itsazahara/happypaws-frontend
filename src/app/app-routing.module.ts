@@ -8,6 +8,9 @@ import { RazaComponent } from './pages/raza/raza.component';
 import { MascotasPorRazaComponent } from './pages/mascotas-por-raza/mascotas-por-raza.component';
 import { MenuAdministradorComponent } from './pages/menu_administrador/menu_administrador.component';
 import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
+import { SelectorRolComponent } from './pages/selector-rol/selector-rol.component';
+import { LoginClienteComponent } from './pages/login-cliente/login-cliente.component';
+import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
 
 
 
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'mascotas-por-raza/:id', component: MascotasPorRazaComponent },
   { path: 'menu_administrador', component: MenuAdministradorComponent},
   { path: 'add_mascota', component: AddMascotaComponent},
+  { path: 'selector-rol', component: SelectorRolComponent },
+  { path: 'login-cliente', component: LoginClienteComponent },
+  { path: 'login-admin', component: LoginAdministradorComponent },
   { path: '', component: InicioComponent }
 ];
 

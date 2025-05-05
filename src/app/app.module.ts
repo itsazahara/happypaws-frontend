@@ -15,6 +15,9 @@ import { CommonModule } from '@angular/common';
 import { MascotasPorRazaComponent } from './pages/mascotas-por-raza/mascotas-por-raza.component';
 import { MenuAdministradorComponent } from './pages/menu_administrador/menu_administrador.component';
 import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
+import { SelectorRolComponent } from './pages/selector-rol/selector-rol.component';
+import { LoginClienteComponent } from './pages/login-cliente/login-cliente.component';
+import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
     RazaComponent,
     MascotasPorRazaComponent,
     MenuAdministradorComponent,
-    AddMascotaComponent
+    AddMascotaComponent,
+    SelectorRolComponent,
+    LoginClienteComponent,
+    LoginAdministradorComponent
   ],
   imports: [
     BrowserModule,
