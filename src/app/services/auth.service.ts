@@ -6,7 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/happypaws/api'; // Cambia la URL según tu API
+  private apiUrl = 'http://localhost:8080/happypaws/api/clientes/login';
 
   constructor(private http: HttpClient) { }
+
+  loginCliente(email: string, usuario:string, contrasenia: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { email, usuario, contrasenia });
+  }
+
 }

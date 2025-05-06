@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-cliente',
@@ -9,17 +10,24 @@ import { Router } from '@angular/router';
 })
 export class LoginClienteComponent {
   email: string = '';
-  password: string = '';
+  usuario: string = '';
+  contrasenia: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   iniciarSesion() {
-    if (this.email === 'cliente@demo.com' && this.password === '1234') {
-      // Simulación de login exitoso
-      alert('Login exitoso');
-      this.router.navigate(['/dashboard-cliente']); // ajusta según tus rutas
-    } else {
-      alert('Credenciales inválidas');
-    }
+    // Si el campo email está vacío, usamos el usuario
+    const valor = this.email ? this.email : this.usuario;
+
+    this.authService.loginCliente(valor, valor, this.contrasenia).subscribe(
+      response => {
+        alert('Login exitoso');
+        this.router.navigate(['/menu_usuario']);
+      },
+      error => {
+        alert('Credenciales inválidas');
+      }
+    );
   }
+
 }
