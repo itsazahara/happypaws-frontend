@@ -57,6 +57,12 @@ export class MenuUsuarioService {
 
   // Obtener todas las mascotas
   obtenerMascotas(): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>('http://localhost:8080/happypaws/api/mascotas'); // Ajusta la URL a tu backend real
+    return this.http.get<Mascota[]>('http://localhost:8080/happypaws/api/mascotas');
   }
+
+  // Obtener mascota por ID
+  obtenerMascotaPorId(id: number): Observable<Mascota> {
+    return this.http.get<Mascota>('http://localhost:8080/happypaws/api/mascotas/${id}');
+  }
+
 }

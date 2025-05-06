@@ -77,7 +77,9 @@
     </aside>
 
     <div class="grid-mascotas">
+      <!-- Tarjeta de mascota -->
       <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
+        <!-- info básica -->
         <h4>{{ mascota.nombre }}</h4>
         <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" class="imagen-mascota" />
         <p>Tipo: {{ mascota.especie }}</p>
@@ -87,7 +89,13 @@
         <p>Vacunado: {{ mascota.vacunado ? 'Sí' : 'No' }}</p>
         <p>Esterilizado: {{ mascota.esterilizado ? 'Sí' : 'No' }}</p>
         <p>Desparasitado: {{ mascota.desparasitado ? 'Sí' : 'No' }}</p>
+
+        <!-- Botón "Ver más información" -->
+        <button [routerLink]="['/adoptar_mascota', mascota.id]" class="btn-ver-mas">Ver más información</button>
       </div>
+    </div>
+    <div *ngIf="mascotasFiltradas.length === 0">
+      <p>No se encontró ninguna mascota con esos filtros.</p>
     </div>
   </div>
 </body>

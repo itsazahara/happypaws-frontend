@@ -1,0 +1,16 @@
+<body>
+  <div *ngIf="mascota">
+    <h2>{{ mascota.nombre }}</h2>
+    <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" />
+    <p><strong>Tipo:</strong> {{ mascota.especie }}</p>
+    <p><strong>Sexo:</strong> {{ mascota.sexo }}</p>
+    <p><strong>Tamaño:</strong> {{ mascota.tamanio }}</p>
+    <p><strong>Edad:</strong> {{ mascota.edad }}</p>
+    <p><strong>Raza:</strong> {{ mascota.raza.nombre }}</p>
+    <p><strong>Peso:</strong> {{ mascota.peso }} kg</p>
+    <p><strong>Personalidad:</strong> {{ mascota.personalidad }}</p>
+    <p><strong>Cuidados especiales:</strong> {{ mascota.cuidadosEspeciales }}</p>
+    <p><strong>Historia:</strong> {{ mascota.historia }}</p>
+    <p><strong>Disponible:</strong> {{ mascota.disponibilidad ? 'Sí' : 'No' }}</p>
+  </div>
+</body>

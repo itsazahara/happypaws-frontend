@@ -21,6 +21,7 @@ export class MenuUsuarioComponent implements OnInit {
     esterilizado: null,
     desparasitado: null
   };
+  tooltipMascota: Mascota | null = null;
 
   constructor(private menuUsuarioService: MenuUsuarioService) { }
 
