@@ -11,6 +11,7 @@ import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
 import { SelectorRolComponent } from './pages/selector-rol/selector-rol.component';
 import { LoginClienteComponent } from './pages/login-cliente/login-cliente.component';
 import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
+import { MascotasComponent } from './pages/mascotas/mascotas.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'selector-rol', component: SelectorRolComponent },
   { path: 'login-cliente', component: LoginClienteComponent },
   { path: 'login-admin', component: LoginAdministradorComponent },
+  { path: 'mascotas', component: MascotasComponent },
   { path: '', component: InicioComponent }
 ];
 

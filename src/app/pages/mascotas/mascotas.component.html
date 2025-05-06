@@ -1,0 +1,17 @@
+<div class="mascotas-container">
+  <h2>Lista de Mascotas</h2>
+
+  <div *ngIf="especieFiltrada">
+    <h3>Mostrando solo mascotas de la especie: {{ especieFiltrada }}</h3>
+  </div>
+
+  <div *ngIf="mascotas.length === 0">
+    <p>No hay mascotas disponibles.</p>
+  </div>
+
+  <ul>
+    <li *ngFor="let mascota of mascotas">
+      <p>{{ mascota.nombre }} - {{ mascota.especie }}</p>
+    </li>
+  </ul>
+</div>

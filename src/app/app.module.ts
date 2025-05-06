@@ -18,6 +18,7 @@ import { AddMascotaComponent } from './pages/add_mascota/add_mascota.component';
 import { SelectorRolComponent } from './pages/selector-rol/selector-rol.component';
 import { LoginClienteComponent } from './pages/login-cliente/login-cliente.component';
 import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
+import { MascotasComponent } from './pages/mascotas/mascotas.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginAdministradorComponent } from './pages/login-administrador/login-a
     AddMascotaComponent,
     SelectorRolComponent,
     LoginClienteComponent,
-    LoginAdministradorComponent
+    LoginAdministradorComponent,
+    MascotasComponent
   ],
   imports: [
     BrowserModule,
