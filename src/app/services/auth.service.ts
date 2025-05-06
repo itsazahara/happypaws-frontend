@@ -6,12 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/happypaws/api/clientes/login';
+  private clienteApiUrl = 'http://localhost:8080/happypaws/api/clientes/login';
+  private adminApiUrl = 'http://localhost:8080/happypaws/api/administradores/login'
 
   constructor(private http: HttpClient) { }
 
   loginCliente(email: string, usuario:string, contrasenia: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { email, usuario, contrasenia });
+    return this.http.post<any>(this.clienteApiUrl, { email, usuario, contrasenia });
+  }
+
+  loginAdmin(email: string, usuario:string, contrasenia: string): Observable<any> {
+    return this.http.post<any>(this.adminApiUrl, { email, usuario, contrasenia });
   }
 
 }
