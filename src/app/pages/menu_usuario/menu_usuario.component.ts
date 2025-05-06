@@ -27,7 +27,10 @@ export class MenuUsuarioComponent implements OnInit {
   ngOnInit(): void {
     // Obtener las mascotas al cargar el componente
     this.menuUsuarioService.obtenerMascotas().subscribe((mascotas) => {
-      this.mascotas = mascotas;
+      this.mascotas = mascotas.map(mascota => ({
+        ...mascota,
+        imagen: mascota.imagen  // Asegúrate de que este campo esté en la respuesta de la base de datos
+      }));
       this.filtrarMascotas();  // Llamar a filtrar las mascotas después de obtenerlas
     });
   }
@@ -86,4 +89,18 @@ export class MenuUsuarioComponent implements OnInit {
   aplicarFiltros(): void {
     this.filtrarMascotas();
   }
+
+  limpiarFiltros(): void {
+    this.filtro = {
+      tipo: '',
+      edad: null,
+      sexo: '',
+      tamanio: '',
+      vacunado: null,
+      esterilizado: null,
+      desparasitado: null
+    };
+    this.filtrarMascotas(); // Mostrar todas las mascotas
+  }
+
 }

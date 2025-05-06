@@ -1,86 +1,93 @@
-<div class="menu-usuario-container">
-  <aside class="filtros">
-    <h3>Filtros</h3>
+<body>
+  <div class="menu-usuario-container">
+    <aside class="filtros">
+      <h3>Filtros</h3>
 
-    <!-- Filtro por tipo -->
-    <label>
-      Tipo:
-      <select [(ngModel)]="filtro.tipo">
-        <option value="">Todos</option>
-        <option value="perro">Perro</option>
-        <option value="gato">Gato</option>
-      </select>
-    </label>
+      <!-- Filtro por tipo -->
+      <label>
+        Tipo:
+        <select [(ngModel)]="filtro.tipo">
+          <option value="">Todos</option>
+          <option value="perro">Perro</option>
+          <option value="gato">Gato</option>
+        </select>
+      </label>
 
-    <!-- Filtro por edad -->
-    <label>
-      Edad:
-      <input type="number" [(ngModel)]="filtro.edad" placeholder="Edad máxima" />
-    </label>
+      <!-- Filtro por edad -->
+      <label>
+        Edad:
+        <input type="number" [(ngModel)]="filtro.edad" placeholder="Edad máxima" />
+      </label>
 
-    <!-- Filtro por sexo -->
-    <label>
-      Sexo:
-      <select [(ngModel)]="filtro.sexo">
-        <option value="">Todos</option>
-        <option value="macho">Macho</option>
-        <option value="hembra">Hembra</option>
-      </select>
-    </label>
+      <!-- Filtro por sexo -->
+      <label>
+        Sexo:
+        <select [(ngModel)]="filtro.sexo">
+          <option value="">Todos</option>
+          <option value="macho">Macho</option>
+          <option value="hembra">Hembra</option>
+        </select>
+      </label>
 
-    <!-- Filtro por tamaño -->
-    <label>
-      Tamaño:
-      <select [(ngModel)]="filtro.tamanio">
-        <option value="">Todos</option>
-        <option value="pequeño">Pequeño</option>
-        <option value="mediano">Mediano</option>
-        <option value="grande">Grande</option>
-      </select>
-    </label>
+      <!-- Filtro por tamaño -->
+      <label>
+        Tamaño:
+        <select [(ngModel)]="filtro.tamanio">
+          <option value="">Todos</option>
+          <option value="pequeño">Pequeño</option>
+          <option value="mediano">Mediano</option>
+          <option value="grande">Grande</option>
+        </select>
+      </label>
 
-    <!-- Filtro por vacunado -->
-    <label>
-      Vacunado:
-      <select [(ngModel)]="filtro.vacunado">
-        <option value="">Todos</option>
-        <option value="true">Sí</option>
-        <option value="false">No</option>
-      </select>
-    </label>
+      <!-- Filtro por vacunado -->
+      <label>
+        Vacunado:
+        <select [(ngModel)]="filtro.vacunado">
+          <option value="">Todos</option>
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </label>
 
-    <!-- Filtro por esterilizado -->
-    <label>
-      Esterilizado:
-      <select [(ngModel)]="filtro.esterilizado">
-        <option value="">Todos</option>
-        <option value="true">Sí</option>
-        <option value="false">No</option>
-      </select>
-    </label>
+      <!-- Filtro por esterilizado -->
+      <label>
+        Esterilizado:
+        <select [(ngModel)]="filtro.esterilizado">
+          <option value="">Todos</option>
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </label>
 
-    <!-- Filtro por desparasitado -->
-    <label>
-      Desparasitado:
-      <select [(ngModel)]="filtro.desparasitado">
-        <option value="">Todos</option>
-        <option value="true">Sí</option>
-        <option value="false">No</option>
-      </select>
-    </label>
+      <!-- Filtro por desparasitado -->
+      <label>
+        Desparasitado:
+        <select [(ngModel)]="filtro.desparasitado">
+          <option value="">Todos</option>
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </label>
 
-  </aside>
+      <div class="acciones-filtros">
+        <button (click)="aplicarFiltros()">Filtrar</button>
+        <button (click)="limpiarFiltros()">Limpiar filtros</button>
+      </div>
+    </aside>
 
-  <div class="grid-mascotas">
-    <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
-      <h4>{{ mascota.nombre }}</h4>
-      <p>Tipo: {{ mascota.especie }}</p>
-      <p>Sexo: {{ mascota.sexo }}</p>
-      <p>Tamaño: {{ mascota.tamanio }}</p>
-      <p>Edad: {{ mascota.edad }}</p>
-      <p>Vacunado: {{ mascota.vacunado ? 'Sí' : 'No' }}</p>
-      <p>Esterilizado: {{ mascota.esterilizado ? 'Sí' : 'No' }}</p>
-      <p>Desparasitado: {{ mascota.desparasitado ? 'Sí' : 'No' }}</p>
+    <div class="grid-mascotas">
+      <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
+        <h4>{{ mascota.nombre }}</h4>
+        <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" class="imagen-mascota" />
+        <p>Tipo: {{ mascota.especie }}</p>
+        <p>Sexo: {{ mascota.sexo }}</p>
+        <p>Tamaño: {{ mascota.tamanio }}</p>
+        <p>Edad: {{ mascota.edad }}</p>
+        <p>Vacunado: {{ mascota.vacunado ? 'Sí' : 'No' }}</p>
+        <p>Esterilizado: {{ mascota.esterilizado ? 'Sí' : 'No' }}</p>
+        <p>Desparasitado: {{ mascota.desparasitado ? 'Sí' : 'No' }}</p>
+      </div>
     </div>
   </div>
-</div>
+</body>
