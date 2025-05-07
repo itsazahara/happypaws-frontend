@@ -96,8 +96,12 @@ body {
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  height: auto;  /* Permite que la tarjeta se ajuste a su contenido */
-  min-height: 350px;  /* Establece una altura mínima para las tarjetas */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Esto centra el contenido horizontalmente */
+  text-align: center;
+  justify-content: space-between;
 }
 
 .tarjeta h2 {
@@ -108,7 +112,7 @@ body {
 .btn-ver-mas {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin-top: 1rem;
   background-color: #118AB2;
   color: white;
