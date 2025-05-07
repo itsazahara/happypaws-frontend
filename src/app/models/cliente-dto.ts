@@ -15,5 +15,4 @@ export interface ClienteDTO {
   experienciaMascotas: boolean;
   observaciones: string;
   imagen: string;
-
 }

@@ -1,0 +1,178 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+  <div class="login-container">
+    <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
+    <h2>Regístrate</h2>
+
+    <form (ngSubmit)="registrarCliente()" #registroForm="ngForm">
+
+      <!-- Paso 1: Información básica -->
+      <div *ngIf="currentStep === 1">
+        <div class="form-group">
+          <label for="usuario">Nombre de usuario:</label>
+          <input type="text" id="usuario" name="usuario" [(ngModel)]="cliente.usuario" required #usuario="ngModel"
+            placeholder="Nombre de usuario" />
+          <span class="icon"><i class="fas fa-user"></i></span>
+          <div *ngIf="usuario.touched && usuario.invalid" class="error-message">
+            <small *ngIf="usuario.errors?.['required']">El nombre de usuario es obligatorio.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="cliente.nombre" required #nombre="ngModel"
+            placeholder="Nombre" />
+          <div *ngIf="nombre.touched && nombre.invalid" class="error-message">
+            <small *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="apellidos">Apellidos:</label>
+          <input type="text" id="apellidos" name="apellidos" [(ngModel)]="cliente.apellidos" required
+            #apellidos="ngModel" placeholder="Apellidos" />
+          <div *ngIf="apellidos.touched && apellidos.invalid" class="error-message">
+            <small *ngIf="apellidos.errors?.['required']">Los apellidos son obligatorios.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 2: Contacto y dirección -->
+      <div *ngIf="currentStep === 2">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="cliente.email" required #email="ngModel"
+            placeholder="Email" />
+          <span class="icon"><i class="fas fa-envelope"></i></span>
+          <div *ngIf="email.touched && email.invalid" class="error-message">
+            <small *ngIf="email.errors?.['required']">El email es obligatorio.</small>
+            <small *ngIf="email.errors?.['email']">El formato del email es incorrecto.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contrasenia">Contraseña:</label>
+          <input type="password" id="contrasenia" name="contrasenia" [(ngModel)]="cliente.contrasenia" required
+            #contrasenia="ngModel" placeholder="Contraseña" />
+          <span class="icon"><i class="fas fa-lock"></i></span>
+          <div *ngIf="contrasenia.touched && contrasenia.invalid" class="error-message">
+            <small *ngIf="contrasenia.errors?.['required']">La contraseña es obligatoria.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" [(ngModel)]="cliente.direccion" required
+            #direccion="ngModel" placeholder="Dirección" />
+          <span class="icon"><i class="fas fa-map"></i></span>
+          <div *ngIf="direccion.touched && direccion.invalid" class="error-message">
+            <small *ngIf="direccion.errors?.['required']">La dirección es obligatoria.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 3: Más detalles -->
+      <div *ngIf="currentStep === 3">
+        <div class="form-group">
+          <label for="edad">Edad:</label>
+          <input type="number" id="edad" name="edad" [(ngModel)]="cliente.edad" required min="0" #edad="ngModel"
+            placeholder="Edad" />
+          <div *ngIf="edad.touched && edad.invalid" class="error-message">
+            <small *ngIf="edad.errors?.['required']">La edad es obligatoria.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" [(ngModel)]="cliente.telefono" required #telefono="ngModel"
+            placeholder="Teléfono" />
+          <span class="icon"><i class="fas fa-phone"></i></span>
+          <div *ngIf="telefono.touched && telefono.invalid" class="error-message">
+            <small *ngIf="telefono.errors?.['required']">El teléfono es obligatorio.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ocupacionLaboral">Ocupación laboral:</label>
+          <input type="text" id="ocupacionLaboral" name="ocupacionLaboral" [(ngModel)]="cliente.ocupacionLaboral"
+            required #ocupacionLaboral="ngModel" placeholder="Ocupación" />
+          <span class="icon"><i class="fas fa-briefcase"></i></span>
+          <div *ngIf="ocupacionLaboral.touched && ocupacionLaboral.invalid" class="error-message">
+            <small *ngIf="ocupacionLaboral.errors?.['required']">La ocupación laboral es obligatoria.</small>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="currentStep === 4">
+        <!-- Selección tipo vivienda -->
+        <div class="form-group">
+          <label for="tipoVivienda">Tipo de vivienda:</label>
+          <select id="tipoVivienda" name="tipoVivienda" [(ngModel)]="cliente.tipoVivienda" required
+            #tipoVivienda="ngModel">
+            <option value="CASA">Casa</option>
+            <option value="PISO">Piso</option>
+            <option value="GRANJA">Granja</option>
+            <option value="OTRO">Otro...</option>
+          </select>
+          <div *ngIf="tipoVivienda.touched && tipoVivienda.invalid" class="error-message">
+            <small *ngIf="tipoVivienda.errors?.['required']">El tipo de vivienda es obligatorio.</small>
+          </div>
+        </div>
+
+        <!-- Checkbox para otras mascotas -->
+        <div class="form-group">
+          <label for="otrasMascotas">¿Tienes otras mascotas?
+            <input type="checkbox" id="otrasMascotas" name="otrasMascotas" [(ngModel)]="cliente.otrasMascotas" />
+
+          </label>
+        </div>
+
+        <!-- Checkbox para experiencia con mascotas -->
+        <div class="form-group">
+          <label for="experienciaMascotas">¿Tienes experiencia con mascotas?
+            <input type="checkbox" id="experienciaMascotas" name="experienciaMascotas"
+              [(ngModel)]="cliente.experienciaMascotas" />
+          </label>
+        </div>
+      </div>
+
+      <div *ngIf="currentStep === 5">
+        <!-- Observaciones -->
+        <div class="form-group">
+          <label for="observaciones">Observaciones:</label>
+          <textarea id="observaciones" name="observaciones" [(ngModel)]="cliente.observaciones"
+            placeholder="Escribe tus observaciones..." rows="4"></textarea>
+        </div>
+
+        <!-- URL de la imagen -->
+        <div class="form-group">
+          <label for="imagen">URL de la imagen:</label>
+          <input type="text" id="imagen" name="imagen" [(ngModel)]="cliente.imagen"
+            placeholder="Ingresa la URL de la imagen" />
+        </div>
+
+        <!-- Previsualización de la imagen -->
+        <div class="form-group" *ngIf="cliente.imagen">
+          <label>Vista previa:</label>
+          <img [src]="cliente.imagen" alt="Vista previa de la imagen"
+            style="max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px; border-radius: 5px;" />
+        </div>
+
+      </div>
+
+      <!-- Botones de navegación -->
+      <div class="navigation-buttons">
+        <button type="button" (click)="prevStep()" [disabled]="currentStep === 1">Anterior</button>
+        <button type="button" (click)="nextStep()" [disabled]="currentStep === 5">Siguiente</button>
+      </div>
+      <br>
+      <!-- Botón de Enviar -->
+      <div *ngIf="currentStep === 5">
+        <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</body>

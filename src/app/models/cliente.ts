@@ -2,7 +2,7 @@ import { TipoVivienda } from './tipo-vivienda';
 import { Reserva } from './reserva';
 
 export interface Cliente {
-  id: number;
+  id?: number;
   nombre: string;
   apellidos: string;
   usuario: string;

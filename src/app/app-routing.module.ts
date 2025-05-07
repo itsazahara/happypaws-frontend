@@ -13,6 +13,7 @@ import { LoginClienteComponent } from './pages/login-cliente/login-cliente.compo
 import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
 import { MascotasComponent } from './pages/mascotas/mascotas.component';
 import { InformacionMascotaComponent } from './pages/informacion_mascota/informacion_mascota.component';
+import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'login-admin', component: LoginAdministradorComponent },
   { path: 'mascotas', component: MascotasComponent },
   { path: 'adoptar_mascota/:id', component: InformacionMascotaComponent },
+  { path: 'registro', component: RegistroClienteComponent },
   { path: '', component: InicioComponent }
 ];
 

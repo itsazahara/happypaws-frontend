@@ -20,6 +20,7 @@ import { LoginClienteComponent } from './pages/login-cliente/login-cliente.compo
 import { LoginAdministradorComponent } from './pages/login-administrador/login-administrador.component';
 import { MascotasComponent } from './pages/mascotas/mascotas.component';
 import { InformacionMascotaComponent } from './pages/informacion_mascota/informacion_mascota.component';
+import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { InformacionMascotaComponent } from './pages/informacion_mascota/informa
     LoginClienteComponent,
     LoginAdministradorComponent,
     MascotasComponent,
-    InformacionMascotaComponent
+    InformacionMascotaComponent,
+    RegistroClienteComponent
   ],
   imports: [
     BrowserModule,
