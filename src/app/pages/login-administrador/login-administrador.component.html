@@ -1,19 +1,34 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
 <body>
-  <div class="login-container">
+    <div class="login-container">
+    <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
+
+    <h1 class="titulo-bienvenida">Bienvenido, administrador/a</h1>
+
     <h2> Iniciar sesión </h2>
 
     <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
-      <div class="form-group">
+      <div class="form-group input-icon-wrapper">
         <label for="email">Email o usuario:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required />
+        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Email o usuario" />
+        <span class="icon">
+          <i class="fas fa-envelope"></i>
+        </span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group input-icon-wrapper">
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="contrasenia" required />
+        <input type="password" id="password" name="password" [(ngModel)]="contrasenia" required
+          placeholder="Contraseña" />
+        <span class="icon">
+          <i class="fas fa-lock"></i>
+        </span>
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+      <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
     </form>
   </div>
 </body>
