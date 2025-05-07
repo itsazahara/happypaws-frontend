@@ -1,3 +1,8 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+
 <body>
   <div class="menu-usuario-container">
     <aside class="filtros">
@@ -8,8 +13,8 @@
         Tipo:
         <select [(ngModel)]="filtro.tipo">
           <option value="">Todos</option>
-          <option value="perro">Perro</option>
-          <option value="gato">Gato</option>
+          <option value="perro"> 🐶 Perro</option>
+          <option value="gato"> 🐱 Gato</option>
         </select>
       </label>
 
@@ -24,8 +29,8 @@
         Sexo:
         <select [(ngModel)]="filtro.sexo">
           <option value="">Todos</option>
-          <option value="macho">Macho</option>
-          <option value="hembra">Hembra</option>
+          <option value="macho"> ♂️ Macho</option>
+          <option value="hembra"> ♀️ Hembra</option>
         </select>
       </label>
 
@@ -80,15 +85,8 @@
       <!-- Tarjeta de mascota -->
       <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
         <!-- info básica -->
-        <h4>{{ mascota.nombre }}</h4>
+        <h2>{{ mascota.nombre }}</h2>
         <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" class="imagen-mascota" />
-        <p>Tipo: {{ mascota.especie }}</p>
-        <p>Sexo: {{ mascota.sexo }}</p>
-        <p>Tamaño: {{ mascota.tamanio }}</p>
-        <p>Edad: {{ mascota.edad }}</p>
-        <p>Vacunado: {{ mascota.vacunado ? 'Sí' : 'No' }}</p>
-        <p>Esterilizado: {{ mascota.esterilizado ? 'Sí' : 'No' }}</p>
-        <p>Desparasitado: {{ mascota.desparasitado ? 'Sí' : 'No' }}</p>
 
         <!-- Botón "Ver más información" -->
         <button [routerLink]="['/adoptar_mascota', mascota.id]" class="btn-ver-mas">Ver más información</button>

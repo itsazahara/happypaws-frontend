@@ -68,18 +68,21 @@ export class MenuUsuarioComponent implements OnInit {
       }
 
       // Filtrar por vacunado
-      if (this.filtro.vacunado !== null) {
-        vacunadoCoincide = mascota.vacunado === this.filtro.vacunado;
+      if (this.filtro.vacunado !== null && this.filtro.vacunado !== '') {
+        const vacunadoBool = this.filtro.vacunado === 'true';
+        vacunadoCoincide = mascota.vacunado === vacunadoBool;
       }
 
       // Filtrar por esterilizado
-      if (this.filtro.esterilizado !== null) {
-        esterilizadoCoincide = mascota.esterilizado === this.filtro.esterilizado;
+      if (this.filtro.esterilizado !== null && this.filtro.esterilizado !== '') {
+        const esterilizadoBool = this.filtro.esterilizado === 'true';
+        esterilizadoCoincide = mascota.esterilizado === esterilizadoBool;
       }
 
       // Filtrar por desparasitado
-      if (this.filtro.desparasitado !== null) {
-        desparasitadoCoincide = mascota.desparasitado === this.filtro.desparasitado;
+      if (this.filtro.desparasitado !== null && this.filtro.desparasitado !== '') {
+        const desparasitadoBool = this.filtro.desparasitado === 'true';
+        desparasitadoCoincide = mascota.desparasitado === desparasitadoBool;
       }
 
       return tipoCoincide && edadCoincide && sexoCoincide && tamanioCoincide && vacunadoCoincide && esterilizadoCoincide && desparasitadoCoincide;

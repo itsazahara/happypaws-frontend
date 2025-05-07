@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+}
+
 .menu-usuario-container {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   min-height: 100vh;
   font-family: Arial, sans-serif;
@@ -14,6 +26,7 @@
 
 /* Filtros */
 .filtros {
+  font-family: 'Poppins', sans-serif;
   width: 250px;
   background-color: #f9f9f9;
   padding: 1.5rem;
@@ -27,6 +40,7 @@
 }
 
 .filtros label {
+  font-family: 'Poppins', sans-serif;
   display: block;
   margin-bottom: 1rem;
   font-size: 0.95rem;
@@ -34,6 +48,7 @@
 
 .filtros select,
 .filtros input {
+  font-family: 'Poppins', sans-serif;
   width: 100%;
   padding: 0.4rem;
   margin-top: 0.25rem;
@@ -50,6 +65,7 @@
 }
 
 .acciones-filtros button {
+  font-family: 'Poppins', sans-serif;
   flex: 1;
   padding: 0.5rem;
   border: none;
@@ -61,7 +77,7 @@
 }
 
 .acciones-filtros button:hover {
-  background-color: #2980b9;
+  background-color: #32a6cc;
 }
 
 /* Grid de mascotas */
@@ -84,18 +100,15 @@
   min-height: 350px;  /* Establece una altura mínima para las tarjetas */
 }
 
-.tarjeta h4 {
+.tarjeta h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-.tarjeta p {
-  margin: 0.25rem 0;
-}
-
 .btn-ver-mas {
+  font-family: 'Poppins', sans-serif;
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin-top: 1rem;
   background-color: #118AB2;
   color: white;
@@ -104,36 +117,14 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.90rem;
   transition: background-color 0.2s ease;
 }
 
 .btn-ver-mas:hover {
-  background-color: #2980b9;
+  background-color: #32a6cc;
 }
 
 .tarjeta {
   position: relative;
-}
-
-.tooltip-detalle {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 250px;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-  transition: opacity 0.3s ease;
-}
-
-.tarjeta:hover .tooltip-detalle {
-  opacity: 1;
-  pointer-events: auto;
 }
