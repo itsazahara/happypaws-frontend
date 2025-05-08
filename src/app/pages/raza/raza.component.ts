@@ -66,10 +66,15 @@ export class RazaComponent implements OnInit {
   }
 
   eliminarRaza(id: number): void {
-    this.razaService.delete(id).subscribe(() => {
-      this.cargarRazas();
-    });
+    const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta raza?');
+
+    if (confirmacion) {
+      this.razaService.delete(id).subscribe(() => {
+        this.cargarRazas();
+      });
+    }
   }
+
 
   cancelarEdicion(): void {
     this.resetForm();

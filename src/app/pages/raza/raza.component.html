@@ -1,28 +1,35 @@
-<div class="raza-container">
-  <h2>Gestión de Razas</h2>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
 
-  <!-- Buscador -->
-  <div class="buscador">
-    <input [(ngModel)]="busqueda" (input)="buscarRazas()" placeholder="Buscar por nombre..." />
-  </div>
+<body>
+  <div class="raza-container">
+    <h2>Gestión de Razas</h2>
 
-  <!-- Formulario de agregar/editar raza -->
-  <form (ngSubmit)="guardarRaza()">
-    <input [(ngModel)]="razaForm.nombre" name="nombre" placeholder="Nombre" required />
-    <input [(ngModel)]="razaForm.especie" name="especie" placeholder="Especie" required />
-    <input [(ngModel)]="razaForm.imagen" name="imagen" placeholder="URL de Imagen" required />
-    <button type="submit">{{ razaForm.id ? 'Actualizar' : 'Agregar' }}</button>
-    <button type="button" (click)="cancelarEdicion()" *ngIf="razaForm.id">Cancelar</button>
-  </form>
+    <!-- Buscador -->
+    <div class="buscador">
+      <input [(ngModel)]="busqueda" (input)="buscarRazas()" placeholder="Buscar por nombre..." />
+    </div>
 
-  <!-- Cuadrícula de razas -->
-  <div class="raza-grid">
-    <div *ngFor="let raza of razas" class="raza-card">
-      <img [src]="raza.imagen" [alt]="raza.nombre" />
-      <h4>{{ raza.nombre }}</h4>
-      <p>{{ raza.especie }}</p>
-      <button (click)="editarRaza(raza)">Editar</button>
-      <button (click)="eliminarRaza(raza.id)">Eliminar</button>
+    <!-- Formulario de agregar/editar raza -->
+    <form (ngSubmit)="guardarRaza()">
+      <input [(ngModel)]="razaForm.nombre" name="nombre" placeholder="Nombre" required />
+      <input [(ngModel)]="razaForm.especie" name="especie" placeholder="Especie" required />
+      <input [(ngModel)]="razaForm.imagen" name="imagen" placeholder="URL de imagen" required />
+      <button type="submit">{{ razaForm.id ? 'Actualizar' : 'Agregar' }}</button>
+      <button type="button" (click)="cancelarEdicion()" *ngIf="razaForm.id">Cancelar</button>
+    </form>
+
+    <!-- Cuadrícula de razas -->
+    <div class="raza-grid">
+      <div *ngFor="let raza of razas" class="raza-card">
+        <img [src]="raza.imagen" [alt]="raza.nombre" />
+        <h4>{{ raza.nombre }}</h4>
+        <p>{{ raza.especie }}</p>
+        <button (click)="editarRaza(raza)">Editar</button>
+        <button (click)="eliminarRaza(raza.id)" id="eliminar">Eliminar</button>
+      </div>
     </div>
   </div>
-</div>
+</body>
