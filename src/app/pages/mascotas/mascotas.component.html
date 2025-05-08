@@ -1,17 +1,24 @@
-<div class="mascotas-container">
-  <h2>Lista de Mascotas</h2>
+<body>
+  <div class="mascotas-container">
+    <h1>Lista de mascotas</h1>
+    <br>
+    <div *ngIf="especieFiltrada">
+      <h3>Mostrando solo mascotas de la especie: {{ especieFiltrada }}</h3>
+    </div>
 
-  <div *ngIf="especieFiltrada">
-    <h3>Mostrando solo mascotas de la especie: {{ especieFiltrada }}</h3>
+    <div *ngIf="mascotas.length === 0">
+      <p>No hay mascotas disponibles.</p>
+    </div>
+
+    <div class="grid-mascotas">
+      <div *ngFor="let mascota of mascotas" class="tarjeta">
+        <h2>{{ mascota.nombre }}</h2>
+        <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" class="imagen-mascota" />
+        <p>{{ mascota.especie }}</p>
+        <button [routerLink]="['/adoptar_mascota', mascota.id]" class="btn-ver-mas">
+          Ver más información
+        </button>
+      </div>
+    </div>
   </div>
-
-  <div *ngIf="mascotas.length === 0">
-    <p>No hay mascotas disponibles.</p>
-  </div>
-
-  <ul>
-    <li *ngFor="let mascota of mascotas">
-      <p>{{ mascota.nombre }} - {{ mascota.especie }}</p>
-    </li>
-  </ul>
-</div>
+</body>
