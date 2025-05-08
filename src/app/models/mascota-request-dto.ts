@@ -3,7 +3,7 @@ import { Sexo } from "./sexo";
 import { Tamanio } from "./tamanio";
 
 export interface MascotaRequestDto {
-  id: number;
+  id?: number;
   nombre: string;
   sexo: Sexo;
   especie: Especie;
@@ -18,5 +18,5 @@ export interface MascotaRequestDto {
   cuidadosEspeciales: string;
   historia: string;
   disponibilidad: boolean;
-  idRaza: number;
+  idRaza?: number;
 }

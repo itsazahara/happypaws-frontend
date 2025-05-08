@@ -4,7 +4,7 @@ import { Tamanio } from './tamanio';
 import { Raza } from './raza';
 
 export interface Mascota {
-  id: number;
+  id?: number;
   nombre: string;
   sexo: Sexo;
   especie: Especie;
@@ -20,5 +20,5 @@ export interface Mascota {
   historia: string;
   disponibilidad: boolean;
   idRaza: number;
-  raza: Raza;
+  raza?: Raza;
 }
