@@ -75,7 +75,6 @@ export class RazaComponent implements OnInit {
     }
   }
 
-
   cancelarEdicion(): void {
     this.resetForm();
   }
@@ -88,4 +87,9 @@ export class RazaComponent implements OnInit {
       imagen: ''
     };
   }
+
+  verMascotas(idRaza: number): void {
+    this.router.navigate(['/mascotas-por-raza', idRaza]);
+  }
+
 }

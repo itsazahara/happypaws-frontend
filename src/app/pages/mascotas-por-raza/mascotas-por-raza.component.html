@@ -1,11 +1,9 @@
-<div class="mascotas-container">
-  <h2>Mascotas de esta raza</h2>
-  <div *ngIf="mascotas.length === 0">No hay mascotas disponibles.</div>
-  <div class="mascotas-grid">
-    <div *ngFor="let mascota of mascotas" class="mascota-card">
-      <h4>{{ mascota.nombre }}</h4>
-      <p>Edad: {{ mascota.edad }}</p>
-      <p>Tipo: {{ mascota.tipo }}</p>
-    </div>
+<body>
+  <div *ngFor="let mascota of mascotas" class="mascota-card">
+    <img [src]="mascota.imagen" alt="Foto de {{ mascota.nombre }}">
+    <h3>{{ mascota.nombre }}</h3>
+    <p>{{ mascota.raza?.nombre }}</p>
+    <p>{{ mascota.edad }} años</p>
+    <p *ngIf="mascota.disponibilidad">Disponible para adopción</p>
   </div>
-</div>
+</body>
