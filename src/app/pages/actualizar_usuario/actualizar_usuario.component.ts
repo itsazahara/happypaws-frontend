@@ -15,6 +15,8 @@ export class ActualizarUsuarioComponent implements OnInit {
   mascotas: Mascota[] = [];
   mascotasDelCliente: Mascota[] = [];
 
+  modoEditar: boolean = false;
+
   constructor(
     private menuUsuarioService: MenuUsuarioService,
     private activatedRoute: ActivatedRoute
@@ -43,4 +45,9 @@ export class ActualizarUsuarioComponent implements OnInit {
       console.log('Cliente actualizado', updatedCliente);
     });
   }
+
+  verReservas(): void {
+  // Aquí puedes navegar a otra ruta o mostrar un componente con reservas
+  console.log('Ver reservas del cliente', this.cliente.id);
+}
 }
