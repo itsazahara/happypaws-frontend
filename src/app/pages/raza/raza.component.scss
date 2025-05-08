@@ -46,13 +46,12 @@ body {
 
     button {
       font-family: 'Poppins', sans-serif;
-      padding: 0.75rem;
+      padding: 0.5rem;
       background-color: #118AB2;
       color: white;
       border: none;
       font-size: 1rem;
-      font-weight: bold;
-      border-radius: 10px;
+      border-radius: 4px;
       transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
@@ -86,12 +85,11 @@ body {
     button {
       font-family: 'Poppins', sans-serif;
       margin: 0.25rem;
-      padding: 0.75rem;
+      padding: 0.5rem;
       background-color: #118AB2;
       color: white;
       border: none;
-      font-weight: bold;
-      border-radius: 10px;
+      border-radius: 4px;
       transition: transform 0.2s ease, background-color 0.3s ease;
     }
 

@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
 
-* {
-  margin: 0;
-}
-
 body {
-  height: 100vh;
-  background: linear-gradient(45deg, #ff0095, #FFA500);
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +21,8 @@ body {
 }
 
 .rol-card {
-  background-color: #f1f1f1;
+  background-color: #118AB2;
+  color: white;
   padding: 2rem;
   border-radius: 10px;
   width: 150px;
@@ -36,6 +32,6 @@ body {
 }
 
 .rol-card:hover {
-  background-color: #dbeeff;
+  background-color: #32a6cc;
   transform: scale(1.1);
 }
