@@ -130,3 +130,24 @@ body {
 .tarjeta {
   position: relative;
 }
+
+.menu-enlaces {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.menu-enlaces a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-enlaces a:hover,
+.menu-enlaces a.activo {
+  color: white;
+  background-color: #32a6cc;
+}
