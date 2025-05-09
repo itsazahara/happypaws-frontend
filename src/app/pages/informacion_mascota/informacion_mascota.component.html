@@ -1,8 +1,16 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-</head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 
+</head>
+<header>
+  <nav class="menu-enlaces">
+    <a routerLink="/menu_usuario" routerLinkActive="activo"><span class="material-symbols-outlined">
+      arrow_back
+      </span></a>
+  </nav>
+</header>
 <body>
   <div class="mascota-container" *ngIf="mascota">
     <div class="mascota-card">
