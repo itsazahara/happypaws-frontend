@@ -31,6 +31,7 @@ export class RegistroClienteComponent {
 
   currentStep: number = 1;  // Controla el paso actual del formulario
 
+
   constructor(private clienteService: ClienteService, private router: Router) { }
 
   nextStep(): void {
@@ -46,7 +47,26 @@ export class RegistroClienteComponent {
   }
 
   registrarCliente(): void {
-    console.log('Registrando cliente:', this.cliente); // Ver qué se envía
+    // Validación adicional
+    const camposObligatorios = [
+      this.cliente.usuario,
+      this.cliente.nombre,
+      this.cliente.apellidos,
+      this.cliente.email,
+      this.cliente.contrasenia,
+      this.cliente.direccion,
+      this.cliente.edad,
+      this.cliente.telefono,
+      this.cliente.ocupacionLaboral,
+      this.cliente.tipoVivienda
+    ];
+
+    const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '' || campo === 0);
+
+    if (camposVacios) {
+      alert('Por favor completa todos los campos obligatorios antes de registrarte.');
+      return;
+    }
 
     this.clienteService.crearCliente(this.cliente).subscribe({
       next: () => {
@@ -54,10 +74,11 @@ export class RegistroClienteComponent {
         this.router.navigate(['/menu_usuario']);
       },
       error: (error) => {
-        console.error('Error al registrar:', error); // Mira aquí el detalle del error
+        console.error('Error al registrar:', error);
         alert('Error al registrar el cliente');
       }
     });
   }
+
 
 }
