@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fa;
+  padding: 20px;
+}
+
+/* Contenedor de todas las tarjetas */
+.mascota-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Tarjeta individual */
+.mascota-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mascota-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mascota-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.mascota-card h3 {
+  font-size: 1.4rem;
+  color: #118AB2;
+  margin-bottom: 8px;
+}
+
+.mascota-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 4px 0;
+}
+
+.mascota-card p strong {
+  color: #118AB2;
+}
+
+.mascota-card .disponible {
+  color: #06D6A0;
+  font-weight: bold;
+}
