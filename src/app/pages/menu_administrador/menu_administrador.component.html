@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botones de especies</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="menu_administrador.component.scss">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botones de especies</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="menu_administrador.component.scss">
 </head>
+<header>
+  <nav class="menu-enlaces">
+    <a routerLink="/raza" routerLinkActive="activo">Razas</a>
+    <a routerLink="/reservas" routerLinkActive="activo">Reservas</a>
+    <a routerLink="/mascotas" routerLinkActive="activo">Lista de mascotas</a>
+  </nav>
+</header>
+
 <body>
 
-    <div class="button-container">
-        <button class="animal-button perro" (click)="verMascotasPorEspecie('PERRO')">
-            <i class="fas fa-dog"></i>
-        </button>
-        <button class="animal-button gato" (click)="verMascotasPorEspecie('GATO')">
-            <i class="fas fa-cat"></i>
-        </button>
-    </div>
+  <div class="button-container">
+    <button class="animal-button perro" (click)="verMascotasPorEspecie('PERRO')">
+      <i class="fas fa-dog"></i>
+    </button>
+    <button class="animal-button gato" (click)="verMascotasPorEspecie('GATO')">
+      <i class="fas fa-cat"></i>
+    </button>
+  </div>
 
 </body>
+
 </html>

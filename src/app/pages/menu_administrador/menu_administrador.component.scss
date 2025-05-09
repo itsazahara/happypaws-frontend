@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Fondo gradiente */
 body {
   width: 100%;
@@ -49,4 +56,25 @@ body {
 /* Iconos de los botones */
 .animal-button i {
   color: white;
+}
+
+.menu-enlaces {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.menu-enlaces a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-enlaces a:hover,
+.menu-enlaces a.activo {
+  color: white;
+  background-color: #32a6cc;
 }
