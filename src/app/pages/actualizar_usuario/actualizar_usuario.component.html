@@ -1,3 +1,4 @@
+<body>
 <div *ngIf="!cargando && cliente">
   <div class="perfil-container">
     <div class="perfil-info">
@@ -10,9 +11,9 @@
       <p>Dirección: {{ cliente.direccion }}</p>
       <p>Edad: {{ cliente.edad }}</p>
       <p>Ocupación: {{ cliente.ocupacionLaboral }}</p>
-      <p>Tipo de Vivienda: {{ cliente.tipoVivienda }}</p>
-      <p>Otras Mascotas: {{ cliente.otrasMascotas ? 'Sí' : 'No' }}</p>
-      <p>Experiencia con Mascotas: {{ cliente.experienciaMascotas ? 'Sí' : 'No' }}</p>
+      <p>Tipo de vivienda: {{ cliente.tipoVivienda }}</p>
+      <p>Otras mascotas: {{ cliente.otrasMascotas ? 'Sí' : 'No' }}</p>
+      <p>Experiencia con mascotas: {{ cliente.experienciaMascotas ? 'Sí' : 'No' }}</p>
       <p>Observaciones: {{ cliente.observaciones }}</p>
     </div>
 
@@ -54,3 +55,4 @@
     </div>
   </div>
 </div>
+</body>
