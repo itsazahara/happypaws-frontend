@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ClienteDTO } from '../../models/cliente-dto';
 
 @Component({
   selector: 'app-login-cliente',
@@ -10,24 +11,35 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginClienteComponent {
   email: string = '';
-  usuario: string = '';
   contrasenia: string = '';
+  error: string | null = null;
+  cargando: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   iniciarSesion() {
-    // Si el campo email está vacío, usamos el usuario
-    const valor = this.email ? this.email : this.usuario;
+  this.cargando = true;
 
-    this.authService.loginCliente(valor, valor, this.contrasenia).subscribe(
-      response => {
-        alert('Login exitoso');
-        this.router.navigate(['/menu_usuario']);
-      },
-      error => {
-        alert('Credenciales inválidas');
-      }
-    );
-  }
+  this.authService.loginCliente(this.email, this.contrasenia).subscribe({
+    next: (response) => {
+      const token = response.token;
+
+      // Guarda token y email (no cliente, porque no lo tienes)
+      this.authService.guardarSesionCliente(token);
+
+      alert('Login exitoso');
+      this.router.navigate(['/menu_usuario']);
+    },
+    error: (error) => {
+      console.error('Error al iniciar sesión', error);
+      this.error = 'Credenciales inválidas o error en el servidor';
+      alert(this.error);
+    },
+    complete: () => {
+      this.cargando = false;
+    }
+  });
+}
+
 
 }

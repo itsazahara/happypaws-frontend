@@ -1,24 +1,31 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 
 </head>
 <header>
   <nav class="menu-enlaces">
     <a routerLink="/selector-rol" routerLinkActive="activo"><span class="material-symbols-outlined">
-      arrow_back
+        arrow_back
       </span></a>
   </nav>
 </header>
+
 <body>
+  <!-- Spinner de carga -->
+  <div *ngIf="cargando" class="spinner-container">
+    <p>Iniciando sesión...</p>
+    <div class="spinner"></div>
+  </div>
   <div class="login-container">
     <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
     <h2>Iniciar sesión</h2>
 
-    <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
+    <form *ngIf="!cargando" (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
       <div class="form-group input-icon-wrapper">
-        <label for="email">Email o usuario:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Email o usuario" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Email" />
         <span class="icon">
           <i class="fas fa-envelope"></i>
         </span>

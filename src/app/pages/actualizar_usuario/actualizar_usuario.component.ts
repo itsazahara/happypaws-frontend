@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuUsuarioService } from '../../services/menu-usuario.service';
+import { AuthService } from '../../services/auth.service';
 import { ClienteDTO } from '../../models/cliente-dto';
 import { Mascota } from '../../models/mascota';
+import { TipoVivienda } from '../../models/tipo-vivienda';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -11,43 +13,70 @@ import { Mascota } from '../../models/mascota';
   styleUrls: ['./actualizar_usuario.component.scss']
 })
 export class ActualizarUsuarioComponent implements OnInit {
-  cliente!: ClienteDTO;
-  mascotas: Mascota[] = [];
-  mascotasDelCliente: Mascota[] = [];
+  cliente: ClienteDTO = {
+    id: 0,
+    nombre: '',
+    apellidos: '',
+    usuario: '',
+    telefono: '',
+    email: '',
+    direccion: '',
+    edad: 0,
+    ocupacionLaboral: '',
+    tipoVivienda: TipoVivienda.PISO,  // Valor por defecto del enum
+    otrasMascotas: false,
+    experienciaMascotas: false,
+    observaciones: '',
+    imagen: ''
+  };
 
+  mascotas: Mascota[] = [];
   modoEditar: boolean = false;
+  cargando: boolean = true;
+  objectKeys = Object.keys;
+  tiposVivienda = TipoVivienda;
+  tipoViviendaKeys: (keyof typeof TipoVivienda)[] = Object.keys(TipoVivienda) as (keyof typeof TipoVivienda)[];
 
   constructor(
     private menuUsuarioService: MenuUsuarioService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    // Obtener el ID del cliente desde la URL (asumiendo que la ruta tiene un parámetro 'id')
-    const clienteId = +this.activatedRoute.snapshot.paramMap.get('id')!;
+    const cliente = this.authService.getClienteActual(); // Aquí devuelve string o null
 
-    // Cargar los datos del cliente
-    this.menuUsuarioService.obtenerClientePorId(clienteId).subscribe(cliente => {
-      this.cliente = cliente;
-    });
+    if (cliente) {
+      // Llamar al backend para traer ClienteDTO con ese email
+      this.menuUsuarioService.obtenerClientePorId(cliente.id).subscribe({
+        next: (clienteDTO) => {
+          this.cliente = clienteDTO;
+          this.cargando = false;
+        },
+        error: (err) => {
+          console.error('Error al obtener cliente:', err);
+          this.cargando = false;
+        }
+      });
+    } else {
+      console.error('Cliente no encontrado en las cookies');
+      this.cargando = false;
+    }
 
-    // Cargar todas las mascotas
-    this.menuUsuarioService.obtenerMascotas().subscribe(mascotas => {
-      this.mascotas = mascotas;
+    // Cargar mascotas (igual que antes)
+    this.menuUsuarioService.obtenerMascotas().subscribe({
+      next: (mascotas) => this.mascotas = mascotas,
+      error: (err) => console.error('Error al obtener mascotas:', err)
     });
   }
 
-  // Método para actualizar el cliente
   actualizarCliente(): void {
-    const clienteId = this.cliente.id;
-    this.menuUsuarioService.actualizarCliente(clienteId, this.cliente).subscribe(updatedCliente => {
-      // Hacer algo con el cliente actualizado (por ejemplo, redirigir o mostrar un mensaje)
-      console.log('Cliente actualizado', updatedCliente);
-    });
+    // Aquí enviarías los datos actualizados al backend
+    console.log("Cliente actualizado", this.cliente);
+    // Podrías llamar a un servicio para actualizar los datos del cliente
   }
 
   verReservas(): void {
-  // Aquí puedes navegar a otra ruta o mostrar un componente con reservas
-  console.log('Ver reservas del cliente', this.cliente.id);
-}
+    console.log('Ver reservas del cliente', this.cliente.id);
+  }
 }

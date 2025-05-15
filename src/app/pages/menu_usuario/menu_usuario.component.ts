@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuUsuarioService } from '../../services/menu-usuario.service';
 import { Mascota } from '../../models/mascota';
+import { AuthService } from '../../services/auth.service';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../models/cliente';
+
+
 
 @Component({
   selector: 'app-menu-usuario',
@@ -22,8 +27,9 @@ export class MenuUsuarioComponent implements OnInit {
     desparasitado: null
   };
   tooltipMascota: Mascota | null = null;
+  cliente?: Cliente;
 
-  constructor(private menuUsuarioService: MenuUsuarioService) { }
+  constructor(private menuUsuarioService: MenuUsuarioService, private authService: AuthService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     // Obtener las mascotas al cargar el componente
@@ -34,6 +40,15 @@ export class MenuUsuarioComponent implements OnInit {
       }));
       this.filtrarMascotas();  // Llamar a filtrar las mascotas después de obtenerlas
     });
+    if (this.authService.isLoggedIn()) {
+      const decoded = this.authService.getDecodedToken();
+      if (decoded?.id) {
+        this.clienteService.getClientePorId(decoded.id).subscribe({
+          next: (cli) => this.cliente = cli,
+          error: (err) => console.error('Error al cargar cliente', err)
+        });
+      }
+    }
   }
 
   // Filtrar mascotas en base al filtro aplicado
@@ -106,5 +121,7 @@ export class MenuUsuarioComponent implements OnInit {
     };
     this.filtrarMascotas(); // Mostrar todas las mascotas
   }
+
+
 
 }
