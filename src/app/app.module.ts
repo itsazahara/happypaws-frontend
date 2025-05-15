@@ -21,6 +21,8 @@ import { LoginAdministradorComponent } from './pages/login-administrador/login-a
 import { MascotasComponent } from './pages/mascotas/mascotas.component';
 import { InformacionMascotaComponent } from './pages/informacion_mascota/informacion_mascota.component';
 import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,13 @@ import { RegistroClienteComponent } from './pages/registro_cliente/registro_clie
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,12 +22,13 @@ export class AuthService {
 
   // Login del cliente
   loginCliente(email: string, contrasenia: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/authenticate`, { email, contrasenia }).pipe(
-      tap((response: AuthResponse) => {
-        localStorage.setItem('token', response.token);
-      })
-    );
-  }
+  return this.http.post<AuthResponse>(`${this.baseUrl}/authenticate`, { email, contrasenia }).pipe(
+    tap((response: AuthResponse) => {
+      this.guardarSesionCliente(response.token); // ✅ usa cookie
+    })
+  );
+}
+
 
   // Login del admin
   loginAdmin(email: string, contrasenia: string): Observable<AuthResponse> {
@@ -40,22 +41,17 @@ export class AuthService {
 
   // Guardar token y datos del usuario en cookies
   guardarSesionCliente(token: string): void {
-  this.cookieService.set('token', token, { expires: 1 });
-}
+    this.cookieService.set('token', token, { expires: 1 });
+  }
 
-
-  getClienteActual(): ClienteDTO | null {
-  const clienteStr = this.cookieService.get('cliente');
-  if (!clienteStr) {
+  getClienteEmailFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decoded = this.jwtHelper.decodeToken(token);
+      return decoded?.sub || null; // asumiendo que el email o ID va en `sub`
+    }
     return null;
   }
-  try {
-    return JSON.parse(clienteStr) as ClienteDTO;
-  } catch {
-    return null;
-  }
-}
-
 
 
   isLoggedIn(): boolean {
@@ -63,12 +59,14 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
-  }
+  return this.cookieService.get('token') || null;
+}
+
 
   logout(): void {
-    localStorage.clear();
-  }
+  this.cookieService.delete('token');
+}
+
 
   getDecodedToken(): any | null {
     const token = this.getToken();

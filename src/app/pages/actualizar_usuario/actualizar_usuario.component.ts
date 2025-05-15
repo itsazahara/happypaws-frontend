@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MenuUsuarioService } from '../../services/menu-usuario.service';
 import { AuthService } from '../../services/auth.service';
 import { ClienteDTO } from '../../models/cliente-dto';
 import { Mascota } from '../../models/mascota';
 import { TipoVivienda } from '../../models/tipo-vivienda';
+import { ClienteService } from '../../services/cliente.service';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -23,7 +23,7 @@ export class ActualizarUsuarioComponent implements OnInit {
     direccion: '',
     edad: 0,
     ocupacionLaboral: '',
-    tipoVivienda: TipoVivienda.PISO,  // Valor por defecto del enum
+    tipoVivienda: TipoVivienda.PISO,
     otrasMascotas: false,
     experienciaMascotas: false,
     observaciones: '',
@@ -39,16 +39,15 @@ export class ActualizarUsuarioComponent implements OnInit {
 
   constructor(
     private menuUsuarioService: MenuUsuarioService,
-    private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private clienteService: ClienteService
   ) { }
 
   ngOnInit(): void {
-    const cliente = this.authService.getClienteActual(); // Aquí devuelve string o null
+    const email = this.authService.getClienteEmailFromToken(); // 🔹 devuelve string | null
 
-    if (cliente) {
-      // Llamar al backend para traer ClienteDTO con ese email
-      this.menuUsuarioService.obtenerClientePorId(cliente.id).subscribe({
+    if (email) {
+      this.clienteService.obtenerClientePorEmail(email).subscribe({
         next: (clienteDTO) => {
           this.cliente = clienteDTO;
           this.cargando = false;
@@ -59,11 +58,10 @@ export class ActualizarUsuarioComponent implements OnInit {
         }
       });
     } else {
-      console.error('Cliente no encontrado en las cookies');
+      console.error('No se pudo obtener el email del token');
       this.cargando = false;
     }
 
-    // Cargar mascotas (igual que antes)
     this.menuUsuarioService.obtenerMascotas().subscribe({
       next: (mascotas) => this.mascotas = mascotas,
       error: (err) => console.error('Error al obtener mascotas:', err)
@@ -71,10 +69,18 @@ export class ActualizarUsuarioComponent implements OnInit {
   }
 
   actualizarCliente(): void {
-    // Aquí enviarías los datos actualizados al backend
-    console.log("Cliente actualizado", this.cliente);
-    // Podrías llamar a un servicio para actualizar los datos del cliente
-  }
+  this.clienteService.actualizarCliente(this.cliente.id, this.cliente).subscribe({
+    next: (clienteActualizado) => {
+      this.cliente = clienteActualizado;
+      this.modoEditar = false;
+      console.log('Cliente actualizado correctamente');
+    },
+    error: (err) => {
+      console.error('Error al actualizar cliente:', err);
+    }
+  });
+}
+
 
   verReservas(): void {
     console.log('Ver reservas del cliente', this.cliente.id);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
+import { ClienteDTO } from '../models/cliente-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Cliente } from '../models/cliente';
 export class ClienteService {
   private apiUrl = 'http://localhost:8080/happypaws/api/clientes';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.apiUrl);
@@ -23,8 +24,8 @@ export class ClienteService {
     return this.http.post<Cliente>(this.apiUrl, cliente);
   }
 
-  actualizarCliente(id: number, cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(`${this.apiUrl}/${id}`, cliente);
+  actualizarCliente(id: number, cliente: ClienteDTO): Observable<ClienteDTO> {
+    return this.http.put<ClienteDTO>(`${this.apiUrl}/${id}`, cliente);
   }
 
   eliminarCliente(id: number): Observable<Cliente> {
@@ -49,4 +50,9 @@ export class ClienteService {
     };
     return this.http.post<Cliente>(`${this.apiUrl}/login`, body);
   }
+
+  obtenerClientePorEmail(email: string): Observable<ClienteDTO> {
+    return this.http.get<ClienteDTO>(`http://localhost:8080/happypaws/api/clientes/email/${email}`);
+  }
+
 }
