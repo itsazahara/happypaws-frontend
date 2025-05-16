@@ -7,6 +7,12 @@ import { ReservaDto } from '../../models/reserva-dto';
 import { Cliente } from '../../models/cliente'; // Ajusta la ruta a tu modelo de Cliente
 import { Administrador } from '../../models/administrador'; // Ajusta la ruta a tu modelo de Administrador
 import { Estado } from '../../models/estado';
+import { AuthService } from '../../services/auth.service';
+import { ClienteService } from '../../services/cliente.service';
+import { MascotaDto } from '../../models/mascota-dto';
+import { ClienteDTO } from '../../models/cliente-dto';
+import { AdministradorDto } from '../../models/administrador-dto';
+import { ReservaRequestDto } from '../../models/reserva-request-dto';
 
 @Component({
   selector: 'app-informacion-mascota',
@@ -15,48 +21,65 @@ import { Estado } from '../../models/estado';
   styleUrls: ['./informacion_mascota.component.scss']
 })
 export class InformacionMascotaComponent implements OnInit {
-  mascota!: Mascota;
-  cliente!: Cliente;
-  administrador!: Administrador;
+  mascota!: MascotaDto;
+  cliente!: ClienteDTO;
+  administrador!: AdministradorDto;
   estado!: Estado;
 
   constructor(
     private route: ActivatedRoute,
     private mascotaService: MascotaService,
-    private reservaService: ReservaService
-  ) {}
+    private reservaService: ReservaService,
+    private authService: AuthService,
+    private clienteService: ClienteService
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.mascotaService.getMascotaPorId(+id).subscribe((data: Mascota) => {
-        this.mascota = data;
+        if (data.id === undefined) {
+          console.error('La mascota recibida no tiene id definido!');
+          return;
+        }
+        this.mascota = data as MascotaDto;
       });
+    }
+
+    const email = this.authService.getClienteEmailFromToken();
+    if (email) {
+      this.clienteService.obtenerClientePorEmail(email).subscribe(cliente => {
+        this.cliente = cliente;
+      }, error => {
+        console.error('Error al obtener cliente por email:', error);
+      });
+    } else {
+      console.warn('No se encontró email en token');
     }
   }
 
   reservarMascota(): void {
-    if (this.mascota) {
-      // Suponemos que el cliente y administrador están disponibles (estos datos pueden venir de otro lugar, como un login)
-      const nuevaReserva: ReservaDto = {
-        id: 0, // Esto lo asigna tu backend automáticamente
-        mascotas: this.mascota,
-        clientes: this.cliente,
-        administradores: this.administrador,
+    if (this.mascota && this.cliente && this.cliente.id) {
+      const reservaRequest: ReservaRequestDto = {
+        id: 0,
+        idMascota: this.mascota.id,
+        idCliente: this.cliente.id,
+        idAdministrador: 1, // o null si opcional
         estado: this.estado,
-        observaciones: 'Solicitud realizada desde la ficha de mascota.',
-        fechaSolicitud: new Date().toISOString()
+        observaciones: 'Solicitud realizada desde la ficha de mascota.'
       };
 
-      this.reservaService.crearReserva(nuevaReserva).subscribe({
-        next: (reserva) => {
-          alert(`Reserva realizada con éxito. ID de reserva: ${reserva.id}`);
+      this.reservaService.crearReserva(reservaRequest).subscribe({
+        next: (reservaCreada) => {
+          alert(`Reserva realizada con éxito. ID de reserva: ${reservaCreada.id}`);
         },
         error: (error) => {
           console.error('Error al reservar mascota:', error);
           alert('No se pudo realizar la reserva.');
         }
       });
+    } else {
+      alert('No se pudo reservar: falta información del cliente o mascota.');
     }
   }
 }

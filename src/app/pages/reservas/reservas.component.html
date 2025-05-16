@@ -1,0 +1,12 @@
+<div *ngIf="!cargando">
+  <div *ngFor="let reserva of reservas" class="reserva-card">
+    <h3>Mascota: {{ reserva.mascotas.nombre }}</h3>
+    <p>Cliente: {{ reserva.clientes.nombre }} {{ reserva.clientes.apellidos }}</p>
+    <p>Estado: {{ reserva.estado }}</p>
+    <p>Observaciones: {{ reserva.observaciones }}</p>
+    <p>Fecha: {{ reserva.fechaSolicitud }}</p>
+
+     <button (click)="cambiarEstado(reserva.id, EstadoReserva.ACEPTADA)">Aceptar</button>
+  <button (click)="cambiarEstado(reserva.id, EstadoReserva.RECHAZADA)">Rechazar</button>
+  </div>
+</div>

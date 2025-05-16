@@ -15,6 +15,7 @@ import { MascotasComponent } from './pages/mascotas/mascotas.component';
 import { InformacionMascotaComponent } from './pages/informacion_mascota/informacion_mascota.component';
 import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
 import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
+import { ReservasComponent } from './pages/reservas/reservas.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'adoptar_mascota/:id', component: InformacionMascotaComponent },
   { path: 'registro', component: RegistroClienteComponent },
   { path: 'datos_administrador', component: DatosAdministradorComponent},
+  { path: 'reservas', component: ReservasComponent},
   { path: '', component: InicioComponent }
 ];
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservaDto } from '../models/reserva-dto';
+import { ReservaRequestDto } from '../models/reserva-request-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,18 @@ export class ReservaService {
 
   constructor(private http: HttpClient) { }
 
-  crearReserva(reserva: ReservaDto): Observable<ReservaDto> {
+  crearReserva(reserva: ReservaRequestDto): Observable<ReservaDto> {
     return this.http.post<ReservaDto>(this.apiUrl, reserva);
+  }
+
+  obtenerReservas(): Observable<ReservaDto[]> {
+    return this.http.get<ReservaDto[]>(`${this.apiUrl}`);
+  }
+
+  actualizarEstado(id: number, nuevoEstado: string): Observable<ReservaDto> {
+    return this.http.put<ReservaDto>(`${this.apiUrl}/${id}/estado`, null, {
+      params: { nuevoEstado }
+    });
   }
 
 }
