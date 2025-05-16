@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdministradorDto } from '../../models/administrador-dto';
 import { AdministradorService } from '../../services/administrador.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-datos-administrador',
@@ -25,7 +26,8 @@ export class DatosAdministradorComponent implements OnInit {
 
   constructor(
     private administradorService: AdministradorService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,5 +47,10 @@ export class DatosAdministradorComponent implements OnInit {
       console.error('No se pudo obtener el email del token');
       this.cargando = false;
     }
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login-admin']); // Redirige a la página de login (ajusta la ruta si es diferente)
   }
 }

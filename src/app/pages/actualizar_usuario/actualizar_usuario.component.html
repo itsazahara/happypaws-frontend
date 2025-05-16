@@ -20,6 +20,7 @@
 
       <div class="perfil-acciones">
         <button (click)="verReservas()">Ver mis reservas</button>
+        <button (click)="logout()">Cerrar sesión</button>
         <button (click)="modoEditar = true">Actualizar mis datos</button>
 
         <form *ngIf="modoEditar" (ngSubmit)="actualizarCliente()">

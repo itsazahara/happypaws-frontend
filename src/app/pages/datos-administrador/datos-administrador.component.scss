@@ -59,6 +59,23 @@ body {
   max-width: 400px;
 }
 
+.perfil-acciones button {
+  font-family: 'Poppins', sans-serif;
+  padding: 0.5rem 1rem;
+  background-color: #118AB2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  width: fit-content;
+}
+
+.perfil-acciones button:hover {
+  background-color: #32a6cc;
+}
+
 .perfil-acciones form {
   display: flex;
   flex-direction: column;

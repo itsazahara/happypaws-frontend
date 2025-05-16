@@ -5,6 +5,7 @@ import { ClienteDTO } from '../../models/cliente-dto';
 import { Mascota } from '../../models/mascota';
 import { TipoVivienda } from '../../models/tipo-vivienda';
 import { ClienteService } from '../../services/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -40,11 +41,12 @@ export class ActualizarUsuarioComponent implements OnInit {
   constructor(
     private menuUsuarioService: MenuUsuarioService,
     private authService: AuthService,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    const email = this.authService.getClienteEmailFromToken(); // 🔹 devuelve string | null
+    const email = this.authService.getClienteEmailFromToken();
 
     if (email) {
       this.clienteService.obtenerClientePorEmail(email).subscribe({
@@ -69,20 +71,24 @@ export class ActualizarUsuarioComponent implements OnInit {
   }
 
   actualizarCliente(): void {
-  this.clienteService.actualizarCliente(this.cliente.id, this.cliente).subscribe({
-    next: (clienteActualizado) => {
-      this.cliente = clienteActualizado;
-      this.modoEditar = false;
-      console.log('Cliente actualizado correctamente');
-    },
-    error: (err) => {
-      console.error('Error al actualizar cliente:', err);
-    }
-  });
-}
-
+    this.clienteService.actualizarCliente(this.cliente.id, this.cliente).subscribe({
+      next: (clienteActualizado) => {
+        this.cliente = clienteActualizado;
+        this.modoEditar = false;
+        console.log('Cliente actualizado correctamente');
+      },
+      error: (err) => {
+        console.error('Error al actualizar cliente:', err);
+      }
+    });
+  }
 
   verReservas(): void {
     console.log('Ver reservas del cliente', this.cliente.id);
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login-cliente']); // Redirige a la página de login (ajusta la ruta si es diferente)
   }
 }
