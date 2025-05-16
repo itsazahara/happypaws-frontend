@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservaDto } from '../../models/reserva-dto';
 import { ReservaService } from '../../services/reserva.service';
 import { Estado } from '../../models/estado';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-reservas',
@@ -15,9 +16,12 @@ export class ReservasComponent implements OnInit {
   cargando = true;
   EstadoReserva = Estado;
 
-  constructor(private reservaService: ReservaService) { }
+  constructor(private reservaService: ReservaService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    const token = this.cookieService.get('token');
+    console.log('Token leído desde cookie:', token);
+
     this.reservaService.obtenerReservas().subscribe({
       next: (data) => {
         this.reservas = data;
@@ -32,11 +36,13 @@ export class ReservasComponent implements OnInit {
 
   cambiarEstado(reservaId: number, nuevoEstado: Estado): void {
     this.reservaService.actualizarEstado(reservaId, nuevoEstado).subscribe({
-      next: (reservaActualizada) => {
-        const i = this.reservas.findIndex(r => r.id === reservaActualizada.id);
-        if (i !== -1) this.reservas[i] = reservaActualizada;
+      next: updatedReserva => {
+        const index = this.reservas.findIndex(r => r.id === updatedReserva.id);
+        if (index !== -1) {
+          this.reservas[index] = updatedReserva;
+        }
       },
-      error: err => console.error('Error al cambiar estado', err)
+      error: err => console.error('Error al actualizar estado', err)
     });
   }
 

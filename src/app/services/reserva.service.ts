@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservaDto } from '../models/reserva-dto';
@@ -21,9 +21,11 @@ export class ReservaService {
   }
 
   actualizarEstado(id: number, nuevoEstado: string): Observable<ReservaDto> {
-    return this.http.put<ReservaDto>(`${this.apiUrl}/${id}/estado`, null, {
-      params: { nuevoEstado }
-    });
+    // Construimos los parámetros de consulta
+    const params = new HttpParams().set('nuevoEstado', nuevoEstado);
+
+    // Llamamos al endpoint PUT con el parámetro nuevoEstado en query params y sin cuerpo (null)
+    return this.http.put<ReservaDto>(`${this.apiUrl}/${id}/estado`, null, { params });
   }
 
 }

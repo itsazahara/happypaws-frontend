@@ -64,7 +64,7 @@ export class InformacionMascotaComponent implements OnInit {
         id: 0,
         idMascota: this.mascota.id,
         idCliente: this.cliente.id,
-        idAdministrador: 1, // o null si opcional
+        idAdministrador: 11, // o null si opcional
         estado: this.estado,
         observaciones: 'Solicitud realizada desde la ficha de mascota.'
       };

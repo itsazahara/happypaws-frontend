@@ -5,8 +5,8 @@ import { Mascota } from "./mascota";
 
 export interface ReservaDto {
   id: number;
-  mascotas: Mascota;
-  clientes: Cliente;
+  mascotas?: Mascota;
+  clientes?: Cliente;
   administradores: Administrador;
   estado: Estado;
   observaciones: string;
