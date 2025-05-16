@@ -12,20 +12,27 @@ import { AdministradorDto } from '../../models/administrador-dto';
 export class LoginAdministradorComponent {
   email: string = '';
   contrasenia: string = '';
+  error: string | null = null;
+  cargando: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   iniciarSesion(): void {
+    this.cargando = true;
     this.authService.loginAdmin(this.email, this.contrasenia).subscribe({
-      next: (response: { token: string}) => {
+      next: (response: { token: string }) => {
         console.log('Admin autenticado:', response.token);
         localStorage.setItem('token', response.token);
         // Redirige al panel de admin
         this.router.navigate(['/menu_administrador']);
       },
-      error: (error: any) => {
-        console.error('Error en login del admin:', error);
-        alert('Credenciales incorrectas');
+      error: (error) => {
+        console.error('Error al iniciar sesión', error);
+        this.error = 'Credenciales inválidas o error en el servidor';
+        alert(this.error);
+      },
+      complete: () => {
+        this.cargando = false;
       }
     });
   }

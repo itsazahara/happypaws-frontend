@@ -22,13 +22,12 @@ export class AuthService {
 
   // Login del cliente
   loginCliente(email: string, contrasenia: string): Observable<AuthResponse> {
-  return this.http.post<AuthResponse>(`${this.baseUrl}/authenticate`, { email, contrasenia }).pipe(
-    tap((response: AuthResponse) => {
-      this.guardarSesionCliente(response.token); // ✅ usa cookie
-    })
-  );
-}
-
+    return this.http.post<AuthResponse>(`${this.baseUrl}/authenticate`, { email, contrasenia }).pipe(
+      tap((response: AuthResponse) => {
+        this.guardarSesionCliente(response.token); // ✅ usa cookie
+      })
+    );
+  }
 
   // Login del admin
   loginAdmin(email: string, contrasenia: string): Observable<AuthResponse> {
@@ -53,20 +52,17 @@ export class AuthService {
     return null;
   }
 
-
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
 
   getToken(): string | null {
-  return this.cookieService.get('token') || null;
-}
-
+    return this.cookieService.get('token') || null;
+  }
 
   logout(): void {
-  this.cookieService.delete('token');
-}
-
+    this.cookieService.delete('token');
+  }
 
   getDecodedToken(): any | null {
     const token = this.getToken();
