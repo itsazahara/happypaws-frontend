@@ -1,58 +1,59 @@
 <body>
-<div *ngIf="!cargando && cliente">
-  <div class="perfil-container">
-    <div class="perfil-info">
-      <div *ngIf="cliente.imagen">
-        <img [src]="cliente.imagen" alt="Imagen del cliente">
+  <div *ngIf="!cargando && cliente">
+    <div class="perfil-container">
+      <div class="perfil-info">
+        <div *ngIf="cliente.imagen">
+          <img [src]="cliente.imagen" alt="Imagen del cliente">
+        </div>
+        <h2>{{ cliente.nombre }} {{ cliente.apellidos }}</h2>
+        <p>Email: {{ cliente.email }}</p>
+        <p>Usuario: {{ cliente.usuario }}</p>
+        <p>Teléfono: {{ cliente.telefono }}</p>
+        <p>Dirección: {{ cliente.direccion }}</p>
+        <p>Edad: {{ cliente.edad }}</p>
+        <p>Ocupación: {{ cliente.ocupacionLaboral }}</p>
+        <p>Tipo de vivienda: {{ cliente.tipoVivienda }}</p>
+        <p>Otras mascotas: {{ cliente.otrasMascotas ? 'Sí' : 'No' }}</p>
+        <p>Experiencia con mascotas: {{ cliente.experienciaMascotas ? 'Sí' : 'No' }}</p>
+        <p>Observaciones: {{ cliente.observaciones }}</p>
       </div>
-      <h2>{{ cliente.nombre }} {{ cliente.apellidos }}</h2>
-      <p>Email: {{ cliente.email }}</p>
-      <p>Teléfono: {{ cliente.telefono }}</p>
-      <p>Dirección: {{ cliente.direccion }}</p>
-      <p>Edad: {{ cliente.edad }}</p>
-      <p>Ocupación: {{ cliente.ocupacionLaboral }}</p>
-      <p>Tipo de vivienda: {{ cliente.tipoVivienda }}</p>
-      <p>Otras mascotas: {{ cliente.otrasMascotas ? 'Sí' : 'No' }}</p>
-      <p>Experiencia con mascotas: {{ cliente.experienciaMascotas ? 'Sí' : 'No' }}</p>
-      <p>Observaciones: {{ cliente.observaciones }}</p>
-    </div>
 
-    <div class="perfil-acciones">
-      <button (click)="verReservas()">Ver mis reservas</button>
-      <button (click)="modoEditar = true">Actualizar mis datos</button>
+      <div class="perfil-acciones">
+        <button (click)="verReservas()">Ver mis reservas</button>
+        <button (click)="modoEditar = true">Actualizar mis datos</button>
 
-      <form *ngIf="modoEditar" (ngSubmit)="actualizarCliente()">
-        <input [(ngModel)]="cliente.nombre" name="nombre" placeholder="Nombre" required />
-        <input [(ngModel)]="cliente.apellidos" name="apellidos" placeholder="Apellidos" required />
-        <input [(ngModel)]="cliente.email" name="email" placeholder="Email" required />
-        <input [(ngModel)]="cliente.telefono" name="telefono" placeholder="Teléfono" required />
-        <input [(ngModel)]="cliente.direccion" name="direccion" placeholder="Dirección" required />
-        <input [(ngModel)]="cliente.edad" name="edad" placeholder="Edad" required type="number" />
-        <input [(ngModel)]="cliente.ocupacionLaboral" name="ocupacionLaboral" placeholder="Ocupación" required />
+        <form *ngIf="modoEditar" (ngSubmit)="actualizarCliente()">
+          <input [(ngModel)]="cliente.nombre" name="nombre" placeholder="Nombre" required />
+          <input [(ngModel)]="cliente.apellidos" name="apellidos" placeholder="Apellidos" required />
+          <input [(ngModel)]="cliente.email" name="email" placeholder="Email" required />
+          <input [(ngModel)]="cliente.telefono" name="telefono" placeholder="Teléfono" required />
+          <input [(ngModel)]="cliente.direccion" name="direccion" placeholder="Dirección" required />
+          <input [(ngModel)]="cliente.edad" name="edad" placeholder="Edad" required type="number" />
+          <input [(ngModel)]="cliente.ocupacionLaboral" name="ocupacionLaboral" placeholder="Ocupación" required />
 
-        <!-- Tipo de vivienda (select del enum) -->
-        <select [(ngModel)]="cliente.tipoVivienda" name="tipoVivienda" required>
-          <option *ngFor="let tipo of tipoViviendaKeys" [value]="tiposVivienda[tipo]">
-            {{ tipo }}
-          </option>
-        </select>
+          <!-- Tipo de vivienda (select del enum) -->
+          <select [(ngModel)]="cliente.tipoVivienda" name="tipoVivienda" required>
+            <option *ngFor="let tipo of tipoViviendaKeys" [value]="tiposVivienda[tipo]">
+              {{ tipo }}
+            </option>
+          </select>
 
 
-        <label>
-          Otras mascotas:
-          <input [(ngModel)]="cliente.otrasMascotas" name="otrasMascotas" type="checkbox" />
-        </label>
+          <label>
+            Otras mascotas:
+            <input [(ngModel)]="cliente.otrasMascotas" name="otrasMascotas" type="checkbox" />
+          </label>
 
-        <label>
-          Experiencia con mascotas:
-          <input [(ngModel)]="cliente.experienciaMascotas" name="experienciaMascotas" type="checkbox" />
-        </label>
+          <label>
+            Experiencia con mascotas:
+            <input [(ngModel)]="cliente.experienciaMascotas" name="experienciaMascotas" type="checkbox" />
+          </label>
 
-        <textarea [(ngModel)]="cliente.observaciones" name="observaciones" placeholder="Observaciones"></textarea>
+          <textarea [(ngModel)]="cliente.observaciones" name="observaciones" placeholder="Observaciones"></textarea>
 
-        <button type="submit">Guardar</button>
-      </form>
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>

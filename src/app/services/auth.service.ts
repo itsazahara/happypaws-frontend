@@ -56,7 +56,7 @@ export class AuthService {
     return null;
   }
 
-  getClienteAdminFromToken(): string | null {
+  getAdminEmailFromToken(): string | null {
     const token = this.getToken();
     if (token) {
       const decoded = this.jwtHelper.decodeToken(token);

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* mismo fondo que el grid-mascotas */
+  margin: 0;
+  padding: 2rem;
+}
+
+.perfil-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.perfil-info {
+  font-family: 'Poppins', sans-serif;
+  width: 300px;
+  background-color: white;
+  /* blanco puro, como tarjetas */
+  padding: 1.5rem;
+  border-radius: 8px;
+  /* bordes redondeados */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.perfil-info img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid #118AB2;
+  /* borde azul para la foto */
+}
+
+.perfil-info h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #118AB2;
+}
+
+.perfil-info p {
+  margin: 0.3rem 0;
+  color: #333;
+}
+
+.perfil-acciones {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.perfil-acciones form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-acciones input,
+.perfil-acciones select,
+.perfil-acciones textarea {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.perfil-acciones label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.perfil-acciones textarea {
+  resize: vertical;
+  min-height: 60px;
+}

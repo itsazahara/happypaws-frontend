@@ -23,6 +23,7 @@ import { InformacionMascotaComponent } from './pages/informacion_mascota/informa
 import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor.interceptor';
+import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthInterceptor } from './services/auth-interceptor.interceptor';
     LoginAdministradorComponent,
     MascotasComponent,
     InformacionMascotaComponent,
-    RegistroClienteComponent
+    RegistroClienteComponent,
+    DatosAdministradorComponent
   ],
   imports: [
     BrowserModule,

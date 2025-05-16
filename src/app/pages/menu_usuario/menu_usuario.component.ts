@@ -121,7 +121,4 @@ export class MenuUsuarioComponent implements OnInit {
     };
     this.filtrarMascotas(); // Mostrar todas las mascotas
   }
-
-
-
 }
