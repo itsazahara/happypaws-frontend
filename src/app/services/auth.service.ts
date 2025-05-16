@@ -43,7 +43,20 @@ export class AuthService {
     this.cookieService.set('token', token, { expires: 1 });
   }
 
+  guardarSesionAdmin(token: string): void {
+    this.cookieService.set('token', token, { expires: 1 });
+  }
+
   getClienteEmailFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decoded = this.jwtHelper.decodeToken(token);
+      return decoded?.sub || null; // asumiendo que el email o ID va en `sub`
+    }
+    return null;
+  }
+
+  getClienteAdminFromToken(): string | null {
     const token = this.getToken();
     if (token) {
       const decoded = this.jwtHelper.decodeToken(token);

@@ -31,7 +31,6 @@ export class RegistroClienteComponent {
 
   currentStep: number = 1;  // Controla el paso actual del formulario
 
-
   constructor(private clienteService: ClienteService, private router: Router) { }
 
   nextStep(): void {
@@ -79,6 +78,5 @@ export class RegistroClienteComponent {
       }
     });
   }
-
 
 }

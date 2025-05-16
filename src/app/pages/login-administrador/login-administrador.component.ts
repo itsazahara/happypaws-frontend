@@ -17,13 +17,15 @@ export class LoginAdministradorComponent {
 
   constructor(private router: Router, private authService: AuthService) { }
 
-  iniciarSesion(): void {
+  iniciarSesion() {
     this.cargando = true;
+
     this.authService.loginAdmin(this.email, this.contrasenia).subscribe({
-      next: (response: { token: string }) => {
-        console.log('Admin autenticado:', response.token);
-        localStorage.setItem('token', response.token);
-        // Redirige al panel de admin
+      next: (response) => {
+        const token = response.token;
+        this.authService.guardarSesionAdmin(token);
+
+        alert('Login exitoso');
         this.router.navigate(['/menu_administrador']);
       },
       error: (error) => {
