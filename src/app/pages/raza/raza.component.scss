@@ -75,7 +75,7 @@ body {
     text-align: center;
 
     img {
-      max-width: 100%;
+      width: 150px;
       height: 150px;
       object-fit: cover;
       border-radius: 6px;
@@ -136,3 +136,26 @@ body {
   }
 }
 
+.filtro-especie {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  select {
+    font-family: 'Poppins', sans-serif;
+    width: 60%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid;
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23000'%20d='M2%200L0%202h4L2%200zM2%205L0%203h4L2%205z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 0.6rem;
+  }
+
+  select:hover {
+    background-color: #f0f8ff;
+  }
+}

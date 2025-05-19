@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RazaService } from '../../services/raza.service';
 import { Raza } from '../../models/raza';
+import { Especie } from '../../models/especie';
 
 @Component({
   selector: 'app-raza',
@@ -12,13 +13,14 @@ import { Raza } from '../../models/raza';
 export class RazaComponent implements OnInit {
   razas: Raza[] = [];
   razasPaginadas: Raza[] = [];
-
+  especies: Especie[] = [];
+  filtroEspecie: Especie | '' = '';
   busqueda: string = '';
   razaForm: Raza = { id: 0, nombre: '', especie: '', imagen: '' };
 
   // Paginación
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 12;
   totalPages: number = 0;
 
   constructor(private razaService: RazaService, private router: Router) { }
@@ -30,10 +32,15 @@ export class RazaComponent implements OnInit {
   cargarRazas(): void {
     this.razaService.findAll().subscribe(data => {
       this.razas = data;
+
+      // Obtener especies únicas a partir de las razas cargadas
+      this.especies = Array.from(new Set(data.map(r => r.especie as Especie)));
+
       this.totalPages = Math.ceil(this.razas.length / this.itemsPerPage);
       this.actualizarPaginado();
     });
   }
+
 
   buscarRazas(): void {
     if (this.busqueda.trim() === '') {
@@ -121,6 +128,19 @@ export class RazaComponent implements OnInit {
 
   verMascotas(idRaza: number): void {
     this.router.navigate(['/mascotas-por-raza', idRaza]);
+  }
+
+  filtrarPorEspecie(): void {
+    if (this.filtroEspecie === '') {
+      this.cargarRazas(); // Mostrar todas si no hay filtro
+    } else {
+      this.razaService.findByEspecie(this.filtroEspecie).subscribe(data => {
+        this.razas = data;
+        this.totalPages = Math.ceil(this.razas.length / this.itemsPerPage);
+        this.currentPage = 1;
+        this.actualizarPaginado();
+      });
+    }
   }
 
 }

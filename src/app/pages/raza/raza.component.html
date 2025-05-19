@@ -21,6 +21,13 @@
       <button type="button" (click)="cancelarEdicion()" *ngIf="razaForm.id">Cancelar</button>
     </form>
 
+    <div class="filtro-especie">
+      <select [(ngModel)]="filtroEspecie" (change)="filtrarPorEspecie()">
+        <option value="">Todas las especies</option>
+        <option *ngFor="let especie of especies" [value]="especie">{{ especie }}</option>
+      </select>
+    </div>
+
     <!-- Cuadrícula de razas -->
     <div class="raza-grid">
       <div *ngFor="let raza of razasPaginadas" class="raza-card">
