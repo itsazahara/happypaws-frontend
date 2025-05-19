@@ -16,6 +16,7 @@ import { InformacionMascotaComponent } from './pages/informacion_mascota/informa
 import { RegistroClienteComponent } from './pages/registro_cliente/registro_cliente.component';
 import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
 import { ReservasComponent } from './pages/reservas/reservas.component';
+import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-reserva.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroClienteComponent },
   { path: 'datos_administrador', component: DatosAdministradorComponent},
   { path: 'reservas', component: ReservasComponent},
+  { path: 'detalles-reserva/:id', component: DetallesReservaComponent },
   { path: '', component: InicioComponent }
 ];
 

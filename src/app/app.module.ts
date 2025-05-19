@@ -25,6 +25,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor.interceptor';
 import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
 import { ReservasComponent } from './pages/reservas/reservas.component';
+import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-reserva.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ReservasComponent } from './pages/reservas/reservas.component';
     InformacionMascotaComponent,
     RegistroClienteComponent,
     DatosAdministradorComponent,
-    ReservasComponent
+    ReservasComponent,
+    DetallesReservaComponent
   ],
   imports: [
     BrowserModule,

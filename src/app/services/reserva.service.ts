@@ -39,5 +39,7 @@ export class ReservaService {
   });
 }*/
 
-
+  obtenerReservaPorId(id: number): Observable<ReservaDto> {
+    return this.http.get<ReservaDto>(`${this.apiUrl}/${id}`);
+  }
 }

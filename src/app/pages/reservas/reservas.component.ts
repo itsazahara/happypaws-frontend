@@ -3,6 +3,7 @@ import { ReservaDto } from '../../models/reserva-dto';
 import { ReservaService } from '../../services/reserva.service';
 import { Estado } from '../../models/estado';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservas',
@@ -19,7 +20,7 @@ export class ReservasComponent implements OnInit {
   estadoKeys = Object.keys(Estado);
   ordenFecha: 'asc' | 'desc' = 'desc';
 
-  constructor(private reservaService: ReservaService, private cookieService: CookieService) { }
+  constructor(private reservaService: ReservaService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     const token = this.cookieService.get('token');
@@ -77,6 +78,8 @@ export class ReservasComponent implements OnInit {
     });
   }
 
-
+  verDetalles(reservaId: number): void {
+    this.router.navigate(['/detalles-reserva', reservaId]);
+  }
 
 }

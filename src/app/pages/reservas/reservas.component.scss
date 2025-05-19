@@ -50,6 +50,7 @@ body {
 }
 
 /* Botones */
+/* Botón base */
 .reserva-card button {
   font-family: 'Poppins', sans-serif;
   padding: 0.5rem 1rem;
@@ -60,24 +61,42 @@ body {
   color: white;
   font-weight: 600;
   transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.reserva-card button:first-of-type {
+/* Aceptar: verde */
+.btn-aceptar {
   background-color: #06d6a0;
   margin-right: 0.5rem;
 }
 
-.reserva-card button:first-of-type:hover {
+.btn-aceptar:hover {
   background-color: #00b386;
 }
 
-.reserva-card button:last-of-type {
+/* Rechazar: rojo */
+.btn-rechazar {
   background-color: #ef476f;
+  margin-right: 0.5rem;
 }
 
-.reserva-card button:last-of-type:hover {
+.btn-rechazar:hover {
   background-color: #d8375b;
 }
+
+/* Ver información: azul */
+.btn-ver {
+  background-color: #118ab2;
+}
+
+.btn-ver:hover {
+  background-color: #0d6e93;
+}
+
 
 /* Filtro por estado */
 .filtros {

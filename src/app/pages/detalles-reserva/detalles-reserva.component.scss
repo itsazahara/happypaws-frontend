@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+}
+
+/* Contenedor principal */
+body {
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+/* Contenedor de detalles */
+.reserva-detalles {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Tarjeta base (igual que la que usas para mascotas) */
+.tarjeta-info {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Título */
+.tarjeta-info h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #118AB2;
+}
+
+/* Párrafos */
+.tarjeta-info p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.tarjeta-info strong {
+  font-weight: 600;
+}
+
+/* Contenedor de imagen dentro de la tarjeta */
+.tarjeta-info > div {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Imagen: tamaño máximo y que no se salga */
+.tarjeta-info img {
+  width: 180px;          /* ancho fijo */
+  height: 180px;         /* alto fijo para que sea cuadrado */
+  object-fit: cover;     /* recorta la imagen para que llene el área */
+  border-radius: 8px;
+  display: block;
+}
+
+
+/* Estilos específicos para separar secciones si quieres */
+.info-cliente,
+.info-mascota {
+  margin-bottom: 1rem;
+}

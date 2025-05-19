@@ -1,0 +1,47 @@
+<body>
+  <div class="reserva-detalles" *ngIf="reserva">
+    <div class="tarjeta-info">
+      <h2>Cliente</h2>
+      <div *ngIf="reserva.clientes?.imagen">
+        <img [src]="reserva.clientes?.imagen" alt="Imagen del cliente">
+      </div>
+      <p><strong>Nombre: </strong> {{ reserva.clientes?.nombre }} {{ reserva.clientes?.apellidos }}</p>
+      <p><strong>Edad: </strong>{{reserva.clientes?.edad}}</p>
+      <p><strong>Email: </strong> {{ reserva.clientes?.email }}</p>
+      <p><strong>Dirección: </strong>{{reserva.clientes?.direccion}}</p>
+      <p><strong>Teléfono: </strong> {{ reserva.clientes?.telefono }}</p>
+      <p><strong>Ocupación laboral: </strong>{{reserva.clientes?.ocupacionLaboral}}</p>
+      <p><strong>Tipo de vivienda: </strong>{{reserva.clientes?.tipoVivienda}}</p>
+      <p><strong>Otras mascotas: </strong>{{reserva.clientes?.otrasMascotas}}</p>
+      <p><strong>Experiencia con mascotas: </strong>{{reserva.clientes?.experienciaMascotas}}</p>
+      <p><strong>Observaciones: </strong>{{reserva.clientes?.observaciones}}</p>
+    </div>
+
+    <div class="tarjeta-info">
+      <h2>Mascota</h2>
+      <div *ngIf="reserva.mascotas?.imagen">
+        <img [src]="reserva.mascotas?.imagen" alt="Imagen de la mascota">
+      </div>
+      <p><strong>Nombre: </strong> {{ reserva.mascotas?.nombre }}</p>
+      <p><strong>Sexo: </strong> {{ reserva.mascotas?.sexo }}</p>
+      <p><strong>Especie: </strong> {{ reserva.mascotas?.especie }}</p>
+      <p><strong>Tamaño: </strong> {{ reserva.mascotas?.tamanio }}</p>
+      <p><strong>Edad: </strong> {{ reserva.mascotas?.edad }} año/s</p>
+      <p><strong>Peso: </strong> {{ reserva.mascotas?.peso }} kg </p>
+      <p><strong>Esterilizado: </strong> {{ reserva.mascotas?.esterilizado }}</p>
+      <p><strong>Vacunado: </strong> {{ reserva.mascotas?.vacunado }}</p>
+      <p><strong>Desparasitado: </strong> {{ reserva.mascotas?.desparasitado }}</p>
+      <p><strong>Personalidad: </strong> {{ reserva.mascotas?.personalidad }}</p>
+      <p><strong>Cuidados especiales: </strong> {{ reserva.mascotas?.cuidadosEspeciales }}</p>
+      <p><strong>Historia: </strong> {{ reserva.mascotas?.historia }}</p>
+    </div>
+    <div class="tarjeta-info" style="width: 100%; max-width: 700px;">
+      <p><strong>Estado:</strong> {{ reserva.estado }}</p>
+      <p><strong>Fecha:</strong> {{ reserva.fechaSolicitud }}</p>
+      <p><strong>Observaciones:</strong> {{ reserva.observaciones }}</p>
+    </div>
+
+
+  </div>
+
+</body>
