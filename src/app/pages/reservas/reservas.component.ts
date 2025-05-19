@@ -15,6 +15,9 @@ export class ReservasComponent implements OnInit {
   reservas: ReservaDto[] = [];
   cargando = true;
   EstadoReserva = Estado;
+  estadoSeleccionado: string = 'TODOS';
+  estadoKeys = Object.keys(Estado);
+  ordenFecha: 'asc' | 'desc' = 'desc';
 
   constructor(private reservaService: ReservaService, private cookieService: CookieService) { }
 
@@ -34,6 +37,34 @@ export class ReservasComponent implements OnInit {
     });
   }
 
+  filtrarPorEstado(): void {
+    this.cargando = true;
+
+    if (this.estadoSeleccionado === 'TODOS') {
+      this.reservaService.obtenerReservas().subscribe({
+        next: (data) => {
+          this.reservas = data;
+          this.cargando = false;
+        },
+        error: (err) => {
+          console.error('Error al cargar reservas', err);
+          this.cargando = false;
+        }
+      });
+    } else {
+      this.reservaService.obtenerReservasPorEstado(this.estadoSeleccionado).subscribe({
+        next: (data) => {
+          this.reservas = data;
+          this.cargando = false;
+        },
+        error: (err) => {
+          console.error('Error al filtrar reservas', err);
+          this.cargando = false;
+        }
+      });
+    }
+  }
+
   cambiarEstado(reservaId: number, nuevoEstado: Estado): void {
     this.reservaService.actualizarEstado(reservaId, nuevoEstado).subscribe({
       next: updatedReserva => {
@@ -45,5 +76,7 @@ export class ReservasComponent implements OnInit {
       error: err => console.error('Error al actualizar estado', err)
     });
   }
+
+
 
 }
