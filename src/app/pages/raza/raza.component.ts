@@ -11,27 +11,27 @@ import { Raza } from '../../models/raza';
 })
 export class RazaComponent implements OnInit {
   razas: Raza[] = [];
-  busqueda: string = '';
+  razasPaginadas: Raza[] = [];
 
-  razaForm: Raza = {
-    id: 0,
-    nombre: '',
-    especie: '',
-    imagen: ''
-  };
+  busqueda: string = '';
+  razaForm: Raza = { id: 0, nombre: '', especie: '', imagen: '' };
+
+  // Paginación
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 0;
 
   constructor(private razaService: RazaService, private router: Router) { }
 
   ngOnInit(): void {
-    this.razaService.findAll().subscribe(data => {
-      this.razas = data;
-      console.log('RAZAS:', this.razas);
-    });
+    this.cargarRazas();
   }
 
   cargarRazas(): void {
     this.razaService.findAll().subscribe(data => {
       this.razas = data;
+      this.totalPages = Math.ceil(this.razas.length / this.itemsPerPage);
+      this.actualizarPaginado();
     });
   }
 
@@ -41,7 +41,38 @@ export class RazaComponent implements OnInit {
     } else {
       this.razaService.findByNombre(this.busqueda).subscribe(data => {
         this.razas = data;
+        this.totalPages = Math.ceil(this.razas.length / this.itemsPerPage);
+        this.currentPage = 1;
+        this.actualizarPaginado();
       });
+    }
+  }
+
+  actualizarPaginado(): void {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.razasPaginadas = this.razas.slice(start, end);
+  }
+
+  cambiarPagina(pagina: number): void {
+    this.currentPage = pagina;
+    this.actualizarPaginado();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.actualizarPaginado();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.actualizarPaginado();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 

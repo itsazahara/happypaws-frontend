@@ -23,7 +23,7 @@
 
     <!-- Cuadrícula de razas -->
     <div class="raza-grid">
-      <div *ngFor="let raza of razas" class="raza-card">
+      <div *ngFor="let raza of razasPaginadas" class="raza-card">
         <img [src]="raza.imagen" [alt]="raza.nombre" />
         <h4>{{ raza.nombre }}</h4>
         <p>{{ raza.especie }}</p>
@@ -31,6 +31,17 @@
         <button (click)="eliminarRaza(raza.id)" id="eliminar">Eliminar</button>
         <button (click)="verMascotas(raza.id)">Ver mascotas</button>
       </div>
+    </div>
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+        <button (click)="cambiarPagina(i + 1)" [class.active]="currentPage === i + 1">
+          {{ i + 1 }}
+        </button>
+      </ng-container>
+
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
     </div>
   </div>
 </body>
