@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ClienteDTO } from '../models/cliente-dto';
 import { AdministradorDto } from '../models/administrador-dto';
 import { AuthResponse } from '../models/auth-response';
+import { Cliente } from '../models/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -84,4 +85,14 @@ export class AuthService {
     }
     return null;
   }
+
+  // ✅ al final del AuthService
+  registrarCliente(cliente: Cliente): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, cliente).pipe(
+      tap((response: AuthResponse) => {
+        this.guardarSesionCliente(response.token);
+      })
+    );
+  }
+
 }

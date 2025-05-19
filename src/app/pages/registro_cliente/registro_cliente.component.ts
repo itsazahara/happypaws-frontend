@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../../models/cliente';
 import { Router } from '@angular/router';
-import { ClienteService } from '../../services/cliente.service';
+import { AuthService } from '../../services/auth.service'; // Usamos AuthService para registrar y obtener token
 import { TipoVivienda } from '../../models/tipo-vivienda';
 
 @Component({
@@ -31,7 +31,7 @@ export class RegistroClienteComponent {
 
   currentStep: number = 1;  // Controla el paso actual del formulario
 
-  constructor(private clienteService: ClienteService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   nextStep(): void {
     if (this.currentStep < 5) {
@@ -67,7 +67,8 @@ export class RegistroClienteComponent {
       return;
     }
 
-    this.clienteService.crearCliente(this.cliente).subscribe({
+    // Aquí llamamos al método registrarCliente de AuthService que devuelve token
+    this.authService.registrarCliente(this.cliente).subscribe({
       next: () => {
         alert('Cuenta creada con éxito');
         this.router.navigate(['/menu_usuario']);
@@ -78,5 +79,4 @@ export class RegistroClienteComponent {
       }
     });
   }
-
 }
