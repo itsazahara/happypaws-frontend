@@ -84,7 +84,7 @@ export class ActualizarUsuarioComponent implements OnInit {
   }
 
   verReservas(): void {
-    console.log('Ver reservas del cliente', this.cliente.id);
+    this.router.navigate(['/reservas-personales', this.cliente.id]);
   }
 
   logout(): void {

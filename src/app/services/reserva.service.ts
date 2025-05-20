@@ -42,4 +42,9 @@ export class ReservaService {
   obtenerReservaPorId(id: number): Observable<ReservaDto> {
     return this.http.get<ReservaDto>(`${this.apiUrl}/${id}`);
   }
+
+  getReservasPorClienteId(clienteId: number): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(`${this.apiUrl}/cliente/${clienteId}`);
+  }
+
 }

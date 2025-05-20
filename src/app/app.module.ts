@@ -26,6 +26,7 @@ import { AuthInterceptor } from './services/auth-interceptor.interceptor';
 import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
 import { ReservasComponent } from './pages/reservas/reservas.component';
 import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-reserva.component';
+import { ReservasPersonalesComponent } from './pages/reservas-personales/reservas-personales.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-rese
     RegistroClienteComponent,
     DatosAdministradorComponent,
     ReservasComponent,
-    DetallesReservaComponent
+    DetallesReservaComponent,
+    ReservasPersonalesComponent
   ],
   imports: [
     BrowserModule,

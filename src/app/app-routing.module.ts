@@ -17,6 +17,7 @@ import { RegistroClienteComponent } from './pages/registro_cliente/registro_clie
 import { DatosAdministradorComponent } from './pages/datos-administrador/datos-administrador.component';
 import { ReservasComponent } from './pages/reservas/reservas.component';
 import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-reserva.component';
+import { ReservasPersonalesComponent } from './pages/reservas-personales/reservas-personales.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'datos_administrador', component: DatosAdministradorComponent},
   { path: 'reservas', component: ReservasComponent},
   { path: 'detalles-reserva/:id', component: DetallesReservaComponent },
+  { path: 'reservas-personales/:id', component: ReservasPersonalesComponent},
   { path: '', component: InicioComponent }
 ];
 

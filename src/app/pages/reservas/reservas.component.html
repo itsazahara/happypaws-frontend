@@ -17,8 +17,15 @@
       <p><strong>Observaciones: </strong>{{ reserva.observaciones }}</p>
       <p><strong>Fecha: </strong>{{ reserva.fechaSolicitud }}</p>
 
-      <button class="btn-aceptar" (click)="cambiarEstado(reserva.id, EstadoReserva.APROBADA)">Aceptar</button>
-      <button class="btn-rechazar" (click)="cambiarEstado(reserva.id, EstadoReserva.RECHAZADA)">Rechazar</button>
+      <button class="btn-aceptar" (click)="cambiarEstado(reserva.id, EstadoReserva.APROBADA)"
+        [disabled]="reserva.estado === 'CANCELADA'">
+        Aceptar
+      </button>
+
+      <button class="btn-rechazar" (click)="cambiarEstado(reserva.id, EstadoReserva.RECHAZADA)"
+        [disabled]="reserva.estado === 'CANCELADA'">
+        Rechazar
+      </button>
       <button class="btn-ver" (click)="verDetalles(reserva.id)">Ver información</button>
     </div>
   </div>
