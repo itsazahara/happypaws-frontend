@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
 
+header{
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 body {
-  display: flex;
-  justify-content: center;
   align-items: center;
   font-family: 'Poppins', sans-serif;
 }
@@ -11,9 +13,14 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  max-width: 1200px;
-  /*background-image: url('/public/fondo.png');*/
+  background-image: url('../../../../public/fondo.png');
+  background-repeat: no-repeat;
+  background-size: cover; /* o 'contain' dependiendo del efecto deseado */
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.7); /* blanco semitransparente */
+  background-blend-mode: overlay; /* combina color + imagen */
 }
+
 
 .logo-container {
   margin-bottom: 1.5rem;

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.faq-item {
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background-color: #118AB2;
+}
+
+.faq-item:hover {
+  background-color: #0e6a8a;
+  outline: 2px solid red;
+}
+
+.faq-question {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.arrow {
+  display: inline-block; /* Necesario para aplicar transform */
+  font-size: 1.2rem;
+  color: azure;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  background-color: white;
+  border-radius: 4px
+}
+
+.faq-answer.show {
+  max-height: 500px; /* Suficiente para cualquier respuesta razonable */
+  opacity: 1;
+}

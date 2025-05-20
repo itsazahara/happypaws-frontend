@@ -1,1 +1,37 @@
-<p>preguntas-frecuentes works!</p>
+<body>
+  <h1>Preguntas frecuentes</h1>
+
+  <div class="faq-container">
+    <h2>Ayuda y soporte</h2>
+    <div class="faq-item" *ngFor="let faq of faqs1; let i = index">
+      <div class="faq-question" (click)="toggleAnswer(1, i)">
+        {{ faq.pregunta }}
+        <span class="arrow" [class.rotated]="selectedQuestion1 === i">
+          {{ selectedQuestion1 === i ? '▲' : '▼' }}
+        </span>
+      </div>
+      <div class="faq-answer" [class.show]="selectedQuestion1 === i">
+        {{ faq.respuesta }}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="faq-container">
+    <h2>Adopciones</h2>
+    <div class="faq-item" *ngFor="let faq of faqs2; let i = index">
+      <div class="faq-question" (click)="toggleAnswer(2, i)">
+        {{ faq.pregunta }}
+        <span class="arrow" [class.rotated]="selectedQuestion2 === i">
+          {{ selectedQuestion1 === i ? '▲' : '▼' }}
+        </span>
+
+      </div>
+      <div class="faq-answer" [class.show]="selectedQuestion2 === i">
+        {{ faq.respuesta }}
+      </div>
+
+    </div>
+  </div>
+
+</body>

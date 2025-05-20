@@ -19,6 +19,7 @@ import { ReservasComponent } from './pages/reservas/reservas.component';
 import { DetallesReservaComponent } from './pages/detalles-reserva/detalles-reserva.component';
 import { ReservasPersonalesComponent } from './pages/reservas-personales/reservas-personales.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { PreguntasFrecuentesComponent } from './pages/preguntas-frecuentes/preguntas-frecuentes.component';
 
 const routes: Routes = [
   { path: 'menu_usuario', component: MenuUsuarioComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'detalles-reserva/:id', component: DetallesReservaComponent },
   { path: 'reservas-personales/:id', component: ReservasPersonalesComponent},
   { path: 'about-us', component: AboutUsComponent},
+  { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent},
   { path: '', component: InicioComponent }
 ];
 
