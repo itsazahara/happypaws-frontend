@@ -7,13 +7,12 @@
       <div class="faq-question" (click)="toggleAnswer(1, i)">
         {{ faq.pregunta }}
         <span class="arrow" [class.rotated]="selectedQuestion1 === i">
-          {{ selectedQuestion1 === i ? '▲' : '▼' }}
+          {{ selectedQuestion2 === i ? '▲' : '▼' }}
         </span>
       </div>
       <div class="faq-answer" [class.show]="selectedQuestion1 === i">
         {{ faq.respuesta }}
       </div>
-
     </div>
   </div>
 
@@ -25,7 +24,6 @@
         <span class="arrow" [class.rotated]="selectedQuestion2 === i">
           {{ selectedQuestion1 === i ? '▲' : '▼' }}
         </span>
-
       </div>
       <div class="faq-answer" [class.show]="selectedQuestion2 === i">
         {{ faq.respuesta }}
