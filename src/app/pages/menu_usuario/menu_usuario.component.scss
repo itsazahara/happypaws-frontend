@@ -134,8 +134,12 @@ body {
 .menu-enlaces {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: right;
   padding: 10px 20px;
+}
+
+.espaciador {
+  flex: 1;
 }
 
 .iconos-derecha {
