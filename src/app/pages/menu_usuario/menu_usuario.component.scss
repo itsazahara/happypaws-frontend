@@ -135,22 +135,27 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
-.menu-enlaces a {
+.iconos-derecha {
+  display: flex;
+  gap: 10px;
+}
+
+.iconos-derecha a {
   color: black;
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 5px;
+  font-size: 24px;
+  padding: 5px;
   transition: background-color 0.3s ease;
+  border-radius: 4px;
 }
 
-.menu-enlaces a:hover,
-.menu-enlaces a.activo {
-  color: white;
+.iconos-derecha a:hover,
+.iconos-derecha a.activo {
   background-color: #32a6cc;
+  color: white;
 }
 
 .usuario-logueado {
