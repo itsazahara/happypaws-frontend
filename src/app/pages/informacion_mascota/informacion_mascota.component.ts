@@ -60,13 +60,20 @@ export class InformacionMascotaComponent implements OnInit {
 
   reservarMascota(): void {
     if (this.mascota && this.cliente && this.cliente.id) {
+      const observaciones = prompt('Introduce tus observaciones para esta reserva:', '');
+
+      if (observaciones === null) {
+        // El usuario canceló el prompt
+        return;
+      }
+
       const reservaRequest: ReservaRequestDto = {
         id: 0,
         idMascota: this.mascota.id,
         idCliente: this.cliente.id,
-        idAdministrador: 11, // o null si opcional
-        estado: this.estado,
-        observaciones: 'Solicitud realizada desde la ficha de mascota.'
+        idAdministrador: 11, // o null si es opcional
+        estado: Estado.PENDIENTE, // O el valor por defecto que uses
+        observaciones: observaciones.trim()
       };
 
       this.reservaService.crearReserva(reservaRequest).subscribe({
@@ -82,4 +89,5 @@ export class InformacionMascotaComponent implements OnInit {
       alert('No se pudo reservar: falta información del cliente o mascota.');
     }
   }
+
 }

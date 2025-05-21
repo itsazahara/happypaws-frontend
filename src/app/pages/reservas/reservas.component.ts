@@ -18,13 +18,11 @@ export class ReservasComponent implements OnInit {
   EstadoReserva = Estado;
   estadoSeleccionado: string = 'TODOS';
   estadoKeys = Object.keys(Estado);
-  ordenFecha: 'asc' | 'desc' = 'desc';
 
   constructor(private reservaService: ReservaService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     const token = this.cookieService.get('token');
-    console.log('Token leído desde cookie:', token);
 
     this.reservaService.obtenerReservas().subscribe({
       next: (data) => {
