@@ -5,16 +5,14 @@ import { AuthService } from '../../services/auth.service';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/cliente';
 
-
-
 @Component({
   selector: 'app-menu-usuario',
   standalone: false,
   templateUrl: './menu_usuario.component.html',
   styleUrls: ['./menu_usuario.component.scss']
 })
+
 export class MenuUsuarioComponent implements OnInit {
-  // Propiedades para almacenar las mascotas y el filtro
   mascotas: Mascota[] = [];
   mascotasFiltradas: Mascota[] = [];
   filtro = {
@@ -26,19 +24,19 @@ export class MenuUsuarioComponent implements OnInit {
     esterilizado: null,
     desparasitado: null
   };
+
   tooltipMascota: Mascota | null = null;
   cliente?: Cliente;
 
   constructor(private menuUsuarioService: MenuUsuarioService, private authService: AuthService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    // Obtener las mascotas al cargar el componente
     this.menuUsuarioService.obtenerMascotas().subscribe((mascotas) => {
       this.mascotas = mascotas.map(mascota => ({
         ...mascota,
-        imagen: mascota.imagen  // Asegúrate de que este campo esté en la respuesta de la base de datos
+        imagen: mascota.imagen
       }));
-      this.filtrarMascotas();  // Llamar a filtrar las mascotas después de obtenerlas
+      this.filtrarMascotas();
     });
     if (this.authService.isLoggedIn()) {
       const decoded = this.authService.getDecodedToken();

@@ -80,4 +80,5 @@ export class ReservasPersonalesComponent implements OnInit {
   verDetalles(mascotaId: number): void {
     this.router.navigate(['/adoptar_mascota', mascotaId]);
   }
+
 }

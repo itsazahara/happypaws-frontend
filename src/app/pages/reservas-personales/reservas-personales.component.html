@@ -19,7 +19,7 @@
       <button class="btn-cancelar" [disabled]="reserva.estado !== 'PENDIENTE'" (click)="cancelarReserva(reserva.id)">
         Cancelar reserva
       </button>
-      <button class="btn-ver" (click)="verDetalles(reserva.id)">Ver información</button>
+      <button class="btn-ver" (click)="verDetalles(reserva.mascota.id!)">Ver información</button>
     </div>
   </div>
 
