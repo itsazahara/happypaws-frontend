@@ -5,7 +5,7 @@ import { Mascota } from '../../models/mascota';
 import { Sexo } from '../../models/sexo';
 import { Especie } from '../../models/especie';
 import { Tamanio } from '../../models/tamanio';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add_mascota',
@@ -57,7 +57,6 @@ export class AddMascotaComponent {
       });
   }
 
-
   // Métodos para manejar la carga de archivos
   onFileSelect(event: any) {
     const file = event.target.files[0];
@@ -83,6 +82,18 @@ export class AddMascotaComponent {
         this.mascota.imagen = reader.result as string;
       };
       reader.readAsDataURL(files[0]);
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.mascota.imagen = reader.result as string;  // Guarda la imagen como Base64
+      };
+      reader.readAsDataURL(file); // Convierte a Base64
     }
   }
 }
