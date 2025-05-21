@@ -1,3 +1,8 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+
 <body>
   <div class="mascotas-container">
     <h1>Lista de mascotas</h1>
@@ -19,15 +24,13 @@
           Ver más información
         </button>
         <!-- Botón eliminar -->
-        <button (click)="eliminarMascota(mascota.id)" class="btn-eliminar">
+        <button (click)="eliminarMascota(mascota.id!)" class="btn-eliminar">
           Eliminar
         </button>
       </div>
     </div>
-    <!-- Botón flotante -->
-    <a routerLink="/add_mascota" class="boton-flotante" title="Añadir mascota">
-      +
-    </a>
-
+    <a routerLink="/add_mascota" routerLinkActive="activo"><span class="material-symbols-outlined">
+        add
+      </span></a>
   </div>
 </body>
