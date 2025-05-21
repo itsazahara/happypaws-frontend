@@ -1,6 +1,7 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 
 </head>
 
@@ -152,12 +153,19 @@
             placeholder="Escribe tus observaciones..." rows="4"></textarea>
         </div>
 
-        <!-- URL de la imagen -->
+        <!-- URL de la imagen
         <div class="form-group">
           <label for="imagen">URL de la imagen:</label>
           <input type="text" id="imagen" name="imagen" [(ngModel)]="cliente.imagen"
             placeholder="Ingresa la URL de la imagen" />
+        </div>-->
+
+        <!-- Input para seleccionar imagen -->
+        <div class="form-group">
+          <label for="imagenArchivo">Sube tu imagen:</label>
+          <input type="file" id="imagenArchivo" (change)="onFileSelected($event)" accept="image/*" />
         </div>
+
 
         <!-- Previsualización de la imagen -->
         <div class="form-group" *ngIf="cliente.imagen">

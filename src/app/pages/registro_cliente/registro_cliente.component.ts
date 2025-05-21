@@ -79,4 +79,17 @@ export class RegistroClienteComponent {
       }
     });
   }
+
+  onFileSelected(event: Event): void {
+  const fileInput = event.target as HTMLInputElement;
+  if (fileInput.files && fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.cliente.imagen = reader.result as string;  // Guarda la imagen como Base64
+    };
+    reader.readAsDataURL(file); // Convierte a Base64
+  }
+}
+
 }
