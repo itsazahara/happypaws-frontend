@@ -12,13 +12,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Contenedor para los botones */
 .button-container {
   display: flex;
-  gap: 40px;  /* Espacio entre los botones */
+  gap: 40px;
+  /* Espacio entre los botones */
 }
 
 /* Estilos para los botones */
@@ -27,7 +28,8 @@ body {
   height: 100px;
   background-color: #ffffff;
   border: none;
-  border-radius: 50%;  /* Hace que los botones sean redondos */
+  border-radius: 50%;
+  /* Hace que los botones sean redondos */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,8 +62,13 @@ body {
 
 .menu-enlaces {
   display: flex;
+  align-items: center;
   gap: 20px;
   padding: 10px 20px;
+}
+
+.espaciador {
+  flex: 1;
 }
 
 .menu-enlaces a {
@@ -78,4 +85,3 @@ body {
   color: white;
   background-color: #32a6cc;
 }
-
