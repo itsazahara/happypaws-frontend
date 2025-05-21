@@ -52,4 +52,23 @@ export class MascotasComponent implements OnInit {
       }
     );
   }
+
+  eliminarMascota(id: number): void {
+  const confirmacion = confirm('¿Estás seguro de que deseas eliminar esta mascota?');
+
+  if (confirmacion) {
+    this.http.delete(`http://localhost:8080/happypaws/api/mascotas/${id}`).subscribe(
+      () => {
+        // Filtra la mascota eliminada de la lista sin volver a cargar todo
+        this.mascotas = this.mascotas.filter(m => m.id !== id);
+        alert('Mascota eliminada exitosamente.');
+      },
+      (error) => {
+        console.error('Error al eliminar la mascota:', error);
+        alert('Error al eliminar la mascota.');
+      }
+    );
+  }
+}
+
 }

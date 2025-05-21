@@ -18,6 +18,10 @@
         <button [routerLink]="['/adoptar_mascota', mascota.id]" class="btn-ver-mas">
           Ver más información
         </button>
+        <!-- Botón eliminar -->
+        <button (click)="eliminarMascota(mascota.id)" class="btn-eliminar">
+          Eliminar
+        </button>
       </div>
     </div>
     <!-- Botón flotante -->

@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+
 }
 
 .grid-mascotas {
@@ -14,7 +15,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   margin-top: 2rem;
-  margin-bottom: 4rem;
+
 }
 
 h1,
@@ -31,6 +32,9 @@ h3 {
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h2 {
     text-align: center;
@@ -43,12 +47,11 @@ h3 {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 1rem;
-    object-fit: cover;
   }
 
   .btn-ver-mas {
-    margin-top: 10px;
-    font-family: 'Poppins', sans-serif;
+    margin: 10px auto 4px auto;
+    /* margen arriba y abajo, centrado */
     background-color: #118AB2;
     color: white;
     padding: 0.5rem 1rem;
@@ -56,6 +59,42 @@ h3 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    width: fit-content;
+  }
+
+  .btn-ver-mas:hover {
+    background-color: #32a6cc;
+  }
+
+  .btn-eliminar {
+    margin: 0 auto;
+    margin-top: 8px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+  }
+
+  .btn-eliminar:hover {
+    background-color: #d62828;
+  }
+
+  .btn-ver-mas {
+    margin: 10px auto 4px auto;
+    /* margen arriba y abajo, centrado */
+    background-color: #118AB2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: fit-content;
   }
 
   .btn-ver-mas:hover {
@@ -63,11 +102,12 @@ h3 {
   }
 }
 
+// Fuera de .tarjeta
 .boton-flotante {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #118AB2; // Verde o el color que prefieras
+  background-color: #118AB2;
   color: white;
   border-radius: 50%;
   width: 60px;
@@ -78,6 +118,7 @@ h3 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   text-decoration: none;
   z-index: 1000;
+  font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
