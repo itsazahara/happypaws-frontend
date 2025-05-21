@@ -1,4 +1,7 @@
-html, body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -12,4 +15,21 @@ html, body {
 
 .content-wrap {
   flex: 1;
+}
+
+footer {
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  text-align: center;
+  padding: 9px;
+  background-color: #333;
+  color: white;
+  font-size: 12px;
+}
+
+.footer-container p {
+  margin: 0;
+  font-size: 12px;
 }
