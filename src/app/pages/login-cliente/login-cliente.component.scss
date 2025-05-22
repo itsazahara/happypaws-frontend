@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 
-
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -83,10 +83,10 @@ button:disabled {
 }
 
 .login-container img {
-  width: 120px; /* Ajusta el tamaño del logo */
+  width: 120px;
   height: auto;
   display: block;
-  margin: 0 auto 1rem auto; /* Centrado + espacio inferior */
+  margin: 0 auto 1rem auto;
 }
 
 .create-account-link {
@@ -162,8 +162,8 @@ button:disabled {
 
 .gif-alerta {
   display: block;
-  margin: 0.5rem auto 0 auto; /* Espacio superior, centrado */
-  width: 60px; /* Ajusta a tu gusto */
+  margin: 0.5rem auto 0 auto;
+  width: 60px;
   height: auto;
 }
 
@@ -172,6 +172,7 @@ button:disabled {
     opacity: 0;
     transform: translate(-50%, -20px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);

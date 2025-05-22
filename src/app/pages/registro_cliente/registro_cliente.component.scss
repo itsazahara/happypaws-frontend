@@ -14,7 +14,7 @@ body {
 
 .login-container {
   width: 100%;
-  max-width: 400px; /* Un poco más amplio para acomodar todo */
+  max-width: 400px;
   padding: 2rem;
   background-color: #FFD166;
   border-radius: 30px;
@@ -24,7 +24,7 @@ body {
 h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333; /* Color del título */
+  color: #333;
 }
 
 .form-group {
@@ -39,7 +39,9 @@ label {
   color: #333;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 0.6rem 2.5rem 0.6rem 0.8rem;
   border-radius: 10px;
@@ -105,16 +107,15 @@ button:disabled {
   font-size: 0.9rem;
 }
 
-/* Estilos para los botones de navegación */
 .navigation-buttons {
   display: flex;
-  justify-content: space-between;  /* Para distribuir los botones en los extremos */
-  gap: 1rem;  /* Espacio entre los botones */
-  margin-top: 1rem;  /* Espacio superior */
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .navigation-buttons button {
-  width: 48%;  /* Ajustar el tamaño de los botones para que ocupen el espacio proporcionalmente */
+  width: 48%;
 }
 
 .login-account-link {
@@ -191,8 +192,8 @@ button:disabled {
 
 .gif-alerta {
   display: block;
-  margin: 0.5rem auto 0 auto; /* Espacio superior, centrado */
-  width: 60px; /* Ajusta a tu gusto */
+  margin: 0.5rem auto 0 auto;
+  width: 60px;
   height: auto;
 }
 
@@ -201,6 +202,7 @@ button:disabled {
     opacity: 0;
     transform: translate(-50%, -20px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);

@@ -66,7 +66,13 @@ export class RegistroClienteComponent {
     const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '' || campo === 0);
 
     if (camposVacios) {
-      alert('Por favor completa todos los campos obligatorios antes de registrarte.');
+      this.tipoAlerta = 'error';
+      this.mensajeAlerta = 'Por favor completa todos los campos obligatorios antes de registrarte.';
+      this.mostrarAlerta = true;
+
+      setTimeout(() => {
+        this.mostrarAlerta = false;
+      }, 3000);
       return;
     }
 
