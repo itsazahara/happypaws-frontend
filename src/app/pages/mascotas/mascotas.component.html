@@ -4,6 +4,22 @@
 </head>
 
 <body>
+
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="basura.gif" alt="Correcto" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Alarma" class="gif-alerta" />
+  </div>
+
+  <div *ngIf="mostrarConfirmacion" class="confirmacion-modal">
+    <div class="confirmacion-contenido">
+      <p>¿Estás seguro de que deseas eliminar esta mascota?</p>
+      <button (click)="eliminarMascotaConfirmada()" class="aceptar">Aceptar</button>
+      <button (click)="cancelarEliminacion()" class="cancelar">Cancelar</button>
+    </div>
+  </div>
+
   <div class="mascotas-container">
     <h1>Lista de mascotas</h1>
     <br>
@@ -24,12 +40,12 @@
           Ver más información
         </button>
         <!-- Botón eliminar -->
-        <button (click)="eliminarMascota(mascota.id!)" class="btn-eliminar">
+        <button (click)="confirmarEliminacion(mascota.id!)" class="btn-eliminar">
           Eliminar
         </button>
       </div>
     </div>
-    <a routerLink="/add_mascota" routerLinkActive="activo"><span class="material-symbols-outlined">
+    <a routerLink="/add_mascota" routerLinkActive="activo" class="add"><span class="material-symbols-outlined">
         add
       </span></a>
   </div>

@@ -47,61 +47,60 @@ export class AddMascotaComponent {
   }
 
   guardarMascota() {
-  const camposObligatorios = [
-    this.mascota.nombre,
-    this.mascota.sexo,
-    this.mascota.especie,
-    this.mascota.tamanio,
-    this.mascota.edad,
-    this.mascota.peso,
-    this.mascota.esterilizado,
-    this.mascota.vacunado,
-    this.mascota.desparasitado,
-    this.mascota.imagen,
-    this.mascota.cuidadosEspeciales,
-    this.mascota.personalidad,
-    this.mascota.historia,
-    this.mascota.idRaza
-  ];
+    const camposObligatorios = [
+      this.mascota.nombre,
+      this.mascota.sexo,
+      this.mascota.especie,
+      this.mascota.tamanio,
+      this.mascota.edad,
+      this.mascota.peso,
+      this.mascota.esterilizado,
+      this.mascota.vacunado,
+      this.mascota.desparasitado,
+      this.mascota.imagen,
+      this.mascota.cuidadosEspeciales,
+      this.mascota.personalidad,
+      this.mascota.historia,
+      this.mascota.idRaza
+    ];
 
-  const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '' || campo === 0);
+    const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '' || campo === 0);
 
-  if (camposVacios) {
-    this.tipoAlerta = 'error';
-    this.mensajeAlerta = 'Por favor completa todos los campos obligatorios.';
-    this.mostrarAlerta = true;
+    if (camposVacios) {
+      this.tipoAlerta = 'error';
+      this.mensajeAlerta = 'Por favor completa todos los campos obligatorios.';
+      this.mostrarAlerta = true;
 
-    setTimeout(() => {
-      this.mostrarAlerta = false;
-    }, 3000);
-    return;
+      setTimeout(() => {
+        this.mostrarAlerta = false;
+      }, 3000);
+      return;
+    }
+
+    // Si pasa validación, se envía al backend
+    this.http.post('http://localhost:8080/happypaws/api/mascotas', this.mascota)
+      .subscribe({
+        next: () => {
+          this.tipoAlerta = 'exito';
+          this.mensajeAlerta = '¡Nueva mascota añadida!';
+          this.mostrarAlerta = true;
+
+          setTimeout(() => {
+            this.mostrarAlerta = false;
+            this.router.navigate(['/menu_administrador']);
+          }, 2350);
+        },
+        error: () => {
+          this.tipoAlerta = 'error';
+          this.mensajeAlerta = 'Los datos introducidos no son válidos.';
+          this.mostrarAlerta = true;
+
+          setTimeout(() => {
+            this.mostrarAlerta = false;
+          }, 3000);
+        }
+      });
   }
-
-  // Si pasa validación, se envía al backend
-  this.http.post('http://localhost:8080/happypaws/api/mascotas', this.mascota)
-    .subscribe({
-      next: () => {
-        this.tipoAlerta = 'exito';
-        this.mensajeAlerta = '¡Nueva mascota añadida!';
-        this.mostrarAlerta = true;
-
-        setTimeout(() => {
-          this.mostrarAlerta = false;
-          this.router.navigate(['/menu_administrador']);
-        }, 2350);
-      },
-      error: () => {
-        this.tipoAlerta = 'error';
-        this.mensajeAlerta = 'Los datos introducidos no son válidos.';
-        this.mostrarAlerta = true;
-
-        setTimeout(() => {
-          this.mostrarAlerta = false;
-        }, 3000);
-      }
-    });
-}
-
 
   // Métodos para manejar la carga de archivos
   onFileSelect(event: any) {
