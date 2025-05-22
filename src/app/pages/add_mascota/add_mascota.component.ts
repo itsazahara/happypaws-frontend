@@ -34,6 +34,9 @@ export class AddMascotaComponent {
   };
 
   razas: Raza[] = [];
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
 
   constructor(private http: HttpClient, private router: Router) {
     // Cargar razas disponibles para el campo de raza
@@ -44,18 +47,61 @@ export class AddMascotaComponent {
   }
 
   guardarMascota() {
-    this.http.post('http://localhost:8080/happypaws/api/mascotas', this.mascota)
-      .subscribe({
-        next: (response) => {
-          alert('Mascota guardada con éxito');
-          this.router.navigate(['/menu_administrador']);
-        },
-        error: (error) => {
-          alert('Error al guardar la mascota');
-          console.error('Error:', error);
-        }
-      });
+  const camposObligatorios = [
+    this.mascota.nombre,
+    this.mascota.sexo,
+    this.mascota.especie,
+    this.mascota.tamanio,
+    this.mascota.edad,
+    this.mascota.peso,
+    this.mascota.esterilizado,
+    this.mascota.vacunado,
+    this.mascota.desparasitado,
+    this.mascota.imagen,
+    this.mascota.cuidadosEspeciales,
+    this.mascota.personalidad,
+    this.mascota.historia,
+    this.mascota.idRaza
+  ];
+
+  const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '' || campo === 0);
+
+  if (camposVacios) {
+    this.tipoAlerta = 'error';
+    this.mensajeAlerta = 'Por favor completa todos los campos obligatorios.';
+    this.mostrarAlerta = true;
+
+    setTimeout(() => {
+      this.mostrarAlerta = false;
+    }, 3000);
+    return;
   }
+
+  // Si pasa validación, se envía al backend
+  this.http.post('http://localhost:8080/happypaws/api/mascotas', this.mascota)
+    .subscribe({
+      next: () => {
+        this.tipoAlerta = 'exito';
+        this.mensajeAlerta = '¡Nueva mascota añadida!';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => {
+          this.mostrarAlerta = false;
+          this.router.navigate(['/menu_administrador']);
+        }, 2350);
+      },
+      error: () => {
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'Los datos introducidos no son válidos.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => {
+          this.mostrarAlerta = false;
+        }, 3000);
+      }
+    });
+}
+
 
   // Métodos para manejar la carga de archivos
   onFileSelect(event: any) {

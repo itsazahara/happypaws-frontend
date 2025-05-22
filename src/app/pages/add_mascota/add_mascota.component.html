@@ -1,4 +1,12 @@
 <body>
+
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="amor-de-mascotas.gif" alt="Correcto" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Alarma" class="gif-alerta" />
+  </div>
+
   <div class="login-container">
     <h2>Agregar mascota</h2>
     <form (ngSubmit)="guardarMascota()">
@@ -61,6 +69,23 @@
           <input type="checkbox" id="esterilizado" name="esterilizado" [(ngModel)]="mascota.esterilizado" />
         </label>
       </div>
+
+      <div class="form-group">
+        <label for="personalidad">Personalidad</label>
+        <textarea id="personalidad" [(ngModel)]="mascota.personalidad" name="personalidad" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="cuidadosEspeciales">Cuidados especiales</label>
+        <textarea id="cuidadosEspeciales" [(ngModel)]="mascota.cuidadosEspeciales" name="cuidadosEspeciales" rows="3"
+          required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="historia">Historia</label>
+        <textarea id="historia" [(ngModel)]="mascota.historia" name="historia" rows="3" required></textarea>
+      </div>
+
 
       <div class="form-group">
         <label for="imagenArchivo">Sube tu imagen:</label>
