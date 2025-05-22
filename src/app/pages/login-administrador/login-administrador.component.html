@@ -7,9 +7,11 @@
 
 <body>
 
-  <div *ngIf="mostrarAlerta" class="alerta-exito">
-    <span>¡Bienvenido/a de nuevo!</span>
-    <img src="verificado.gif" alt="Cargando..." class="gif-alerta" />
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="verificado.gif" alt="Verificado" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Alarma" class="gif-alerta" />
   </div>
 
   <div class="login-container">

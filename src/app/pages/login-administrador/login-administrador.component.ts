@@ -15,6 +15,8 @@ export class LoginAdministradorComponent {
   error: string | null = null;
   cargando: boolean = false;
   mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -26,15 +28,23 @@ export class LoginAdministradorComponent {
         const token = response.token;
         this.authService.guardarSesionAdmin(token);
 
+        this.tipoAlerta = 'exito';
+        this.mensajeAlerta = '¡Bienvenido/a de nuevo!';
         this.mostrarAlerta = true;
+
         setTimeout(() => {
+          this.mostrarAlerta = false;
           this.router.navigate(['/menu_administrador']);
-        }, 2350); // espera 2 segundos antes de redirigir
+        }, 2350);
       },
-      error: (error) => {
-        console.error('Error al iniciar sesión', error);
-        this.error = 'Credenciales inválidas o error en el servidor';
-        alert(this.error);
+      error: () => {
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'Credenciales inválidas';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => {
+          this.mostrarAlerta = false;
+        }, 3000);
       },
       complete: () => {
         this.cargando = false;
