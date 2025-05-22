@@ -1,6 +1,6 @@
 export interface Raza {
 
-    id: number;
+    id?: number;
     nombre: string;
     especie: string;
     imagen: string;

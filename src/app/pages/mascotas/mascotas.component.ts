@@ -19,7 +19,6 @@ export class MascotasComponent implements OnInit {
   idMascotaPendienteEliminar: number | null = null;
   mostrarConfirmacion: boolean = false;
 
-
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {

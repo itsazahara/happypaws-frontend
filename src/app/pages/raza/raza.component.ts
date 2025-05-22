@@ -16,12 +16,18 @@ export class RazaComponent implements OnInit {
   especies: Especie[] = [];
   filtroEspecie: Especie | '' = '';
   busqueda: string = '';
-  razaForm: Raza = { id: 0, nombre: '', especie: '', imagen: '' };
+  razaForm: Raza = { nombre: '', especie: Especie.PERRO, imagen: '' };
 
   // Paginación
   currentPage: number = 1;
   itemsPerPage: number = 12;
   totalPages: number = 0;
+
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' | 'nuevo'= 'exito';
+  idRazaPendienteEliminar: number | null = null;
+  mostrarConfirmacion: boolean = false;
 
   constructor(private razaService: RazaService, private router: Router) { }
 
@@ -40,7 +46,6 @@ export class RazaComponent implements OnInit {
       this.actualizarPaginado();
     });
   }
-
 
   buscarRazas(): void {
     if (this.busqueda.trim() === '') {
@@ -84,17 +89,34 @@ export class RazaComponent implements OnInit {
   }
 
   guardarRaza(): void {
-    if (this.razaForm.id) {
-      // actualizar
+    if (this.razaForm.id != null) {
       this.razaService.update(this.razaForm.id, this.razaForm).subscribe(() => {
         this.cargarRazas();
         this.resetForm();
+
+        this.tipoAlerta = 'nuevo';
+        this.mensajeAlerta = 'La raza ha sido actualizada exitosamente.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => this.mostrarAlerta = false, 3000);
       });
     } else {
       // crear
       this.razaService.create(this.razaForm).subscribe(() => {
         this.cargarRazas();
         this.resetForm();
+
+        this.tipoAlerta = 'nuevo';
+        this.mensajeAlerta = 'Raza agregada exitosamente.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => this.mostrarAlerta = false, 3000);
+      }, error => {
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'Se ha producido un error al crear la raza.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => this.mostrarAlerta = false, 3000);
       });
     }
   }
@@ -103,14 +125,43 @@ export class RazaComponent implements OnInit {
     this.razaForm = { ...raza };
   }
 
-  eliminarRaza(id: number): void {
-    const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta raza?');
+  confirmarEliminacion(id: number): void {
+    this.idRazaPendienteEliminar = id;
+    this.mostrarConfirmacion = true;
+  }
 
-    if (confirmacion) {
-      this.razaService.delete(id).subscribe(() => {
-        this.cargarRazas();
+  eliminarRazaConfirmada(): void {
+    if (this.idRazaPendienteEliminar !== null) {
+      this.razaService.delete(this.idRazaPendienteEliminar).subscribe({
+        next: () => {
+          this.razas = this.razas.filter(r => r.id !== this.idRazaPendienteEliminar);
+          this.tipoAlerta = 'exito';
+          this.mensajeAlerta = 'Raza eliminada exitosamente.';
+          this.mostrarAlerta = true;
+          this.mostrarConfirmacion = false;
+          this.actualizarPaginado();
+
+          setTimeout(() => {
+            this.mostrarAlerta = false;
+          }, 3000);
+        },
+        error: () => {
+          this.tipoAlerta = 'error';
+          this.mensajeAlerta = 'Se ha producido un error al eliminar la raza.';
+          this.mostrarAlerta = true;
+          this.mostrarConfirmacion = false;
+
+          setTimeout(() => {
+            this.mostrarAlerta = false;
+          }, 3000);
+        }
       });
     }
+  }
+
+  cancelarEliminacion(): void {
+    this.mostrarConfirmacion = false;
+    this.idRazaPendienteEliminar = null;
   }
 
   cancelarEdicion(): void {

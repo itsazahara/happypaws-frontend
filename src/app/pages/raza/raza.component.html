@@ -4,6 +4,24 @@
 </head>
 
 <body>
+
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error', 'alerta-nuevo': tipoAlerta === 'nuevo'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'nuevo'" src="como.gif" alt="Nuevo" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'exito'" src="basura.gif" alt="Basura" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Alarma" class="gif-alerta" />
+  </div>
+
+  <div *ngIf="mostrarConfirmacion" class="confirmacion-modal">
+    <div class="confirmacion-contenido">
+      <p>¿Estás seguro de que deseas eliminar esta raza?</p>
+      <button class="aceptar" (click)="eliminarRazaConfirmada()">Aceptar</button>
+      <button class="cancelar" (click)="cancelarEliminacion()">Cancelar</button>
+    </div>
+  </div>
+
+
   <div class="raza-container">
     <h2>Gestión de razas</h2>
 
@@ -15,7 +33,9 @@
     <!-- Formulario de agregar/editar raza -->
     <form (ngSubmit)="guardarRaza()">
       <input [(ngModel)]="razaForm.nombre" name="nombre" placeholder="Nombre" required />
-      <input [(ngModel)]="razaForm.especie" name="especie" placeholder="Especie" required />
+      <select [(ngModel)]="razaForm.especie" name="especie" required>
+        <option *ngFor="let esp of especies" [value]="esp">{{ esp }}</option>
+      </select>
       <input [(ngModel)]="razaForm.imagen" name="imagen" placeholder="URL de imagen" required />
       <button type="submit">{{ razaForm.id ? 'Actualizar' : 'Agregar' }}</button>
       <button type="button" (click)="cancelarEdicion()" *ngIf="razaForm.id">Cancelar</button>
@@ -35,8 +55,8 @@
         <h4>{{ raza.nombre }}</h4>
         <p>{{ raza.especie }}</p>
         <button (click)="editarRaza(raza)">Editar</button>
-        <button (click)="eliminarRaza(raza.id)" id="eliminar">Eliminar</button>
-        <button (click)="verMascotas(raza.id)">Ver mascotas</button>
+        <button (click)="confirmarEliminacion(raza.id!)" id="eliminar">Eliminar</button>
+        <button (click)="verMascotas(raza.id!)">Ver mascotas</button>
       </div>
     </div>
     <div class="pagination-controls">
