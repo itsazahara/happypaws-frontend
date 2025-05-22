@@ -152,3 +152,57 @@ button:disabled {
   color: white;
   background-color: #32a6cc;
 }
+
+.alerta-exito {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #38b000;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInDown 0.3s ease;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.alerta-error {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e63946;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInDown 0.3s ease;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.gif-alerta {
+  display: block;
+  margin: 0.5rem auto 0 auto; /* Espacio superior, centrado */
+  width: 60px; /* Ajusta a tu gusto */
+  height: auto;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

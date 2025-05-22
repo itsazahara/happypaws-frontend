@@ -6,6 +6,14 @@
 </head>
 
 <body>
+
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="exito.gif" alt="Exito" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="detener.gif" alt="Alarma" class="gif-alerta" />
+  </div>
+
   <div class="login-container">
     <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
     <h2>Regístrate</h2>

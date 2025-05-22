@@ -30,6 +30,9 @@ export class RegistroClienteComponent {
   };
 
   currentStep: number = 1;  // Controla el paso actual del formulario
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -70,12 +73,23 @@ export class RegistroClienteComponent {
     // Aquí llamamos al método registrarCliente de AuthService que devuelve token
     this.authService.registrarCliente(this.cliente).subscribe({
       next: () => {
-        alert('Cuenta creada con éxito');
-        this.router.navigate(['/menu_usuario']);
+        this.tipoAlerta = 'exito';
+        this.mensajeAlerta = '¡Bienvenido/a a Happypaws!';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => {
+          this.mostrarAlerta = false;
+          this.router.navigate(['/menu_usuario']);
+        }, 2350);
       },
-      error: (error) => {
-        console.error('Error al registrar:', error);
-        alert('Error al registrar el cliente');
+      error: () => {
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'Los datos introducidos no son válidos.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => {
+          this.mostrarAlerta = false;
+        }, 3000);
       }
     });
   }
