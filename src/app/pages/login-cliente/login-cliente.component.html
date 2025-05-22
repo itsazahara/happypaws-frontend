@@ -6,11 +6,12 @@
 </head>
 
 <body>
-  <!-- Spinner de carga -->
-  <div *ngIf="cargando" class="spinner-container">
-    <p>Iniciando sesión...</p>
-    <div class="spinner"></div>
+
+  <div *ngIf="mostrarAlerta" class="alerta-exito">
+    <span>¡Bienvenido/a de nuevo!</span>
+    <img src="verificado.gif" alt="Cargando..." class="gif-alerta" />
   </div>
+
   <div class="login-container">
     <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
     <h2>Iniciar sesión</h2>

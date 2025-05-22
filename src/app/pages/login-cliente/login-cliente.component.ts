@@ -14,6 +14,7 @@ export class LoginClienteComponent {
   contrasenia: string = '';
   error: string | null = null;
   cargando: boolean = false;
+  mostrarAlerta: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -25,8 +26,10 @@ export class LoginClienteComponent {
         const token = response.token;
         this.authService.guardarSesionCliente(token);
 
-        alert('Login exitoso');
-        this.router.navigate(['/menu_usuario']);
+        this.mostrarAlerta = true;
+        setTimeout(() => {
+          this.router.navigate(['/menu_usuario']);
+        }, 2350); // espera 2 segundos antes de redirigir
       },
       error: (error) => {
         console.error('Error al iniciar sesión', error);
@@ -38,6 +41,4 @@ export class LoginClienteComponent {
       }
     });
   }
-
-
 }
