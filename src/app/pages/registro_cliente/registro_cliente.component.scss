@@ -62,7 +62,6 @@ textarea {
   transform: translateY(-50%);
   font-size: 1rem;
   color: #888;
-  pointer-events: none;
 }
 
 button {
@@ -207,4 +206,8 @@ button:disabled {
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+.toggle-password {
+  cursor: pointer;
 }

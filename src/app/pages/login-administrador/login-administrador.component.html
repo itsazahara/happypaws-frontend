@@ -32,10 +32,10 @@
 
       <div class="form-group input-icon-wrapper">
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="contrasenia" required
-          placeholder="Contraseña" />
-        <span class="icon">
-          <i class="fas fa-lock"></i>
+        <input [type]="mostrarContrasenia ? 'text' : 'password'" id="password" name="password" [(ngModel)]="contrasenia"
+          required placeholder="Contraseña" />
+        <span class="icon toggle-password" (click)="toggleContrasenia()">
+          <i class="fas" [ngClass]="mostrarContrasenia ? 'fa-lock-open' : 'fa-lock'"></i>
         </span>
       </div>
 

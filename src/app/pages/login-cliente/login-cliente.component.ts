@@ -17,6 +17,7 @@ export class LoginClienteComponent {
   mostrarAlerta: boolean = false;
   mensajeAlerta: string = '';
   tipoAlerta: 'exito' | 'error' = 'exito';
+  mostrarContrasenia: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -51,4 +52,9 @@ export class LoginClienteComponent {
       }
     });
   }
+
+  toggleContrasenia() {
+    this.mostrarContrasenia = !this.mostrarContrasenia;
+  }
+
 }

@@ -17,6 +17,7 @@ export class LoginAdministradorComponent {
   mostrarAlerta: boolean = false;
   mensajeAlerta: string = '';
   tipoAlerta: 'exito' | 'error' = 'exito';
+  mostrarContrasenia: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -50,5 +51,9 @@ export class LoginAdministradorComponent {
         this.cargando = false;
       }
     });
+  }
+
+  toggleContrasenia() {
+    this.mostrarContrasenia = !this.mostrarContrasenia;
   }
 }

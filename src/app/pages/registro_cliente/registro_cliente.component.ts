@@ -33,6 +33,7 @@ export class RegistroClienteComponent {
   mostrarAlerta: boolean = false;
   mensajeAlerta: string = '';
   tipoAlerta: 'exito' | 'error' = 'exito';
+  mostrarContrasenia: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -110,6 +111,10 @@ export class RegistroClienteComponent {
       };
       reader.readAsDataURL(file); // Convierte a Base64
     }
+  }
+
+  toggleContrasenia() {
+    this.mostrarContrasenia = !this.mostrarContrasenia;
   }
 
 }
