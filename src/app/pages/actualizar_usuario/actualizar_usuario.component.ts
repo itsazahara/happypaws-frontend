@@ -38,6 +38,10 @@ export class ActualizarUsuarioComponent implements OnInit {
   tiposVivienda = TipoVivienda;
   tipoViviendaKeys: (keyof typeof TipoVivienda)[] = Object.keys(TipoVivienda) as (keyof typeof TipoVivienda)[];
 
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
+
   constructor(
     private menuUsuarioService: MenuUsuarioService,
     private authService: AuthService,
@@ -75,10 +79,18 @@ export class ActualizarUsuarioComponent implements OnInit {
       next: (clienteActualizado) => {
         this.cliente = clienteActualizado;
         this.modoEditar = false;
-        console.log('Cliente actualizado correctamente');
+        this.tipoAlerta = 'exito';
+        this.mensajeAlerta = 'Los datos personales han sido actualizados correctamente.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => this.mostrarAlerta = false, 3000);
       },
       error: (err) => {
-        console.error('Error al actualizar cliente:', err);
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'Se ha producido un error al actualizar los datos personales.';
+        this.mostrarAlerta = true;
+
+        setTimeout(() => this.mostrarAlerta = false, 3000);
       }
     });
   }

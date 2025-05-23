@@ -1,4 +1,15 @@
 <body>
+
+  <!-- Alerta tipo -->
+  <div *ngIf="mostrarAlerta" [ngClass]="{
+    'alerta-exito': tipoAlerta === 'exito',
+    'alerta-error': tipoAlerta === 'error'
+  }">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="como.gif" alt="Éxito" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Error" class="gif-alerta" />
+  </div>
+
   <div *ngIf="!cargando && cliente">
     <div class="perfil-container">
       <div class="perfil-info">
