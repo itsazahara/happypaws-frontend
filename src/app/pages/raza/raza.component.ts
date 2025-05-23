@@ -25,7 +25,7 @@ export class RazaComponent implements OnInit {
 
   mostrarAlerta: boolean = false;
   mensajeAlerta: string = '';
-  tipoAlerta: 'exito' | 'error' | 'nuevo'= 'exito';
+  tipoAlerta: 'exito' | 'error' | 'nuevo' = 'exito';
   idRazaPendienteEliminar: number | null = null;
   mostrarConfirmacion: boolean = false;
 
@@ -89,6 +89,25 @@ export class RazaComponent implements OnInit {
   }
 
   guardarRaza(): void {
+    // Validación de campos obligatorios
+    const camposObligatorios = [
+      this.razaForm.nombre,
+      this.razaForm.especie,
+      this.razaForm.imagen
+    ];
+
+    const camposVacios = camposObligatorios.some(campo => campo === null || campo === undefined || campo === '');
+
+    if (camposVacios) {
+      this.tipoAlerta = 'error';
+      this.mensajeAlerta = 'Por favor completa todos los campos antes de guardar la raza.';
+      this.mostrarAlerta = true;
+
+      setTimeout(() => this.mostrarAlerta = false, 3000);
+      return;
+    }
+
+    // Si tiene ID, es una edición
     if (this.razaForm.id != null) {
       this.razaService.update(this.razaForm.id, this.razaForm).subscribe(() => {
         this.cargarRazas();
@@ -101,7 +120,7 @@ export class RazaComponent implements OnInit {
         setTimeout(() => this.mostrarAlerta = false, 3000);
       });
     } else {
-      // crear
+      // Crear nueva raza
       this.razaService.create(this.razaForm).subscribe(() => {
         this.cargarRazas();
         this.resetForm();
@@ -120,6 +139,7 @@ export class RazaComponent implements OnInit {
       });
     }
   }
+
 
   editarRaza(raza: Raza): void {
     this.razaForm = { ...raza };
