@@ -8,45 +8,74 @@ import { Component } from '@angular/core';
 })
 export class PreguntasFrecuentesComponent {
 
-  selectedQuestion1: number | null = null;
-  selectedQuestion2: number | null = null;
+  selectedQuestions: { [key: number]: number | null } = {};
 
-  faqs1 = [
+  faqSections = [
     {
-      pregunta: 'No puedo iniciar sesión PROVISIONAL',
-      respuesta: 'Si no puedes iniciar sesión, por favor pulsa en el enlace de "Olvidé mi contraseña" en la ventana de inicio de sesión, si sigues sin poder iniciar sesión, por favor envíanos un email a aromsch1403@g.educaand.es'
+      titulo: 'Problemas de inicio de sesión',
+      preguntas: [
+        {
+          pregunta: 'No puedo iniciar sesión',
+          respuesta: 'Si no puedes iniciar sesión, por favor envíanos un email a aromsch1403@g.educaand.es.'
+        },
+        {
+          pregunta: '¿Por qué tengo que registrarme para adoptar?',
+          respuesta: 'Es necesario registrarse para que los administradores puedan consultar tus datos, comprobar si eres apto/a para la mascota y ponerse en contacto contigo.'
+        },
+        {
+          pregunta: '¿Cómo cambio mi contraseña?',
+          respuesta: 'Desde tu perfil, ve a Actualizar mis datos > Cambiar contraseña.'
+        }
+      ]
     },
     {
-      pregunta: '¿Por qué tengo que registrarme para adoptar?',
-      respuesta: 'Es necesario registrarse para que los administradores puedan consultar tus datos, comprobar si eres apto/a para la mascota en un estudio previo y poder ponerse en contacto contigo.'
+      titulo: 'Adopciones',
+      preguntas: [
+        {
+          pregunta: '¿Cómo puedo adoptar una mascota?',
+          respuesta: 'Eliges la mascota y clicas en el botón de reservar. Un administrador aceptará tu solicitud si cumples los requisitos.'
+        },
+        {
+          pregunta: '¿Cómo sé si soy apto para adoptar una mascota?',
+          respuesta: 'Depende del estudio que realiza nuestro equipo siguiendo nuestra política de adopciones.'
+        },
+        {
+          pregunta: '¿Cómo sé si una mascota sigue en adopción?',
+          respuesta: 'Si está en la web, sigue disponible para adopción.'
+        },
+        {
+          pregunta: 'La mascota que quería adoptar ya no está en la web',
+          respuesta: 'Si ya no aparece, ha sido adoptada.'
+        }
+      ]
+    },
+    {
+      titulo: 'Visitas y procesos',
+      preguntas: [
+        {
+          pregunta: '¿Puedo visitar a la mascota antes de adoptarla?',
+          respuesta: 'Sí, pero debe coordinarse previamente con el equipo para asegurar la disponibilidad.'
+        },
+        {
+          pregunta: '¿Qué pasa después de reservar?',
+          respuesta: 'Un administrador evaluará tu perfil y se pondrá en contacto contigo para continuar con el proceso.'
+        }
+      ]
     }
   ];
 
-  faqs2 = [
-    {
-      pregunta: '¿Cómo puedo adoptar una mascota?',
-      respuesta: 'Eliges la mascota y clicas en el botón de reservar. Después de reservar y mostrar tu interés en la mascota, el/la administrador/a aceptará tu reserva con la mayor brevedad posible. Debes ser  paciente y ten en cuenta que son solo algunos administradores.'
-    },
-    {
-      pregunta: '¿Cómo sé si soy apto para adoptar una mascota?',
-      respuesta: 'Si eres apto o no para la adopción depende exclusivamente del estudio de los administradores que gestionan la adopción. Tenemos una política de adopción y condiciones que tenemos en cuenta a la hora de realizar el estudio previo de cada reserva.'
-    },
-    {
-      pregunta: '¿Cómo se si una mascota sigue en adopción?',
-      respuesta: 'Todos los animales de Happypaws están en adopción, así que si está en nuestra web, está en adopción.'
-    },
-    {
-      pregunta: 'La mascota que quería adoptar ya no está en la web',
-      respuesta: 'Si la mascota no está es que ha sido adoptado.'
-    }
-  ];
 
-  toggleAnswer(faqGroup: number, index: number) {
-    if (faqGroup === 1) {
-      this.selectedQuestion1 = this.selectedQuestion1 === index ? null : index;
-    } else if (faqGroup === 2) {
-      this.selectedQuestion2 = this.selectedQuestion2 === index ? null : index;
+  toggleAnswer(sectionIndex: number, questionIndex: number): void {
+    if (this.selectedQuestions[sectionIndex] === questionIndex) {
+      this.selectedQuestions[sectionIndex] = null;
+    } else {
+      this.selectedQuestions[sectionIndex] = questionIndex;
     }
   }
+
+  isAnswerVisible(sectionIndex: number, questionIndex: number): boolean {
+    return this.selectedQuestions[sectionIndex] === questionIndex;
+  }
+
 
 }
