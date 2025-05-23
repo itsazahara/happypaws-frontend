@@ -19,6 +19,12 @@ export class ReservasPersonalesComponent implements OnInit {
   estadoKeys = Object.keys(Estado);
   reservasFiltradas: Reserva[] = [];
 
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
+  mostrarConfirmacion: boolean = false;
+  reservaPendienteCancelar: number | null = null;
+
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -57,9 +63,14 @@ export class ReservasPersonalesComponent implements OnInit {
     }
   }
 
-  cancelarReserva(id: number): void {
-    if (confirm('¿Estás seguro de que deseas cancelar esta reserva?')) {
-      this.reservaService.actualizarEstado(id, Estado.CANCELADA).subscribe({
+  confirmarCancelacion(id: number): void {
+    this.reservaPendienteCancelar = id;
+    this.mostrarConfirmacion = true;
+  }
+
+  cancelarReservaConfirmada(): void {
+    if (this.reservaPendienteCancelar !== null) {
+      this.reservaService.actualizarEstado(this.reservaPendienteCancelar, Estado.CANCELADA).subscribe({
         next: (reservaActualizada: Partial<Reserva>) => {
           const index = this.reservas.findIndex(r => r.id === reservaActualizada.id);
           if (index !== -1) {
@@ -69,13 +80,31 @@ export class ReservasPersonalesComponent implements OnInit {
             };
             this.filtrarPorEstado();
           }
+
+          this.tipoAlerta = 'exito';
+          this.mensajeAlerta = 'Reserva cancelada correctamente.';
+          this.mostrarAlerta = true;
+          this.mostrarConfirmacion = false;
+
+          setTimeout(() => this.mostrarAlerta = false, 3000);
         },
-        error: (err) => {
-          console.error('Error al cancelar reserva:', err);
+        error: () => {
+          this.tipoAlerta = 'error';
+          this.mensajeAlerta = 'Error al cancelar la reserva.';
+          this.mostrarAlerta = true;
+          this.mostrarConfirmacion = false;
+
+          setTimeout(() => this.mostrarAlerta = false, 3000);
         }
       });
     }
   }
+
+  cancelarConfirmacion(): void {
+    this.reservaPendienteCancelar = null;
+    this.mostrarConfirmacion = false;
+  }
+
 
   verDetalles(mascotaId: number): void {
     this.router.navigate(['/adoptar_mascota', mascotaId]);

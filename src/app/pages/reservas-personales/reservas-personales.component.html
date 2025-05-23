@@ -1,4 +1,24 @@
 <body>
+
+  <!-- Alerta tipo -->
+  <div *ngIf="mostrarAlerta" [ngClass]="{
+    'alerta-exito': tipoAlerta === 'exito',
+    'alerta-error': tipoAlerta === 'error'
+  }">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="como.gif" alt="Éxito" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Error" class="gif-alerta" />
+  </div>
+
+  <!-- Confirmación -->
+  <div *ngIf="mostrarConfirmacion" class="confirmacion-modal">
+    <div class="confirmacion-contenido">
+      <p>¿Estás seguro de que deseas cancelar esta reserva?</p>
+      <button class="aceptar" (click)="cancelarReservaConfirmada()">Aceptar</button>
+      <button class="cancelar" (click)="cancelarConfirmacion()">Cancelar</button>
+    </div>
+  </div>
+
   <div class="filtros">
     <!-- filtro de estado -->
     <label for="estado">Estado:</label>
@@ -16,9 +36,11 @@
       <p><strong>Fecha de solicitud: </strong>{{ reserva.fechaSolicitud | date: 'mediumDate' }}</p>
 
       <!-- <button class="btn-ver" (click)="verDetalles(reserva.id)">Ver detalles</button> -->
-      <button class="btn-cancelar" [disabled]="reserva.estado !== 'PENDIENTE'" (click)="cancelarReserva(reserva.id)">
+      <button class="btn-cancelar" [disabled]="reserva.estado !== 'PENDIENTE'"
+        (click)="confirmarCancelacion(reserva.id)">
         Cancelar reserva
       </button>
+
       <button class="btn-ver" (click)="verDetalles(reserva.mascota.id!)">Ver información</button>
     </div>
   </div>

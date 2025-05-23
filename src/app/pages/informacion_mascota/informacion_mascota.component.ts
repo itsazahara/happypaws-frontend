@@ -97,7 +97,7 @@ export class InformacionMascotaComponent implements OnInit {
     this.reservaService.crearReserva(reservaRequest).subscribe({
       next: (reservaCreada) => {
         this.tipoAlerta = 'exito';
-        this.mensajeAlerta = `La reserva ha sido realizada con éxito. ID de reserva: ${reservaCreada.id}`;
+        this.mensajeAlerta = `La reserva ha sido realizada con éxito.`;
         this.mostrarAlerta = true;
         this.mostrarModalObservacion = false;
         this.observaciones = '';
