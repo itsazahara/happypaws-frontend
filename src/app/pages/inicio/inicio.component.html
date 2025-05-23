@@ -1,21 +1,53 @@
-<div class="inicio-container">
-  <h1>Bienvenido a HappyPaws</h1>
-  <p>Selecciona una de las siguientes opciones para ver más:</p>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
 
-  <nav>
-    <ul>
-      <li><a routerLink="/menu_usuario"> Menú principal del usuario </a></li>
-      <li><a routerLink="/actualizar_usuario"> Actualizar perfil del usuario </a></li>
-      <li><a routerLink="/raza"> Razas </a></li>
-      <li><a routerLink="/menu_administrador"> Menu principal del administrador </a></li>
-      <li><a routerLink="/add_mascota"> Formulario para añadir mascota </a></li>
-      <li><a routerLink="/selector-rol"> Seleccionar rol </a></li>
-      <li><a routerLink="/login-cliente"> Login del usuario </a></li>
-      <li><a routerLink="/login-admin"> Login del administrador </a></li>
-      <li><a routerLink="/mascotas"> Lista de mascotas en adopción </a></li>
-      <li><a routerLink="/registro"> Registro del cliente </a></li>
-      <li><a routerLink="/datos_administrador"> Perfil del administrador </a></li>
-      <li><a routerLink="/about-us"> About us </a></li>
-    </ul>
-  </nav>
-</div>
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-links">
+        <a routerLink="/">Inicio</a>
+        <a routerLink="/about-us">Sobre nosotros</a>
+      </div>
+      <div class="nav-actions">
+        <a routerLink="/selector-rol" class="btn">Iniciar sesión</a>
+        <a routerLink="/registro" class="btn">Regístrate</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <div class="welcome">
+        <h1> Adopta ♡ Ama ♡ Cambia </h1>
+      </div>
+      <p class="animated-text">Conecta con tu compañero ideal. <br> Adopta, cuida y comparte amor.</p>
+    </div>
+  </section>
+
+  <section class="info">
+    <div class="container">
+      <div class="mini-logo">
+        <img src="logoHappypawsCopy-removebg-preview.png" alt="Logo" />
+      </div>
+      <br>
+      <h3>Happypaws, adopción de animales</h3>
+      <div class="lema">
+        <p> Cada mascota publicada en Happypaws representa una nueva oportunidad de cambiar una vida. Creemos en el
+          poder
+          del cariño, la compañía y en los lazos que nacen del amor verdadero. Aquí, empieza tu historia con un amigo
+          para
+          siempre. </p>
+      </div>
+      <br>
+      <div class="button-container">
+        <a routerLink="/about-us" class="cta-button">¿Qué es Happypaws?</a>
+      </div>
+    </div>
+  </section>
+
+</body>
