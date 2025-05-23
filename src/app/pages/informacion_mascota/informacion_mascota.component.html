@@ -1,10 +1,32 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 
 </head>
+
 <body>
+
+  <div *ngIf="mostrarAlerta"
+    [ngClass]="{'alerta-exito': tipoAlerta === 'exito', 'alerta-error': tipoAlerta === 'error'}">
+    <span>{{ mensajeAlerta }}</span>
+    <img *ngIf="tipoAlerta === 'exito'" src="mensaje.gif" alt="Éxito" class="gif-alerta" />
+    <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Error" class="gif-alerta" />
+  </div>
+
+  <div *ngIf="mostrarModalObservacion" class="confirmacion-modal">
+    <div class="confirmacion-contenido">
+      <h3>Observaciones para la reserva</h3>
+      <textarea [(ngModel)]="observaciones" placeholder="Introduce tus observaciones aquí..."></textarea>
+      <br>
+      <br>
+      <button class="aceptar" (click)="confirmarReserva()">Confirmar</button>
+      <button class="cancelar" (click)="cancelarReserva()">Cancelar</button>
+    </div>
+  </div>
+
+
   <div class="mascota-container" *ngIf="mascota">
     <div class="mascota-card">
       <img [src]="mascota.imagen" [alt]="mascota.nombre" class="mascota-img" />

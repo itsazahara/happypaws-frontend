@@ -26,6 +26,13 @@ export class InformacionMascotaComponent implements OnInit {
   administrador!: AdministradorDto;
   estado!: Estado;
 
+  mostrarModalObservacion: boolean = false;
+  observaciones: string = '';
+
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  tipoAlerta: 'exito' | 'error' = 'exito';
+
   constructor(
     private route: ActivatedRoute,
     private mascotaService: MascotaService,
@@ -60,34 +67,56 @@ export class InformacionMascotaComponent implements OnInit {
 
   reservarMascota(): void {
     if (this.mascota && this.cliente && this.cliente.id) {
-      const observaciones = prompt('Introduce tus observaciones para esta reserva:', '');
-
-      if (observaciones === null) {
-        // El usuario canceló el prompt
-        return;
-      }
-
-      const reservaRequest: ReservaRequestDto = {
-        id: 0,
-        idMascota: this.mascota.id,
-        idCliente: this.cliente.id,
-        idAdministrador: 11, // o null si es opcional
-        estado: Estado.PENDIENTE, // O el valor por defecto que uses
-        observaciones: observaciones.trim()
-      };
-
-      this.reservaService.crearReserva(reservaRequest).subscribe({
-        next: (reservaCreada) => {
-          alert(`Reserva realizada con éxito. ID de reserva: ${reservaCreada.id}`);
-        },
-        error: (error) => {
-          console.error('Error al reservar mascota:', error);
-          alert('No se pudo realizar la reserva.');
-        }
-      });
+      this.mostrarModalObservacion = true; // mostrar modal personalizado
     } else {
-      alert('No se pudo reservar: falta información del cliente o mascota.');
+      this.tipoAlerta = 'error';
+      this.mensajeAlerta = 'No se pudo reservar: falta información del cliente o mascota.';
+      this.mostrarAlerta = true;
+      setTimeout(() => this.mostrarAlerta = false, 3000);
     }
   }
+
+  confirmarReserva(): void {
+    if (this.observaciones.trim() === '') {
+      this.tipoAlerta = 'error';
+      this.mensajeAlerta = 'Debes ingresar una observación.';
+      this.mostrarAlerta = true;
+      setTimeout(() => this.mostrarAlerta = false, 3000);
+      return;
+    }
+
+    const reservaRequest: ReservaRequestDto = {
+      id: 0,
+      idMascota: this.mascota.id,
+      idCliente: this.cliente.id,
+      idAdministrador: 11,
+      estado: Estado.PENDIENTE,
+      observaciones: this.observaciones.trim()
+    };
+
+    this.reservaService.crearReserva(reservaRequest).subscribe({
+      next: (reservaCreada) => {
+        this.tipoAlerta = 'exito';
+        this.mensajeAlerta = `La reserva ha sido realizada con éxito. ID de reserva: ${reservaCreada.id}`;
+        this.mostrarAlerta = true;
+        this.mostrarModalObservacion = false;
+        this.observaciones = '';
+        setTimeout(() => this.mostrarAlerta = false, 3000);
+      },
+      error: () => {
+        this.tipoAlerta = 'error';
+        this.mensajeAlerta = 'No se pudo realizar la reserva.';
+        this.mostrarAlerta = true;
+        this.mostrarModalObservacion = false;
+        setTimeout(() => this.mostrarAlerta = false, 3000);
+      }
+    });
+  }
+
+  cancelarReserva(): void {
+    this.mostrarModalObservacion = false;
+    this.observaciones = '';
+  }
+
 
 }
