@@ -21,7 +21,6 @@ body {
   background-blend-mode: overlay; /* combina color + imagen */
 }
 
-
 .logo-container {
   margin-bottom: 1.5rem;
 
@@ -136,7 +135,6 @@ ul {
   transform: scale(1.05);
 }
 
-
 .menu-enlaces {
   font-family: 'Poppins', sans-serif;
   justify-content: right;
@@ -146,16 +144,17 @@ ul {
 }
 
 .menu-enlaces a {
-  color: black;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   padding: 8px 12px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  background-color: #118AB2;
 }
 
 .menu-enlaces a:hover,
 .menu-enlaces a.activo {
-  color: white;
   background-color: #32a6cc;
+  transform: scale(1.05);
 }
