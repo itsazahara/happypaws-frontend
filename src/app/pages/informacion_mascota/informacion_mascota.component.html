@@ -26,10 +26,11 @@
     </div>
   </div>
 
-
   <div class="mascota-container" *ngIf="mascota">
     <div class="mascota-card">
-      <img [src]="mascota.imagen" [alt]="mascota.nombre" class="mascota-img" />
+      <div class="mascota-img-container">
+        <img [src]="mascota.imagen" [alt]="mascota.nombre" class="mascota-img" />
+      </div>
       <div class="mascota-info">
         <h2>{{ mascota.nombre }}</h2>
         <p>{{ mascota.especie }}</p>
