@@ -89,7 +89,7 @@ export class InformacionMascotaComponent implements OnInit {
       id: 0,
       idMascota: this.mascota.id,
       idCliente: this.cliente.id,
-      idAdministrador: 11,
+      idAdministrador: 1,
       estado: Estado.PENDIENTE,
       observaciones: this.observaciones.trim()
     };
