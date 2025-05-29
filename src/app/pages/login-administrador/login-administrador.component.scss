@@ -29,7 +29,6 @@ body {
   color: #073B4C;
 }
 
-
 h2 {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -91,11 +90,9 @@ button:disabled {
 
 .login-container img {
   width: 120px;
-  /* Ajusta el tamaño del logo */
   height: auto;
   display: block;
   margin: 0 auto 1rem auto;
-  /* Centrado + espacio inferior */
 }
 
 .menu-enlaces {
@@ -156,8 +153,8 @@ button:disabled {
 
 .gif-alerta {
   display: block;
-  margin: 0.5rem auto 0 auto; /* Espacio superior, centrado */
-  width: 60px; /* Ajusta a tu gusto */
+  margin: 0.5rem auto 0 auto;
+  width: 60px;
   height: auto;
 }
 
@@ -166,6 +163,7 @@ button:disabled {
     opacity: 0;
     transform: translate(-50%, -20px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);

@@ -13,14 +13,12 @@ body {
   color: #333;
 }
 
-/* Contenedor principal */
 .reserva-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
-/* Tarjeta de reserva */
 .reserva-card {
   background-color: white;
   border-radius: 8px;
@@ -37,7 +35,6 @@ body {
   transform: translateY(-5px);
 }
 
-/* Títulos y texto */
 .reserva-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -49,8 +46,6 @@ body {
   line-height: 1.4;
 }
 
-/* Botones */
-/* Botón base */
 .reserva-card button {
   font-family: 'Poppins', sans-serif;
   padding: 0.5rem 1rem;
@@ -68,7 +63,6 @@ body {
   text-overflow: ellipsis;
 }
 
-/* Aceptar: verde */
 .btn-cancelar {
   background-color: orange;
   margin-right: 0.5rem;
@@ -88,7 +82,6 @@ body {
   transform: none;
 }
 
-/* Ver información: azul */
 .btn-ver {
   background-color: #118ab2;
 }
@@ -97,7 +90,6 @@ body {
   background-color: #0d6e93;
 }
 
-/* Filtro por estado */
 .filtros {
   display: flex;
   align-items: center;

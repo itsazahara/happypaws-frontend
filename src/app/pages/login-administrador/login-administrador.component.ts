@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { AdministradorDto } from '../../models/administrador-dto';
 
 @Component({
   selector: 'app-login-administrador',

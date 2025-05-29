@@ -105,7 +105,6 @@ export class ReservasPersonalesComponent implements OnInit {
     this.mostrarConfirmacion = false;
   }
 
-
   verDetalles(mascotaId: number): void {
     this.router.navigate(['/adoptar_mascota', mascotaId]);
   }

@@ -29,7 +29,7 @@ export class RegistroClienteComponent {
     imagen: '',
   };
 
-  currentStep: number = 1;  // Controla el paso actual del formulario
+  currentStep: number = 1;
   mostrarAlerta: boolean = false;
   mensajeAlerta: string = '';
   tipoAlerta: 'exito' | 'error' = 'exito';
@@ -77,7 +77,6 @@ export class RegistroClienteComponent {
       return;
     }
 
-    // Aquí llamamos al método registrarCliente de AuthService que devuelve token
     this.authService.registrarCliente(this.cliente).subscribe({
       next: () => {
         this.tipoAlerta = 'exito';
@@ -107,9 +106,9 @@ export class RegistroClienteComponent {
       const file = fileInput.files[0];
       const reader = new FileReader();
       reader.onload = () => {
-        this.cliente.imagen = reader.result as string;  // Guarda la imagen como Base64
+        this.cliente.imagen = reader.result as string;
       };
-      reader.readAsDataURL(file); // Convierte a Base64
+      reader.readAsDataURL(file);
     }
   }
 

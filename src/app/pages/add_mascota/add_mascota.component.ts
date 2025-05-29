@@ -39,7 +39,6 @@ export class AddMascotaComponent {
   tipoAlerta: 'exito' | 'error' = 'exito';
 
   constructor(private http: HttpClient, private router: Router) {
-    // Cargar razas disponibles para el campo de raza
     this.http.get<Raza[]>('http://localhost:8080/happypaws/api/razas')
       .subscribe(razas => {
         this.razas = razas;
@@ -77,7 +76,6 @@ export class AddMascotaComponent {
       return;
     }
 
-    // Si pasa validación, se envía al backend
     this.http.post('http://localhost:8080/happypaws/api/mascotas', this.mascota)
       .subscribe({
         next: () => {
@@ -102,7 +100,6 @@ export class AddMascotaComponent {
       });
   }
 
-  // Métodos para manejar la carga de archivos
   onFileSelect(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -136,9 +133,9 @@ export class AddMascotaComponent {
       const file = fileInput.files[0];
       const reader = new FileReader();
       reader.onload = () => {
-        this.mascota.imagen = reader.result as string;  // Guarda la imagen como Base64
+        this.mascota.imagen = reader.result as string;
       };
-      reader.readAsDataURL(file); // Convierte a Base64
+      reader.readAsDataURL(file);
     }
   }
 }

@@ -2,7 +2,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
 </head>
 
 <header class="header">
@@ -31,7 +30,6 @@
 
     <form (ngSubmit)="registrarCliente()" #registroForm="ngForm">
 
-      <!-- Paso 1: Información básica -->
       <div *ngIf="currentStep === 1">
         <div class="form-group">
           <label for="usuario">Nombre de usuario:</label>
@@ -66,7 +64,6 @@
         </div>
       </div>
 
-      <!-- Paso 2: Contacto y dirección -->
       <div *ngIf="currentStep === 2">
         <div class="form-group">
           <label for="email">Email:</label>
@@ -102,7 +99,6 @@
         </div>
       </div>
 
-      <!-- Paso 3: Más detalles -->
       <div *ngIf="currentStep === 3">
         <div class="form-group">
           <label for="edad">Edad:</label>
@@ -135,7 +131,6 @@
       </div>
 
       <div *ngIf="currentStep === 4">
-        <!-- Selección tipo vivienda -->
         <div class="form-group">
           <label for="tipoVivienda">Tipo de vivienda:</label>
           <select id="tipoVivienda" name="tipoVivienda" [(ngModel)]="cliente.tipoVivienda" required
@@ -150,14 +145,12 @@
           </div>
         </div>
 
-        <!-- Checkbox para otras mascotas -->
         <div class="form-group">
           <label for="otrasMascotas">¿Tienes otras mascotas?
             <input type="checkbox" id="otrasMascotas" name="otrasMascotas" [(ngModel)]="cliente.otrasMascotas" />
           </label>
         </div>
 
-        <!-- Checkbox para experiencia con mascotas -->
         <div class="form-group">
           <label for="experienciaMascotas">¿Tienes experiencia con mascotas?
             <input type="checkbox" id="experienciaMascotas" name="experienciaMascotas"
@@ -167,43 +160,29 @@
       </div>
 
       <div *ngIf="currentStep === 5">
-        <!-- Observaciones -->
         <div class="form-group">
           <label for="observaciones">Observaciones:</label>
           <textarea id="observaciones" name="observaciones" [(ngModel)]="cliente.observaciones"
             placeholder="Escribe tus observaciones..." rows="4"></textarea>
         </div>
 
-        <!-- URL de la imagen
-        <div class="form-group">
-          <label for="imagen">URL de la imagen:</label>
-          <input type="text" id="imagen" name="imagen" [(ngModel)]="cliente.imagen"
-            placeholder="Ingresa la URL de la imagen" />
-        </div>-->
-
-        <!-- Input para seleccionar imagen -->
         <div class="form-group">
           <label for="imagenArchivo">Sube tu imagen:</label>
           <input type="file" id="imagenArchivo" (change)="onFileSelected($event)" accept="image/*" />
         </div>
 
-
-        <!-- Previsualización de la imagen -->
         <div class="form-group" *ngIf="cliente.imagen">
           <label>Vista previa:</label>
           <img [src]="cliente.imagen" alt="Vista previa de la imagen"
             style="max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px; border-radius: 5px;" />
         </div>
-
       </div>
 
-      <!-- Botones de navegación -->
       <div class="navigation-buttons">
         <button type="button" (click)="prevStep()" [disabled]="currentStep === 1">Anterior</button>
         <button type="button" (click)="nextStep()" [disabled]="currentStep === 5">Siguiente</button>
       </div>
       <br>
-      <!-- Botón de Enviar -->
       <div *ngIf="currentStep === 5">
         <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
       </div>

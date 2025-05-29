@@ -31,7 +31,7 @@ export class DatosAdministradorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const email = this.authService.getAdminEmailFromToken(); // 🔹 devuelve string | null
+    const email = this.authService.getAdminEmailFromToken();
     if (email) {
       this.administradorService.obtenerAdminPorEmail(email).subscribe({
         next: (administradorDTO) => {
@@ -51,6 +51,6 @@ export class DatosAdministradorComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login-admin']); // Redirige a la página de login (ajusta la ruta si es diferente)
+    this.router.navigate(['/login-admin']);
   }
 }

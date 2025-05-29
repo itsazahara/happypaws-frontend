@@ -12,7 +12,7 @@ import { Mascota } from '../../models/mascota';
 export class MascotasPorRazaComponent implements OnInit {
   mascotas: Mascota[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     const razaId = this.route.snapshot.paramMap.get('id');

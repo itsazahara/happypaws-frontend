@@ -42,13 +42,11 @@ export class MascotasComponent implements OnInit {
     );
   }
 
-  // Llama esto cuando el usuario haga clic en el botón "Eliminar"
   confirmarEliminacion(id: number): void {
     this.idMascotaPendienteEliminar = id;
     this.mostrarConfirmacion = true;
   }
 
-  // Llama esto si el usuario hace clic en "Aceptar"
   eliminarMascotaConfirmada(): void {
     if (this.idMascotaPendienteEliminar !== null) {
       this.http.delete(`http://localhost:8080/happypaws/api/mascotas/${this.idMascotaPendienteEliminar}`).subscribe({
@@ -77,11 +75,9 @@ export class MascotasComponent implements OnInit {
     }
   }
 
-  // Llama esto si el usuario hace clic en "Cancelar"
   cancelarEliminacion(): void {
     this.mostrarConfirmacion = false;
     this.idMascotaPendienteEliminar = null;
   }
-
 
 }

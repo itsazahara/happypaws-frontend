@@ -1,6 +1,5 @@
 <body>
 
-  <!-- Alerta tipo -->
   <div *ngIf="mostrarAlerta" [ngClass]="{
     'alerta-exito': tipoAlerta === 'exito',
     'alerta-error': tipoAlerta === 'error'
@@ -10,7 +9,6 @@
     <img *ngIf="tipoAlerta === 'error'" src="alarma.gif" alt="Error" class="gif-alerta" />
   </div>
 
-  <!-- Confirmación -->
   <div *ngIf="mostrarConfirmacion" class="confirmacion-modal">
     <div class="confirmacion-contenido">
       <p>¿Estás seguro de que deseas cancelar esta reserva?</p>
@@ -20,7 +18,6 @@
   </div>
 
   <div class="filtros">
-    <!-- filtro de estado -->
     <label for="estado">Estado:</label>
     <select id="estado" [(ngModel)]="estadoSeleccionado" (change)="filtrarPorEstado()">
       <option value="TODOS">Todos</option>
@@ -35,7 +32,6 @@
       <p><strong>Observaciones: </strong>{{ reserva.observaciones || 'Sin observaciones' }}</p>
       <p><strong>Fecha de solicitud: </strong>{{ reserva.fechaSolicitud | date: 'mediumDate' }}</p>
 
-      <!-- <button class="btn-ver" (click)="verDetalles(reserva.id)">Ver detalles</button> -->
       <button class="btn-cancelar" [disabled]="reserva.estado !== 'PENDIENTE'"
         (click)="confirmarCancelacion(reserva.id)">
         Cancelar reserva

@@ -101,6 +101,6 @@ export class ActualizarUsuarioComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login-cliente']); // Redirige a la página de login (ajusta la ruta si es diferente)
+    this.router.navigate(['/login-cliente']);
   }
 }

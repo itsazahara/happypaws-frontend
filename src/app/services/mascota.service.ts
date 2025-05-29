@@ -8,12 +8,11 @@ import { Mascota } from '../models/mascota';
   providedIn: 'root'
 })
 export class MascotaService {
-  private apiUrl = 'http://localhost:8080/happypaws/api/mascotas'; // URL de tu API
+  private apiUrl = 'http://localhost:8080/happypaws/api/mascotas';
 
   constructor(private http: HttpClient) { }
 
-  // Método para obtener las mascotas desde la API
-  getMascotas(): Observable<any> {
+  getMascotas(): Observable<Mascota> {
     return this.http.get<any>(this.apiUrl);
   }
 

@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators'; // ✅ IMPORTADO
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-import { ClienteDTO } from '../models/cliente-dto';
-import { AdministradorDto } from '../models/administrador-dto';
 import { AuthResponse } from '../models/auth-response';
 import { Cliente } from '../models/cliente';
 
@@ -18,14 +16,14 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService // ✅ si usas cookies, debes inyectarla
+    private cookieService: CookieService
   ) { }
 
   // Login del cliente
   loginCliente(email: string, contrasenia: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/authenticate`, { email, contrasenia }).pipe(
       tap((response: AuthResponse) => {
-        this.guardarSesionCliente(response.token); // ✅ usa cookie
+        this.guardarSesionCliente(response.token);
       })
     );
   }
@@ -52,7 +50,7 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decoded = this.jwtHelper.decodeToken(token);
-      return decoded?.sub || null; // asumiendo que el email o ID va en `sub`
+      return decoded?.sub || null;
     }
     return null;
   }
@@ -61,7 +59,7 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decoded = this.jwtHelper.decodeToken(token);
-      return decoded?.sub || null; // asumiendo que el email o ID va en `sub`
+      return decoded?.sub || null;
     }
     return null;
   }
@@ -86,7 +84,6 @@ export class AuthService {
     return null;
   }
 
-  // ✅ al final del AuthService
   registrarCliente(cliente: Cliente): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/register`, cliente).pipe(
       tap((response: AuthResponse) => {

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuAdministradorComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   verMascotasPorEspecie(especie: string): void {
     this.router.navigate(['/mascotas'], { queryParams: { especie: especie } });

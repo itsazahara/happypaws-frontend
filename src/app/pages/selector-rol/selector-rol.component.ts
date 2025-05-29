@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 })
 export class SelectorRolComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   irLoginCliente() {
-    this.router.navigate(['/login-cliente']); // Ajusta esta ruta si es diferente
+    this.router.navigate(['/login-cliente']);
   }
 
   irLoginAdmin() {
-    this.router.navigate(['/login-admin']); // Ajusta esta ruta si es diferente
+    this.router.navigate(['/login-admin']);
   }
 }

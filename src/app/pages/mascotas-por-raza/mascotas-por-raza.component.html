@@ -1,11 +1,11 @@
 <body>
-<div class="mascota-lista">
-  <div *ngFor="let mascota of mascotas" class="mascota-card">
-    <img [src]="mascota.imagen" alt="Foto de {{ mascota.nombre }}">
-    <h3>{{ mascota.nombre }}</h3>
-    <p><strong>Raza:</strong> {{ mascota.raza?.nombre }}</p>
-    <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
-    <p *ngIf="mascota.disponibilidad" class="disponible">Disponible para adopción</p>
+  <div class="mascota-lista">
+    <div *ngFor="let mascota of mascotas" class="mascota-card">
+      <img [src]="mascota.imagen" alt="Foto de {{ mascota.nombre }}">
+      <h3>{{ mascota.nombre }}</h3>
+      <p><strong>Raza:</strong> {{ mascota.raza?.nombre }}</p>
+      <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+      <p *ngIf="mascota.disponibilidad" class="disponible">Disponible para adopción</p>
+    </div>
   </div>
-</div>
 </body>

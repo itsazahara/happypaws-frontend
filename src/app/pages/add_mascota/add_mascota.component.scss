@@ -16,7 +16,6 @@ body {
   font-family: 'Poppins', sans-serif;
   width: 100%;
   max-width: 500px;
-  /* Un poco más amplio para acomodar todos los campos */
   margin: 2rem auto;
   padding: 2rem;
   background-color: #FFD166;
@@ -105,23 +104,17 @@ button:disabled {
     max-width: 100%;
   }
 
-  /* Aseguramos que los checkboxes sigan bien alineados en dispositivos pequeños */
   .checkbox-group {
     flex-direction: column;
-    /* Los checkboxes se alinearán verticalmente en pantallas pequeñas */
   }
 
-  /* Estilo para alinear los checkbox y su texto horizontalmente */
   .form-group label {
     display: inline-flex;
-    /* Hace que el checkbox y el texto estén en una sola línea */
     align-items: center;
-    /* Alinea verticalmente el texto con el checkbox */
   }
 
   .form-group input[type="checkbox"] {
     margin-left: 10px;
-    /* Añade espacio entre el checkbox y el texto */
   }
 }
 

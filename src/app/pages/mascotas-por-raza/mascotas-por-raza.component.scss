@@ -12,7 +12,6 @@ body {
   padding: 20px;
 }
 
-/* Contenedor de todas las tarjetas */
 .mascota-lista {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -20,7 +19,6 @@ body {
   padding: 20px;
 }
 
-/* Tarjeta individual */
 .mascota-card {
   background-color: #fff;
   border-radius: 16px;

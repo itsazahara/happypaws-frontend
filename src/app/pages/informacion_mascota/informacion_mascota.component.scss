@@ -4,7 +4,6 @@
   margin: 0;
 }
 
-/* Estilos generales para la página */
 body {
   display: flex;
   justify-content: center;
@@ -26,13 +25,13 @@ body {
   padding: 15px;
   max-width: 900px;
   overflow: hidden;
-  min-height: 600px; /* Ajusta según tus necesidades */
+  min-height: 600px;
 }
 
 .mascota-img-container {
   width: 100%;
   max-width: 300px;
-  height: 300px; /* Fija la altura para evitar que crezca con la imagen */
+  height: 300px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 8px;
@@ -42,11 +41,10 @@ body {
 .mascota-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* O "contain", según cómo quieras mostrar la imagen */
+  object-fit: cover;
   display: block;
 }
 
-/* Título de la mascota */
 h2 {
   font-size: 40px;
   color: #118AB2;
@@ -57,9 +55,9 @@ h2 {
 .linea-fina {
   border: none;
   height: 1px;
-  background-color: #ccc; /* o cualquier color sutil */
+  background-color: #ccc;
   margin: 20px 0;
-  opacity: 0.6; /* más transparencia = más sutil */
+  opacity: 0.6;
 }
 
 h3 {
@@ -68,7 +66,6 @@ h3 {
   font-weight: bold;
 }
 
-/* Estilos para la imagen */
 img {
   width: 100%;
   max-width: 300px;
@@ -78,7 +75,6 @@ img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Detalles de la mascota */
 p {
   font-size: 1rem;
   color: #555;
@@ -88,7 +84,6 @@ strong {
   color: #118AB2;
 }
 
-/* Estilo para el botón */
 .btn-reservar {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
@@ -106,13 +101,11 @@ strong {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Efectos de hover en el botón */
 .btn-reservar:hover {
   background-color: #32a6cc;
   transform: translateY(-2px);
 }
 
-/* Efectos cuando el botón está presionado */
 .btn-reservar:active {
   transform: translateY(2px);
 }
@@ -120,7 +113,7 @@ strong {
 .detalle-icono {
   display: flex;
   align-items: center;
-  gap: 8px; /* Espacio entre icono y texto */
+  gap: 8px;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
@@ -132,7 +125,6 @@ strong {
 
 .menu-enlaces {
   display: flex;
-
 }
 
 .menu-enlaces a {
@@ -149,7 +141,6 @@ strong {
   color: white;
   background-color: #32a6cc;
 }
-
 
 .alerta-exito {
   position: fixed;

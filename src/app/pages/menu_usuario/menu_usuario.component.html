@@ -2,9 +2,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-
 </head>
+
 <header>
   <nav class="menu-enlaces">
     <div class="espaciador"></div>
@@ -24,7 +23,6 @@
     <aside class="filtros">
       <h3>Filtros</h3>
 
-      <!-- Filtro por tipo -->
       <label>
         Tipo:
         <select [(ngModel)]="filtro.tipo">
@@ -34,13 +32,11 @@
         </select>
       </label>
 
-      <!-- Filtro por edad -->
       <label>
         Edad:
         <input type="number" [(ngModel)]="filtro.edad" placeholder="Edad máxima" />
       </label>
 
-      <!-- Filtro por sexo -->
       <label>
         Sexo:
         <select [(ngModel)]="filtro.sexo">
@@ -50,7 +46,6 @@
         </select>
       </label>
 
-      <!-- Filtro por tamaño -->
       <label>
         Tamaño:
         <select [(ngModel)]="filtro.tamanio">
@@ -61,7 +56,6 @@
         </select>
       </label>
 
-      <!-- Filtro por vacunado -->
       <label>
         Vacunado:
         <select [(ngModel)]="filtro.vacunado">
@@ -71,7 +65,6 @@
         </select>
       </label>
 
-      <!-- Filtro por esterilizado -->
       <label>
         Esterilizado:
         <select [(ngModel)]="filtro.esterilizado">
@@ -81,7 +74,6 @@
         </select>
       </label>
 
-      <!-- Filtro por desparasitado -->
       <label>
         Desparasitado:
         <select [(ngModel)]="filtro.desparasitado">
@@ -98,13 +90,10 @@
     </aside>
 
     <div class="grid-mascotas">
-      <!-- Tarjeta de mascota -->
       <div *ngFor="let mascota of mascotasFiltradas" class="tarjeta">
-        <!-- info básica -->
         <h2>{{ mascota.nombre }}</h2>
         <img [src]="mascota.imagen" alt="{{ mascota.nombre }}" class="imagen-mascota" />
 
-        <!-- Botón "Ver más información" -->
         <button [routerLink]="['/adoptar_mascota', mascota.id]" class="btn-ver-mas">Ver más información</button>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   verMascotasPorEspecie(especie: string): void {
     this.router.navigate(['/mascotas'], { queryParams: { especie: especie } });

@@ -6,7 +6,6 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  /* mismo fondo que el grid-mascotas */
   margin: 0;
   padding: 2rem;
 }
@@ -22,10 +21,8 @@ body {
   font-family: 'Poppins', sans-serif;
   width: 300px;
   background-color: white;
-  /* blanco puro, como tarjetas */
   padding: 1.5rem;
   border-radius: 8px;
-  /* bordes redondeados */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -37,7 +34,6 @@ body {
   border-radius: 50%;
   margin-bottom: 1rem;
   border: 2px solid #118AB2;
-  /* borde azul para la foto */
 }
 
 .perfil-info h2 {

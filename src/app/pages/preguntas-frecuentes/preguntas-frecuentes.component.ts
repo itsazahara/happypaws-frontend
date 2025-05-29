@@ -64,7 +64,6 @@ export class PreguntasFrecuentesComponent {
     }
   ];
 
-
   toggleAnswer(sectionIndex: number, questionIndex: number): void {
     if (this.selectedQuestions[sectionIndex] === questionIndex) {
       this.selectedQuestions[sectionIndex] = null;
@@ -76,6 +75,5 @@ export class PreguntasFrecuentesComponent {
   isAnswerVisible(sectionIndex: number, questionIndex: number): boolean {
     return this.selectedQuestions[sectionIndex] === questionIndex;
   }
-
 
 }

@@ -3,9 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MascotaService } from '../../services/mascota.service';
 import { Mascota } from '../../models/mascota';
 import { ReservaService } from '../../services/reserva.service';
-import { ReservaDto } from '../../models/reserva-dto';
-import { Cliente } from '../../models/cliente'; // Ajusta la ruta a tu modelo de Cliente
-import { Administrador } from '../../models/administrador'; // Ajusta la ruta a tu modelo de Administrador
 import { Estado } from '../../models/estado';
 import { AuthService } from '../../services/auth.service';
 import { ClienteService } from '../../services/cliente.service';
@@ -67,7 +64,7 @@ export class InformacionMascotaComponent implements OnInit {
 
   reservarMascota(): void {
     if (this.mascota && this.cliente && this.cliente.id) {
-      this.mostrarModalObservacion = true; // mostrar modal personalizado
+      this.mostrarModalObservacion = true;
     } else {
       this.tipoAlerta = 'error';
       this.mensajeAlerta = 'No se pudo reservar: falta información del cliente o mascota.';

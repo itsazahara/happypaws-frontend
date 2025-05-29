@@ -22,22 +22,14 @@ export class ReservaService {
   }
 
   actualizarEstado(id: number, nuevoEstado: string): Observable<ReservaDto> {
-    // Construimos los parámetros de consulta
     const params = new HttpParams().set('nuevoEstado', nuevoEstado);
 
-    // Llamamos al endpoint PUT con el parámetro nuevoEstado en query params y sin cuerpo (null)
     return this.http.put<ReservaDto>(`${this.apiUrl}/${id}/estado`, null, { params });
   }
 
   obtenerReservasPorEstado(estado: string): Observable<ReservaDto[]> {
     return this.http.get<ReservaDto[]>(`${this.apiUrl}/estado/${estado}`);
   }
-
-  /*ordenarPorFecha(orden: 'asc' | 'desc'): Observable<Reserva[]> {
-  return this.http.get<Reserva[]>(`${this.apiUrl}/ordenarPorFecha`, {
-    params: new HttpParams().set('orden', orden)
-  });
-}*/
 
   obtenerReservaPorId(id: number): Observable<ReservaDto> {
     return this.http.get<ReservaDto>(`${this.apiUrl}/${id}`);

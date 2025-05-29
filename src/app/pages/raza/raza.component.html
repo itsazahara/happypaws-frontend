@@ -21,16 +21,13 @@
     </div>
   </div>
 
-
   <div class="raza-container">
     <h2>Gestión de razas</h2>
 
-    <!-- Buscador -->
     <div class="buscador">
       <input [(ngModel)]="busqueda" (input)="buscarRazas()" placeholder="Buscar por nombre..." />
     </div>
 
-    <!-- Formulario de agregar/editar raza -->
     <form (ngSubmit)="guardarRaza()">
       <input [(ngModel)]="razaForm.nombre" name="nombre" placeholder="Nombre" required />
       <select [(ngModel)]="razaForm.especie" name="especie" required>
@@ -48,7 +45,6 @@
       </select>
     </div>
 
-    <!-- Cuadrícula de razas -->
     <div class="raza-grid">
       <div *ngFor="let raza of razasPaginadas" class="raza-card">
         <img [src]="raza.imagen" [alt]="raza.nombre" />

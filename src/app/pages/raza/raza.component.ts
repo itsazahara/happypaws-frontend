@@ -18,7 +18,6 @@ export class RazaComponent implements OnInit {
   busqueda: string = '';
   razaForm: Raza = { nombre: '', especie: Especie.PERRO, imagen: '' };
 
-  // Paginación
   currentPage: number = 1;
   itemsPerPage: number = 12;
   totalPages: number = 0;
@@ -39,7 +38,6 @@ export class RazaComponent implements OnInit {
     this.razaService.findAll().subscribe(data => {
       this.razas = data;
 
-      // Obtener especies únicas a partir de las razas cargadas
       this.especies = Array.from(new Set(data.map(r => r.especie as Especie)));
 
       this.totalPages = Math.ceil(this.razas.length / this.itemsPerPage);
@@ -89,7 +87,6 @@ export class RazaComponent implements OnInit {
   }
 
   guardarRaza(): void {
-    // Validación de campos obligatorios
     const camposObligatorios = [
       this.razaForm.nombre,
       this.razaForm.especie,
@@ -107,7 +104,6 @@ export class RazaComponent implements OnInit {
       return;
     }
 
-    // Si tiene ID, es una edición
     if (this.razaForm.id != null) {
       this.razaService.update(this.razaForm.id, this.razaForm).subscribe(() => {
         this.cargarRazas();
@@ -120,7 +116,6 @@ export class RazaComponent implements OnInit {
         setTimeout(() => this.mostrarAlerta = false, 3000);
       });
     } else {
-      // Crear nueva raza
       this.razaService.create(this.razaForm).subscribe(() => {
         this.cargarRazas();
         this.resetForm();
@@ -139,7 +134,6 @@ export class RazaComponent implements OnInit {
       });
     }
   }
-
 
   editarRaza(raza: Raza): void {
     this.razaForm = { ...raza };

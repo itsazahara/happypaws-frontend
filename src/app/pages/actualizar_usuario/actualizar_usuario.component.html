@@ -1,6 +1,5 @@
 <body>
 
-  <!-- Alerta tipo -->
   <div *ngIf="mostrarAlerta" [ngClass]="{
     'alerta-exito': tipoAlerta === 'exito',
     'alerta-error': tipoAlerta === 'error'
@@ -43,13 +42,11 @@
           <input [(ngModel)]="cliente.edad" name="edad" placeholder="Edad" required type="number" />
           <input [(ngModel)]="cliente.ocupacionLaboral" name="ocupacionLaboral" placeholder="Ocupación" required />
 
-          <!-- Tipo de vivienda (select del enum) -->
           <select [(ngModel)]="cliente.tipoVivienda" name="tipoVivienda" required>
             <option *ngFor="let tipo of tipoViviendaKeys" [value]="tiposVivienda[tipo]">
               {{ tipo }}
             </option>
           </select>
-
 
           <label>
             Otras mascotas:
